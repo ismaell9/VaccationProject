@@ -2,7 +2,7 @@ package vaccinationsystem;
 
 /**
  *
- * 
+ * edited now by "som3a"
  */
 public class Admin extends Staff{
 
