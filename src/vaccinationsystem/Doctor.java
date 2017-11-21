@@ -3,7 +3,7 @@ package vaccinationsystem;
 import java.util.Date;
 
 /**
- *
+ * test editing 1
  * other functionality might be added to this class
  */
 public class Doctor extends Staff{
