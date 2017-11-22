@@ -1,7 +1,9 @@
 package vaccinationsystem;
 
 /**
- *
+ *     3ashan nagham tagrb alpull xD 
+ 
+
  * @author Reputation
  */
 public class Client extends Person{
