@@ -1,5 +1,4 @@
 package vaccinationsystem;
-//som3aaaaa
 /**
  *
  * @author Reputation
@@ -11,10 +10,10 @@ public abstract class Person {
     protected String pFirstName;
     protected String pLastName;
     protected String pEmail;
+
     
     public Person(int pId , int pAge , String pFirstName , String pLastName , String pEmail)
   {
-        
         this.pId = pId ;
         this.pAge = pAge ; 
         this.pFirstName = pFirstName ;
