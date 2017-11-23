@@ -12,50 +12,58 @@ public abstract class Person {
     protected String pLastName;
     protected String pEmail;
     
-/***
- * 
- * Person class setters && getters
- * Initializing Person attributes by setters and using it by getters
- * 
- 
-    public void setPId(){
+    public Person(int pId , int pAge , String pFirstName , String pLastName , String pEmail)
+  {
         
+        this.pId = pId ;
+        this.pAge = pAge ; 
+        this.pFirstName = pFirstName ;
+        this.pLastName = pLastName ;
+        this.pEmail = pEmail ;
+  }
+    //OverRide ...
+    @Override
+    public abstract String toString();
+    
+ //Setter
+    public void setPId(int id){
+        this.pId = id ;
     }    
-    public void setPAge(){
-        
+    public void setPAge(int age){
+        this.pAge = age ;
     }
         
-    public void setPFirstName(){
-        
+    public void setPFirstName(String fname){
+        this.pFirstName = fname ;
     }
         
-    public void setPLastName(){
-        
+    public void setPLastName(String lname){
+        this.pLastName = lname ;
     }    
-    public void setPEmail(){
-        
+    public void setPEmail(String email){
+        this.pEmail = email ;
     }    
+    //Getter
     public int getPId(){
         
-        return 0;
+        return this.pId;
     }    
     public int getPAge(){
         
-        return 0;
+        return this.pAge;
     }
         
     public String getPFirstName(){
-        return "";
+        return this.pFirstName;
     }
         
     public String getPLastName(){
-        return "";
+        return this.pLastName;
     }    
     public String getPEmail(){
-        return "";
+        return this.pEmail;
     }
     
- ***/   
-    
+ 
     
 }
