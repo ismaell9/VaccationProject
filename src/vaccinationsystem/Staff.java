@@ -9,7 +9,17 @@ public class Staff extends Person {
     private String sUserName;
     private String sPassword;
     private double sSalary;
-    
+
+    public boolean login(String userName , String Pass) {
+       if ( userName.equals("Admin@yahoo.com") && Pass.equals("12345678")){
+           return true ;
+       }
+       else {
+           System.out.println("the em@il and the password is false ! please try again");
+           return false ;
+       }
+        
+    }
 /***
  * 
  * Person class setters && getters
@@ -17,26 +27,30 @@ public class Staff extends Person {
  * 
  ***/
     
-    public void set_sUserName(){
-        
+    /**
+     * Person class setters &;&; getters
+ Initializing Person attributes by setters and using it by getters
+     * @param username
+     */
+    public void set_sUserName(String username){
+        this.sUserName = username ;
     }
-    public void set_sPassword(){
-        
+    public void set_sPassword(String pass){
+        this.sPassword = pass ;
     }
-    public void set_sSalary(){
-        
+    public void set_sSalary(double salary){
+        this.sSalary = salary ;
     }
  
     public String get_sUserName(){
-        return "";
+        return this.sUserName;
     }
     public String get_sPassword(){
-        return "";
+        return this.sPassword;
     }
     public double get_sSalary(){
-        return 0.0;
+        return this.sSalary;
     }
- 
 /***
  * 
  * This method is used to login into the system
@@ -45,20 +59,4 @@ public class Staff extends Person {
  * @return true if login, false if not
  * return type is changeable
  */
-    public boolean login(String sUserName, String sPassword){
-        return true;
-    }
-    
-/***
- * 
- * This method is used to login into the system
- * @return true if logout, false if not
- * return type is changeable
- */
-    public boolean logout(){
-        return true;
-    }
-    
-    
-    
-}
+ }
