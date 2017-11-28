@@ -1,51 +1,153 @@
 package vaccinationsystem;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.ListIterator;
+
 
 /**
  *
  * 
  */
-public class Vaccine {
+public class Vaccine implements Serializable{
 /**
  * access modifiers are better to stay private 
  * but they are changeable if needed
  */
-    private int vacId;
-    private String vacName;
+    private static int vacId = 0;
+    private int vacExpirationYear;
+    private String vac;
+    private String vacTradeName;
+    private String vacAbbreviation;
     private String vacType;
-    private Date vacExpirationDate;
-
-/**
- * access modifier is changeable "it's better when private"
- * @return true if added, false if not
- */
-    public boolean addVac(){
-        return true;
+    private String vacComment;
+    final private FileMangerBinary file = new FileMangerBinary();
+    final static String FILE_NAME = "E:\\VaccinationSystem\\Vaccine.bin";
+    
+    Vaccine(String vac, String vacTradeName, String vacAbbreviation, String vacType, String vacComment,int vacExpirationYear){
+        this.vac = vac;
+        this.vacTradeName = vacTradeName;
+        this.vacAbbreviation = vacAbbreviation;
+        this.vacType = vacType;
+        this.vacExpirationYear = vacExpirationYear;
+        this.vacComment = vacComment;
+    }
+    Vaccine(){
+        
+    }
+// setters and getters
+   
+    public void set_vac(String vac){
+        this.vac = vac;
+    }
+    public void set_vacTradeName(String vacName){
+        this.vacTradeName = vacName;
+    }
+    public void set_vacAbbreviation(String vacAbbreviation){
+        this.vacAbbreviation = vacAbbreviation;
     }
 
-/**
- * access modifier is changeable "it's better when private"
- * @return true if deleted, false if not
- */
-    public boolean deleteVac(){
-        return true;
+    public void set_vacType(String vacType){
+        this.vacType = vacType;
     }
-
-/**
- * access modifier is changeable "it's better when private"
- * @return true if updated, false if not
- */
-    public boolean updateVac(){
-        return true;
-    }
-
-/**
- * access modifier is changeable "it's better when private"
- * @return array of vaccine objects stored in vaccine file
- */
-    public Object[] listVac(){
-        return null;
+        
+    public void set_vacExpirationYear(int vacExpirationYear){
+        this.vacExpirationYear = vacExpirationYear;
     }
     
+    public void set_comments(String vacComment){
+        this.vacComment = vacComment;
+    }
+    public int get_vacId(){
+        return Vaccine.vacId;
+    }
+    public String get_vac(){
+        return this.vac;
+    }
+    public String get_vacTradeName(){
+        return this.vacTradeName;
+    }
+    public String get_vacAbbreviation(){
+        return this.vacAbbreviation;
+    }
+    public String get_vacType(){
+        return this.vacType;
+    }
+    public int get_vacExpirationYear(){
+        return this.vacExpirationYear;
+    }
+    public String get_vacComment(){
+        return this.vacComment;
+    }
+    
+// end setters and getters        
+    
+
+/**
+ * access modifier is changeable "it's better when private"
+ * @param vac
+ * @return true if added, false if not
+*/
+    public boolean addVac(Vaccine vac){
+        Vaccine.vacId++;
+        //Write inside vaccine file
+        boolean write = this.file.write(Vaccine.FILE_NAME, vac);
+        //Object o = this.file.read(Vaccine.FILE_NAME);
+        //System.out.println(o);
+        //if(write)System.out.println("Done writing in file."); else System.out.println("File error.");
+        //System.out.println(Vaccine.vacId + "\t" + this.vac + "\t" + this.vacTradeName + "\t" +  
+        //        this.vacAbbreviation + "\t" + this.vacType + "\t" + this.vacExpirationYear + "\t" + this.vacComment);
+        return write;
+    }
+
+/**
+ * access modifier is changeable "it's better when private"
+ * @param vac
+ * @return true if deleted, false if not
+ */
+    public boolean deleteVac(String vac){
+        //serach file for vac
+        if("VACID".equals(vac)){
+            //delete from file
+            return true;
+        }else
+        return false;
+    }
+    public boolean deleteVac(int vacExpirationYear){
+        //search file for all vac
+        if(1==vacExpirationYear){
+            //delete from file
+        }
+        return true;
+    }
+    public boolean deleteVac(int vacId , boolean flag){
+        //search file for vac
+        //if found delete from file
+        return true;
+    }
+
+/**
+ * access modifier is changeable "it's better when private"
+     * @param vac
+ * return array of vaccine objects stored in vaccine file
+ * NOT FINISHED YET
+ */
+    public void listVac(Vaccine vac){
+                
+        ListIterator<Object> it = this.file.readAllObject(Vaccine.FILE_NAME ,vac).listIterator();
+        
+        while(it.hasNext()){
+            Object v = it.next();
+            System.out.print(v);
+
+        } 
+    }
+/**
+ * NOT FINISHED YET
+ * @param vac
+ * @return 
+ */
+    public int searchVac(String vac){
+        return 0;
+    }
 }
