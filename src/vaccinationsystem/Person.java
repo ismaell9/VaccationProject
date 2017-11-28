@@ -1,9 +1,7 @@
 package vaccinationsystem;
-/**
- *
- * @author Reputation
- */
-public abstract class Person {
+
+
+public class Person {
     
     protected int pId ;
     protected int pAge ;
@@ -11,6 +9,13 @@ public abstract class Person {
     protected String pLastName ;
     protected String pEmail ;
 
+   
+    
+    FileManger FManger = new FileManger();
+    
+    public Person(){
+        
+    }
     
     public Person(int pId , int pAge , String pFirstName , String pLastName , String pEmail)
   {
@@ -22,9 +27,9 @@ public abstract class Person {
       
       }
     //OverRide ...
-    @Override
+ //   @Override
     
-    public abstract String toString();
+   //public abstract String toString(); 
     
  //Setter
     public void setPId(int id){
