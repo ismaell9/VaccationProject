@@ -46,7 +46,7 @@ public abstract class Store {
     
     private int getvacIndex(int vacId){
         for (int i = 0; i < Store.size(); i++)
-            if(Store.get(i).getvacId() == vacId)
+            if(Store.get(i).get_vacId() == vacId)
                 return i;
         return -1;
     }

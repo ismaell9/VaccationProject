@@ -13,6 +13,10 @@ public class StoreKeeper extends staff{
     public StoreKeeper(int pId,int pAge,String pFirstName,String pLastName ,String pEmail,String sUsername,String sPassword,double sSalary){
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
     }   
+
+    StoreKeeper() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public boolean addstorekeeper() {
         if (this.FManger.write(this.getStoreKeeperData(), "StoreKeeper.txt" , true)) {
@@ -86,7 +90,9 @@ public class StoreKeeper extends staff{
     //use "vac" object to use methods in "Vaccine" class
     public void set_vac(Vaccine vac){
         this.vac = vac;
+    
     }
+ 
     
     
 /**
@@ -103,7 +109,7 @@ public class StoreKeeper extends staff{
  
    private int getvacIndex(int vacId){
         for (int i = 0; i < vac.size(); i++)
-            if(vac.get(i).getvacId() == vacId)
+            if(vac.get(i).get_vacId()== vacId)
                 return i;
         return -1;
     }

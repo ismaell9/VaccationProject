@@ -150,4 +150,12 @@ public class Vaccine implements Serializable{
     public int searchVac(String vac){
         return 0;
     }
+
+    Object get(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    int size() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
