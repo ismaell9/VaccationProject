@@ -2,6 +2,7 @@ package vaccinationsystem;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.ListIterator;
 
 
@@ -23,16 +24,20 @@ public class Vaccine implements Serializable{
     private String vacComment;
     final private FileMangerBinary file = new FileMangerBinary();
     final static String FILE_NAME = "E:\\VaccinationSystem\\Vaccine.bin";
+    ArrayList<Vaccine> vacs;
     
     Vaccine(String vac, String vacTradeName, String vacAbbreviation, String vacType, String vacComment,int vacExpirationYear){
+        this.vacs = new ArrayList<Vaccine>();
         this.vac = vac;
         this.vacTradeName = vacTradeName;
         this.vacAbbreviation = vacAbbreviation;
         this.vacType = vacType;
         this.vacExpirationYear = vacExpirationYear;
         this.vacComment = vacComment;
+        this.vacs = new ArrayList<Vaccine>();
     }
     Vaccine(){
+        this.vacs = new ArrayList();
         
     }
 // setters and getters
@@ -91,12 +96,15 @@ public class Vaccine implements Serializable{
     public boolean addVac(Vaccine vac){
         Vaccine.vacId++;
         //Write inside vaccine file
-        boolean write = this.file.write(Vaccine.FILE_NAME, vac);
+        this.vacs = ArrayList.class.cast(this.file.read(Vaccine.FILE_NAME));
+        vacs.add(vac);
+        boolean write = this.file.write(Vaccine.FILE_NAME, vacs);
         //Object o = this.file.read(Vaccine.FILE_NAME);
         //System.out.println(o);
         //if(write)System.out.println("Done writing in file."); else System.out.println("File error.");
         //System.out.println(Vaccine.vacId + "\t" + this.vac + "\t" + this.vacTradeName + "\t" +  
         //        this.vacAbbreviation + "\t" + this.vacType + "\t" + this.vacExpirationYear + "\t" + this.vacComment);
+        
         return write;
     }
 
@@ -132,15 +140,15 @@ public class Vaccine implements Serializable{
  * return array of vaccine objects stored in vaccine file
  * NOT FINISHED YET
  */
-    public void listVac(Vaccine vac){
-                
-        ListIterator<Object> it = this.file.readAllObject(Vaccine.FILE_NAME ,vac).listIterator();
+    public void listVac(){
+        ArrayList readVac = ArrayList.class.cast(this.file.read(Vaccine.FILE_NAME));
         
-        while(it.hasNext()){
+        for (Iterator it = readVac.iterator(); it.hasNext();) {
             Object v = it.next();
-            System.out.print(v);
-
-        } 
+            Vaccine vs = Vaccine.class.cast(v);
+            System.out.println("Vaccine:  " + vs.vac + "\tVaccine Abbreviation:  " + vs.vacAbbreviation + "\tComments:  " + vs.vacComment + "\tVaccine type:  " + vs.vacType);
+            
+        }
     }
 /**
  * NOT FINISHED YET
@@ -150,12 +158,5 @@ public class Vaccine implements Serializable{
     public int searchVac(String vac){
         return 0;
     }
-
-    Object get(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
+

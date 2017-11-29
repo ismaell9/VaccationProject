@@ -21,13 +21,13 @@ import java.util.logging.Logger;
  */
 public class FileMangerBinary implements Serializable {
 
-    public boolean write(String FilePath, Object data) {
+    public boolean write(String FilePath, ArrayList data) {
 
         try {
             System.out.print("\nwritting in ! " + FilePath);
 
             ObjectOutputStream writter = new ObjectOutputStream(new FileOutputStream(FilePath));
-
+           
             writter.writeObject(data);
 
             System.out.println(" ... Done ! ");
