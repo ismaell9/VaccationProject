@@ -109,7 +109,7 @@ public class StoreKeeper extends staff{
  
    private int getvacIndex(int vacId){
         for (int i = 0; i < vac.size(); i++)
-            if(vac.get(i).get_vacId()== vacId)
+            if(vac.get(i).get_vacId ()== vacId)
                 return i;
         return -1;
     }

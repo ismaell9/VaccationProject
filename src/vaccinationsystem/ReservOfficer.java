@@ -19,10 +19,7 @@ private final String ReservOfficerFileName = "=ReservOfficer.txt";
     ReservOfficer() {
     }
 
-    ReservOfficer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+  
   
     public void set_reservation(Reservation reservation){
         this.reservation = reservation;

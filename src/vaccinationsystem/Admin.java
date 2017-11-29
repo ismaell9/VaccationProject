@@ -215,7 +215,7 @@ public void displaySroeKeeper() {
     }
 
     public void deleteReservOfficer(int Id) {
-        ResesrvOfficer x = new ReservOfficer();
+        ReservOfficer x = new ReservOfficer();
         x.deleteRes(Id);
         System.out.println("deleted Successfully ... !");
     }
