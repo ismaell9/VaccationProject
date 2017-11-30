@@ -8,20 +8,23 @@ import java.util.ArrayList;
  */
 public class Appointment {
     protected Date appointmentDate;
-Person pFirstName;
-   Person pLastName;
-   Client appointmentNumber;
+    Person pFirstName;
+    Person pLastName;
+    Client appointmentNumber;
    
    
-public static ArrayList<Appointment> Appointments = new ArrayList <Appointment>();
+    public static ArrayList<Appointment> Appointments = new ArrayList <Appointment>();
+    private final String AppointmentFileName = "Appointment.txt";
+    FileManger FManger = new FileManger();
   
-   public Appointment (){
+    public Appointment (){
     }
-     public Appointment (Date appointmentDate , Person pFirstName,Person pLastName, int appointmentNumber ) {
+    
+    public Appointment (Date appointmentDate , Person pFirstName,Person pLastName, Client appointmentNumber ) {
         this.appointmentDate = appointmentDate;
         this. pFirstName= pFirstName;
-   this.pLastName = pLastName;
-       this.appointmentNumber = appointmentNumber; 
+        this.pLastName = pLastName;
+        this.appointmentNumber = appointmentNumber; 
     }
       public void setappontmentdate (Date appointmentDate) {
         this.appointmentDate = appointmentDate;
@@ -45,7 +48,7 @@ public static ArrayList<Appointment> Appointments = new ArrayList <Appointment>(
  */    
     public boolean addAppointment(){
         
-        if (Fobect.write(getData(), Name, true)) 
+        if (FManger.write(getData(), AppointmentFileName, true)) 
                   
         return true;
        
@@ -63,13 +66,13 @@ public static ArrayList<Appointment> Appointments = new ArrayList <Appointment>(
            
     //write in file
       private void ReadFromFile() {
-           Appointments = (ArrayList<Appointment>) (Object) Fileobect .read(Name);
+           Appointments = (ArrayList<Appointment>) (Object) FManger.read(AppointmentFileName);
        }
       //update eldata b3d el search w el delete 
          private void updateToFile() {
-        Fob.write(Appointments.get(0).getData(), Name, false);
+        FManger.write(Appointments.get(0).getData(), AppointmentFileName, false);
         for (int i = 1; i < Appointments.size(); i++) {
-            Fob.write(Appointments.get(i).getData(),FileName, true);
+            FManger.write(Appointments.get(i).getData(),AppointmentFileName, true);
         }
 
     }
