@@ -1,8 +1,7 @@
 package vaccinationsystem;
 
 /**
- *     3ashan nagham tagrb alpull xD 
- 
+ *     
 
  * @author Reputation
  */
