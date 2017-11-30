@@ -44,12 +44,12 @@ public abstract class Store {
     }
 
     
-  /*  private int getvacIndex(int vacId){
+    private int getvacIndex(int vacId){
         for (int i = 0; i < Store.size(); i++)
             if(Store.get(i).get_vacId() == vacId)
                 return i;
         return -1;
-    }*/
+    }
     
     
     private String getstoreData() {
@@ -76,7 +76,7 @@ public abstract class Store {
  * @param vacId
  * @return true if found, false if not
  */
-  /*  public boolean searchVac(int vacId){
+    public boolean searchVac(int vacId){
         loadFromFile();
         int index = getvacIndex(vacId);
         if(index != -1)
@@ -86,7 +86,7 @@ public abstract class Store {
             //return "\nNot Found ...!";
              return false;
 
-    }*/
+    }
     
 /**
  * @return true if store is full, false if not

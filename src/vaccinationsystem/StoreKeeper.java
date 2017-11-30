@@ -107,13 +107,13 @@ public class StoreKeeper extends staff{
         this.store = store;
     }
  
- /*   private int getvacIndex(int vacId){
+   private int getvacIndex(int vacId){
         for (int i = 0; i < vac.size(); i++)
              if(vac.get(i).get_vacId()== vacId)
                 return i;
         return -1;
     }
-*/
+
 /**
  * access modifier is changeable 
  * remember it's better to stay "private"
@@ -121,13 +121,13 @@ public class StoreKeeper extends staff{
  */
      public boolean searchVac(int vacId){
         loadFromFile();
-       /* int index = getvacIndex(vacId);
+       int index = getvacIndex(vacId);
         if(index != -1)
             //return "\nFound ...!" + Store.get(index).toString();
             return true;
         else 
             //return "\nNot Found ...!";
-          */   return false;
+            return false;
 
     }
 
