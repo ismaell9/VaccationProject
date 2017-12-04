@@ -155,7 +155,36 @@ public class FileManger {
     
     
    
-     }else{
+     }
+     /*
+     else if (FilePath.equals("Reservation.txt")) {
+
+            ArrayList<Reservation> reservation = new ArrayList<Reservation>();
+            Reservation x;
+
+            while (Reader.hasNext()) {
+
+                x = new Reservation();
+                String Line = Reader.nextLine();
+                String[] seprated = Line.split("@");
+
+                //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
+                x.setID(Integer.parseInt(seprated[0]));
+                x.setFName((seprated[1]));
+                x.setLName((seprated[2]));
+                x.setAge(Integer.parseInt(seprated[3]));
+                x.setEmail((seprated[4]));
+                x.setGender(seprated[5]);          
+                //x.setAppointment(Appointment.parseAppointment(seprated[7]));
+               x.setVaccineName(seprated[6]);
+               reservation.add(x);
+            }
+
+            return (ArrayList<Object>) (Object) reservation;
+    
+          }
+*/
+     else{
          return null;
      }
     }

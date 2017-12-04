@@ -10,7 +10,11 @@ public class Client extends Person{
     private int cPhoneNumber;
     private String cAdress;
     private String cGender;
+    
 
+    public Client (){
+    }
+    
     public Client(int pId, int pAge, String pFirstName, String pLastName, String pEmail,int cPhoneNumber, String cAdress, String cGender) {
         super(pId, pAge, pFirstName, pLastName, pEmail);
         this.cPhoneNumber = cPhoneNumber;
