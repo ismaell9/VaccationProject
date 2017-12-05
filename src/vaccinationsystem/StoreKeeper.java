@@ -104,10 +104,14 @@ public class StoreKeeper extends staff{
     }*/
     //msh fahm brdo, w leh elfunction mtkrara bnfs elimplementation??
    private int getvacIndex(int vacId){
-        for (int i = 0; i < vac.size(); i++)
+        
+       //Implemented in Store [CLASS]\\
+       
+       /*for (int i = 0; i < vac.size(); i++)
              if(vac.get(i).get_vacId()== vacId)
                 return i;
-        return -1;
+        return -1;*/
+       return 0;
     }
 
 /**

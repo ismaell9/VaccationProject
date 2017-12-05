@@ -51,10 +51,17 @@ public class Store {
 
     // msh fahm 3yza t3mli eh??
     private int getvacIndex(int vacId){
+        //gets all vaccine IDs
+        ArrayList<ArrayList>s = this.vac.vacData();
+        Iterator<ArrayList> it = s.iterator();
+        while(it.hasNext()){
+            it.next().get(0);
+        }/*
         for (int i = 0; i < Store.size(); i++)
             if(Store.get(i).get_vacId() == vacId)
                 return i;
-        return -1;
+        return -1;*/
+        return 0;
     }
     
     
@@ -116,7 +123,7 @@ public class Store {
     public String storeReport(){
         loadFromFile();
         String S = "\nAll Store Data:\n";
-        for (Store x : Store) {
+        for (Store x : store) {
             S = S + x.toString();
         }
         return S;
