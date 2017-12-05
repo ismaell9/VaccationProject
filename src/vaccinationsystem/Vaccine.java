@@ -48,6 +48,9 @@ public class Vaccine implements Serializable{
             }
         }
     }
+    public Vaccine(){
+        
+    }
 // setters and getters
        public static void set_vacId(int value){
         Vaccine.vacId = value;
@@ -157,7 +160,11 @@ public class Vaccine implements Serializable{
         for(Object cs: s){
             System.out.println(cs);
         }
-    }    
+    }
+    public ArrayList vacData(){
+        ArrayList<ArrayList>  v= (ArrayList<ArrayList>)(this.file.read(Vaccine.FILE_NAME));
+        return v;
+    }
  
     public boolean searchVac(String vac){
         ArrayList s = (ArrayList<ArrayList>)(this.file.read(Vaccine.FILE_NAME));

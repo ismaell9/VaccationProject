@@ -4,11 +4,12 @@ import java.util.*;
 
 public class StoreKeeper extends staff{
 
-    private Vaccine vac;
+    private final Vaccine vac = new Vaccine();
     private final String storekeeperFileName = "StoreKeeper.txt";
     FileManger FManger = new FileManger();
-    public static ArrayList<StoreKeeper> StoreKeepers= new ArrayList<StoreKeeper>();
-  
+    public static ArrayList<StoreKeeper> StoreKeepers= new ArrayList<>();
+        //use "store" object to use methods in "Store" class
+    private final Store store = new Store();
   
     public StoreKeeper(int pId,int pAge,String pFirstName,String pLastName ,String pEmail,String sUsername,String sPassword,double sSalary){
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
@@ -19,11 +20,7 @@ public class StoreKeeper extends staff{
     }
     
     public boolean addstorekeeper() {
-        if (this.FManger.write(this.getStoreKeeperData(), "StoreKeeper.txt" , true)) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.FManger.write(this.getStoreKeeperData(), "StoreKeeper.txt" , true);
 }
     private String getStoreKeeperData() {
         return this.pId + "@" + this.pFirstName + "@" + this.pLastName + "@" + this.pAge + "@" + this.pEmail + "@" + this.sUserName + "@" + this.sPassword+ "@" + this.sSalary + "@";
@@ -88,10 +85,10 @@ public class StoreKeeper extends staff{
     }
     
     //use "vac" object to use methods in "Vaccine" class
-    public void set_vac(Vaccine vac){
+   /* public void set_vac(Vaccine vac){
         this.vac = vac;
     
-    }
+    }*/
  
     
     
@@ -100,13 +97,12 @@ public class StoreKeeper extends staff{
  * It's completely changeable
  */
     
-    //use "store" object to use methods in "Store" class
-    private Store store;
+
     
-    public void set_store(Store store){
+    /*public void set_store(Store store){
         this.store = store;
-    }
- 
+    }*/
+    //msh fahm brdo, w leh elfunction mtkrara bnfs elimplementation??
    private int getvacIndex(int vacId){
         for (int i = 0; i < vac.size(); i++)
              if(vac.get(i).get_vacId()== vacId)
@@ -119,6 +115,8 @@ public class StoreKeeper extends staff{
  * remember it's better to stay "private"
  * @return true if found, false if not
  */
+   
+   //msh fahm 3yza t3mli eh?? w ezai??\\
      public boolean searchVac(int vacId){
         loadFromFile();
        int index = getvacIndex(vacId);

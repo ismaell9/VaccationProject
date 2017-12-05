@@ -2,48 +2,54 @@ package vaccinationsystem;
 //Nagham 
 import java.util.*;
 
-public abstract class Store {
+public class Store {
 
     private int storeId;
-    private int storeCapacity;
-    private int storeFreeSpace;
+    private static int storeCapacity;
+    private static int storeFreeSpace;
 
     private final String StoreFileName = "Store.txt";
+    private final Vaccine vac = new Vaccine();
     FileManger FManger = new FileManger();
-    public static ArrayList<Store> Store = new ArrayList<Store>();
+    public static ArrayList<Store> store = new ArrayList<>();
     
     public Store(int storeCapacity, int storeId, int storeFreeSpace) {
              
-        this.storeCapacity = storeCapacity;
+        Store.setstoreCapacity(storeCapacity);
         this.storeId = storeId;
-        this.storeFreeSpace = storeFreeSpace;
+        Store.setstoreFreeSpace(storeFreeSpace);
+    }
+    public Store(){
+        
     }
     //setter
-    public void setstoreCapacity(int storeCapacity) {
-        this.storeCapacity = storeCapacity;
+    public static void setstoreCapacity(int storeCapacity) {
+        Store.storeCapacity = storeCapacity;
     }
-
+    
+    public static void setstoreFreeSpace(int storeFreeSpace) {
+        Store.storeFreeSpace = storeFreeSpace;
+    }
+    
     public void setstoreId(int storeId) {
         this.storeId = storeId;
     }
 
-    public void setstoreFreeSpace(int storeFreeSpace) {
-        this.storeFreeSpace = storeFreeSpace;
-    }
+
     //getter
     public int getstoreId() {
         return this.storeId;
     }
 
     public int getstoreFreeSpace() {
-        return this.storeFreeSpace;
+        return Store.storeFreeSpace;
     }
 
     public int getsetstoreCapacity() {
-        return this.storeCapacity;
+        return Store.storeCapacity;
     }
 
-    
+    // msh fahm 3yza t3mli eh??
     private int getvacIndex(int vacId){
         for (int i = 0; i < Store.size(); i++)
             if(Store.get(i).get_vacId() == vacId)
@@ -53,19 +59,20 @@ public abstract class Store {
     
     
     private String getstoreData() {
-        return this.storeId + "@" + this.storeFreeSpace + "@" + this.storeCapacity + "@" ;
+        return this.storeId + "@" + Store.storeFreeSpace + "@" + Store.storeCapacity + "@" ;
     }
     
-    private void loadFromFile() {
+    private ArrayList<Store> loadFromFile() {
         
-        Store = (ArrayList<Store>) (Object) FManger.read(StoreFileName);
+        store = (ArrayList<Store>) (Object) FManger.read(StoreFileName);
+        return store;
     }
     
     private void commitToFile() {
         
-        FManger.write(Store.get(0).getstoreData(), StoreFileName, false);
-        for (int i = 1; i < Store.size(); i++) {
-        FManger.write(Store.get(i).getstoreData(), StoreFileName, true);
+        FManger.write(store.get(0).getstoreData(), StoreFileName, false);
+        for (int i = 1; i < store.size(); i++) {
+            FManger.write(store.get(i).getstoreData(), StoreFileName, true);
         }
     }
    /* 
@@ -92,8 +99,9 @@ public abstract class Store {
  * @return true if store is full, false if not
  */
     public boolean storeIsFull(){
-       loadFromFile();
-       if(storeFreeSpace>=storeCapacity)
+        ArrayList<Store> s = loadFromFile();
+        //read storeFreeSpace from last index of arraylist written in file and compare it to zero\\
+       if(this.getstoreFreeSpace() == 0)
        {
            //System.out.println("Store Is FULL");
             return true;
