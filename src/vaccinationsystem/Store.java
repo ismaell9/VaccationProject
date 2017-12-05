@@ -1,5 +1,5 @@
 package vaccinationsystem;
-
+//Nagham 
 import java.util.*;
 
 public abstract class Store {
@@ -44,12 +44,12 @@ public abstract class Store {
     }
 
     
-   /** private int getvacIndex(int vacId){
+    private int getvacIndex(int vacId){
         for (int i = 0; i < Store.size(); i++)
             if(Store.get(i).get_vacId() == vacId)
                 return i;
         return -1;
-    }*/
+    }
     
     
     private String getstoreData() {
@@ -78,13 +78,13 @@ public abstract class Store {
  */
     public boolean searchVac(int vacId){
         loadFromFile();
-        /*int index = getvacIndex(vacId);
+        int index = getvacIndex(vacId);
         if(index != -1)
             //return "\nFound ...!" + Store.get(index).toString();
             return true;
         else 
             //return "\nNot Found ...!";
-          */   return false;
+             return false;
 
     }
     

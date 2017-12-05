@@ -105,7 +105,7 @@ public class Vaccine implements Serializable{
  * @return true if added, false if not
 */
     public boolean addVac(Vaccine vac){
-        ArrayList<Object> s = new ArrayList<>();
+        ArrayList s = new ArrayList<>();
         if(!Vaccine.vacs.isEmpty() ){
             Vaccine.vacs = (ArrayList)(this.file.read(Vaccine.FILE_NAME));
             Vaccine.set_vacId(((int)(vacs.get(vacs.size()-1).get(0))+1));
@@ -124,7 +124,7 @@ public class Vaccine implements Serializable{
         return write;
     }
     public boolean deleteVac(int value){
-        ArrayList<ArrayList> s = (ArrayList)(this.file.read(Vaccine.FILE_NAME));
+        ArrayList s = (ArrayList)(this.file.read(Vaccine.FILE_NAME));
         boolean write = false;
         Iterator<ArrayList> i = s.iterator();
         while(i.hasNext()){
@@ -138,7 +138,7 @@ public class Vaccine implements Serializable{
     }
 
 
-    private boolean updateVac(ArrayList<ArrayList> vacs){
+    private boolean updateVac(ArrayList vacs){
         Vaccine.vacs = vacs;
         boolean write = this.file.write(Vaccine.FILE_NAME, Vaccine.vacs);
     
@@ -152,7 +152,7 @@ public class Vaccine implements Serializable{
         if(tmpFile.length()!=0 || !tmpFile.exists()){
             
         }
-        ArrayList s = (ArrayList<ArrayList>) (this.file.read(Vaccine.FILE_NAME));
+        ArrayList s = (ArrayList) (this.file.read(Vaccine.FILE_NAME));
         //System.out.println(s.get(0).getPLastName());
         for(Object cs: s){
             System.out.println(cs);
@@ -160,9 +160,9 @@ public class Vaccine implements Serializable{
     }    
  
     public boolean searchVac(String vac){
-        ArrayList s = (ArrayList<ArrayList>)(this.file.read(Vaccine.FILE_NAME));
+        ArrayList s = (ArrayList)(this.file.read(Vaccine.FILE_NAME));
         for(Object cs: s){
-            ArrayList<Object> l = (ArrayList<Object>)cs;
+            ArrayList l = (ArrayList)cs;
             String f = (String)l.get(1);
             if(f.equals(cs)){
                 System.out.println(cs);    

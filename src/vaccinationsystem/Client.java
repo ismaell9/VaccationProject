@@ -230,13 +230,13 @@ public class Client extends Person implements Serializable{
  * method return type maybe changed
  */
     public void listClient(){
-        if(tmpFile.length()!=0 || !tmpFile.exists()){
+        if(!tmpFile.exists()){
             
-        }
-        ArrayList<ArrayList> s = (ArrayList<ArrayList>) (this.file.read(Client.FILE_NAME));
-        //System.out.println(s.get(0).getPLastName());
-        for(Object cs: s){
-            System.out.println(cs);
+            ArrayList<ArrayList> s = (ArrayList<ArrayList>) (this.file.read(Client.FILE_NAME));
+            //System.out.println(s.get(0).getPLastName());
+            for(Object cs: s){
+                System.out.println(cs);
+            }
         }
     }
     @Override
