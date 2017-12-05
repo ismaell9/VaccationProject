@@ -1,9 +1,10 @@
 package vaccinationsystem;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.ListIterator;
 
 
 /**
@@ -15,7 +16,7 @@ public class Vaccine implements Serializable{
  * access modifiers are better to stay private 
  * but they are changeable if needed
  */
-    private static int vacId = 0;
+    private static int vacId;
     private int vacExpirationYear;
     private String vac;
     private String vacTradeName;
@@ -24,24 +25,34 @@ public class Vaccine implements Serializable{
     private String vacComment;
     final private FileMangerBinary file = new FileMangerBinary();
     final static String FILE_NAME = "E:\\VaccinationSystem\\Vaccine.bin";
-    ArrayList<Vaccine> vacs;
+    File tmpFile = new File(FILE_NAME);
+    private static ArrayList<ArrayList> vacs = new ArrayList<>();
     
     Vaccine(String vac, String vacTradeName, String vacAbbreviation, String vacType, String vacComment,int vacExpirationYear){
-        this.vacs = new ArrayList<Vaccine>();
+        if(vacs.isEmpty()){
+            Vaccine.set_vacId(1);
+        }
         this.vac = vac;
         this.vacTradeName = vacTradeName;
         this.vacAbbreviation = vacAbbreviation;
         this.vacType = vacType;
         this.vacExpirationYear = vacExpirationYear;
         this.vacComment = vacComment;
-        this.vacs = new ArrayList<Vaccine>();
-    }
-    Vaccine(){
-        this.vacs = new ArrayList();
         
+        if(!tmpFile.exists()){
+            try{
+                boolean creation = tmpFile.createNewFile();
+                if(creation)System.out.println("''Vaccine'' File successfully created");
+            }catch(IOException e){
+                System.out.println(e+ "  couldn't create ''Vaccine'' file..");
+            }
+        }
     }
 // setters and getters
-   
+       public static void set_vacId(int value){
+        Vaccine.vacId = value;
+    }
+
     public void set_vac(String vac){
         this.vac = vac;
     }
@@ -94,69 +105,72 @@ public class Vaccine implements Serializable{
  * @return true if added, false if not
 */
     public boolean addVac(Vaccine vac){
-        Vaccine.vacId++;
-        //Write inside vaccine file
-        this.vacs = ArrayList.class.cast(this.file.read(Vaccine.FILE_NAME));
-        vacs.add(vac);
-        boolean write = this.file.write(Vaccine.FILE_NAME, vacs);
-        //Object o = this.file.read(Vaccine.FILE_NAME);
-        //System.out.println(o);
-        //if(write)System.out.println("Done writing in file."); else System.out.println("File error.");
-        //System.out.println(Vaccine.vacId + "\t" + this.vac + "\t" + this.vacTradeName + "\t" +  
-        //        this.vacAbbreviation + "\t" + this.vacType + "\t" + this.vacExpirationYear + "\t" + this.vacComment);
+        ArrayList<Object> s = new ArrayList<>();
+        if(!Vaccine.vacs.isEmpty() ){
+            Vaccine.vacs = (ArrayList)(this.file.read(Vaccine.FILE_NAME));
+            Vaccine.set_vacId(((int)(vacs.get(vacs.size()-1).get(0))+1));
+        }
+        s.add(vac.get_vacId());
+        s.add(vac.get_vac());
+        s.add(vac.get_vacAbbreviation());
+        s.add(vac.get_vacTradeName());
+        s.add(vac.get_vacType());
+        s.add(vac.get_vacExpirationYear());
+        s.add(vac.get_vacComment());
+        Vaccine.vacs.add(s);
         
+        boolean write = this.file.write(Vaccine.FILE_NAME, Vaccine.vacs);
+
+        return write;
+    }
+    public boolean deleteVac(int value){
+        ArrayList<ArrayList> s = (ArrayList)(this.file.read(Vaccine.FILE_NAME));
+        boolean write = false;
+        Iterator<ArrayList> i = s.iterator();
+        while(i.hasNext()){
+            if((int)i.next().get(5)==value || (int)i.next().get(5) == value ){
+                i.remove();
+            }
+            
+            write = this.updateVac(s);
+        }
+        return write;
+    }
+
+
+    private boolean updateVac(ArrayList<ArrayList> vacs){
+        Vaccine.vacs = vacs;
+        boolean write = this.file.write(Vaccine.FILE_NAME, Vaccine.vacs);
+    
         return write;
     }
 
 /**
- * access modifier is changeable "it's better when private"
- * @param vac
- * @return true if deleted, false if not
- */
-    public boolean deleteVac(String vac){
-        //serach file for vac
-        if("VACID".equals(vac)){
-            //delete from file
-            return true;
-        }else
-        return false;
-    }
-    public boolean deleteVac(int vacExpirationYear){
-        //search file for all vac
-        if(1==vacExpirationYear){
-            //delete from file
-        }
-        return true;
-    }
-    public boolean deleteVac(int vacId , boolean flag){
-        //search file for vac
-        //if found delete from file
-        return true;
-    }
-
-/**
- * access modifier is changeable "it's better when private"
-     * @param vac
- * return array of vaccine objects stored in vaccine file
- * NOT FINISHED YET
+ * method return type maybe changed
  */
     public void listVac(){
-        ArrayList readVac = ArrayList.class.cast(this.file.read(Vaccine.FILE_NAME));
-        
-        for (Iterator it = readVac.iterator(); it.hasNext();) {
-            Object v = it.next();
-            Vaccine vs = Vaccine.class.cast(v);
-            System.out.println("Vaccine:  " + vs.vac + "\tVaccine Abbreviation:  " + vs.vacAbbreviation + "\tComments:  " + vs.vacComment + "\tVaccine type:  " + vs.vacType);
+        if(tmpFile.length()!=0 || !tmpFile.exists()){
             
         }
+        ArrayList s = (ArrayList<ArrayList>) (this.file.read(Vaccine.FILE_NAME));
+        //System.out.println(s.get(0).getPLastName());
+        for(Object cs: s){
+            System.out.println(cs);
+        }
+    }    
+ 
+    public boolean searchVac(String vac){
+        ArrayList s = (ArrayList<ArrayList>)(this.file.read(Vaccine.FILE_NAME));
+        for(Object cs: s){
+            ArrayList<Object> l = (ArrayList<Object>)cs;
+            String f = (String)l.get(1);
+            if(f.equals(cs)){
+                System.out.println(cs);    
+            return true;
+            }
+            
+        }
+            return false;
+        }
     }
-/**
- * NOT FINISHED YET
- * @param vac
- * @return 
- */
-    public int searchVac(String vac){
-        return 0;
-    }
-}
 

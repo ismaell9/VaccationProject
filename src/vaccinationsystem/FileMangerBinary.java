@@ -20,7 +20,8 @@ import java.util.logging.Logger;
  * @author Shenouda Farouk
  */
 public class FileMangerBinary implements Serializable {
-
+    public Object t;
+    
     public boolean write(String FilePath, ArrayList data) {
 
         try {
