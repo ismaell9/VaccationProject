@@ -24,9 +24,15 @@ public class Doctor extends staff{
     }
 
     
-
+public void displayReservation(){
+    Reservation r = new Reservation();
+    String se = r.displayAllReservation();
+    System.out.println(se);
+}
     
-     public boolean adddoctor() {
+
+
+public boolean adddoctor() {
         if (this.FManger.write(this.getDoctorData(), "doctor.txt", true)) {
             return true;
         } else {
@@ -108,7 +114,7 @@ public void updateDoc(int oldID, Doctor x){
     
     
     
-    
+  
     
     
     
@@ -121,21 +127,6 @@ public void updateDoc(int oldID, Doctor x){
     
     
    
-    public String examineClient(){
-        return "";
-    }
-    
-/**
- *
- * access modifier is changeable "it's better when private"
- * @return returns vaccine name that the client should take
- * return type is changeable
- */
-   
-    public String assignVac(){
-        return "";
-    }
-    
     
   
 }

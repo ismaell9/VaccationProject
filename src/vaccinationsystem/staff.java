@@ -70,11 +70,11 @@ public staff()
  * 
  ***/
     
-    /**
-     * Person class setters &;&; getters
- Initializing Person attributes by setters and using it by getters
-     * @param username
-     */
+/**
+ * Person class setters and getters
+ *Initializing Person attributes by setters and using it by getters
+ * @param username
+ */
     public void set_sUserName(String username){
         this.sUserName = username ;
     }

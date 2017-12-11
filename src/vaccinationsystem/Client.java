@@ -55,8 +55,8 @@ public class Client extends Person implements Serializable{
         
     }
 /**
- * Setters && Getters
-     * @param value
+ * Setters and Getters
+ * @param value
  */
     public static void set_cId(int value){
         Client.cId = value;
@@ -105,11 +105,10 @@ public class Client extends Person implements Serializable{
     
 /**
  * 
-     * @param c
-     * @param rate
-     * @param newSuggestions
-     * @param comments
-     * @return 
+ * @param rate
+ * @param newSuggestions
+ * @param comments
+ * @return 
  */
     public boolean evaluateService(int rate, String newSuggestions , String comments){
         ArrayList<Object> evaluation = new ArrayList<>();
@@ -166,8 +165,7 @@ public class Client extends Person implements Serializable{
         return write;
     }
 /**
-     * @param id
-     * @param client
+ * @param id
  * @return true if deleted, false if not
  */
     public boolean deleteClient(int id){
