@@ -75,7 +75,7 @@ public class Store {
         return store;
     }
     
-    private void commitToFile() {
+    public void commitToFile() {
         
         FManger.write(store.get(0).getstoreData(), StoreFileName, false);
         for (int i = 1; i < store.size(); i++) {

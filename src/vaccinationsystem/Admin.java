@@ -1,6 +1,6 @@
 package vaccinationsystem;
 
-//nadaa
+
 
 import java.util.ArrayList;
 
@@ -92,7 +92,7 @@ public void addNewAdmin(int pId,int pAge,String pFirstName,String LastName ,Stri
         System.out.println(x.searchAdmin(id));
     }
 
-     private void commitToFile() {
+     public void commitToFile() {
         FManger.write(Admins.get(0).getadminData(), "Admin.txt", false);
         for (int i = 1; i < Admins.size(); i++) {
             FManger.write(Admins.get(i).getadminData(), "Admin.txt", true);

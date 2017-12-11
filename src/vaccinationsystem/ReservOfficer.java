@@ -2,12 +2,13 @@ package vaccinationsystem;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.io.Serializable;
 
 /*
 import static vaccinationsystem.Doctor.Doctors;
 */
 
-public class ReservOfficer extends staff{
+public class ReservOfficer extends staff implements Serializable  {
     
    
    private final String ReservOfficerFileName = "ReservOfficer.txt";

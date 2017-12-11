@@ -1,5 +1,6 @@
 package vaccinationsystem;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
  * composition relationship with Invoice
  * composition relationship with Appointment
  */
-public class Reservation {
+public class Reservation implements Serializable {
     
        Appointment appoint;
     
@@ -16,8 +17,8 @@ public class Reservation {
     private final Appointment appointment;
     private final Invoice invoice; */
     
-    private final String ReservationFileName ="Reservation.txt";
-    FileManger Fmanger =new FileManger();
+    private final String ReservationFileName ="Reservation.bin";
+    FileMangerBinary2 Fmanger =new FileMangerBinary2();
     public static ArrayList<Reservation> reservation =new ArrayList<Reservation>();
     Client c = new Client ();
     Vaccine v= new Vaccine ();
@@ -48,19 +49,18 @@ public class Reservation {
        
   
       public boolean AddReservation(){
-       if (this.Fmanger.write(this.getReservationData(), ReservationFileName , true)){
-              return true ;
-       } else {
-           return false;
-       }
-    }
-      
+          loadFromFile();
+        reservation.add(this);
+        return commitToFile();
+        }
+      /*
       //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
    private String getReservationData (){
        return   c.pId + "@" + c.pFirstName + "@" + c.pLastName + "@" + c.pAge + "@" + c.pEmail + "@" + c.get_cGender() + "@" + this.appoint + v.get_vac() ;
    }
+  */
    private void loadFromFile (){
-        reservation = (ArrayList <Reservation>)(Object)this.Fmanger.read(ReservationFileName);
+        reservation = (ArrayList <Reservation>)this.Fmanger.read(ReservationFileName);
    }
    private int getReservationIndex (int id)
    {
@@ -87,12 +87,11 @@ public class Reservation {
                    }
                 return s;
            }
-    private void commitToFile(){
-        Fmanger.write(reservation.get(0).getReservationData(), ReservationFileName , false);
-        for (int i=1 ; i < reservation.size(); i++)
-            Fmanger.write(reservation.get(i).getReservationData(),ReservationFileName , true);    
-    }
     
+        public boolean commitToFile() {
+        return Fmanger.write(ReservationFileName, reservation);
+    }   
+        
     public void updateReservation (int oldID, Reservation x){
         loadFromFile();
         int index = getReservationIndex(oldID);
