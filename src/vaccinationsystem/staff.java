@@ -10,6 +10,7 @@ public  class staff extends Person{
     protected String sPassword;
     protected double sSalary;
     
+    
 public staff()
 {
 }   
@@ -18,9 +19,31 @@ public staff()
         
       super(pId,pAge,pFirstName,pLastName,pEmail);
         
-        this.sSalary=sSalary;
-        this.sPassword=sPassword;
+      /*
         this.sUserName=sUserName;
+        this.sPassword=sPassword;
+        this.sSalary=sSalary;
+      
+      */
+        
+        if (!sUserName.contains("@") || !sUserName.contains(".") ){
+            this.sUserName = MyEX.checkEmail("UserName");
+            } else {
+            this.sUserName = sUserName;
+        }
+        
+         if (sPassword.length() < 8) {
+            this.sPassword = MyEX.checkPassLength("Password");
+        } else {
+            this.sPassword = sPassword;
+        }
+         
+         if (sSalary < 0){
+             this.sSalary = MyEX.checkPositive("Salary");
+         } else {
+             this.sSalary = sSalary ;
+         }
+        
     }
     public void setSalary(double sSalary) {
         this.sSalary = sSalary;
@@ -32,7 +55,7 @@ public staff()
         
         
         public void setsUsername(String sUsername) {
-        this.sUserName = sUserName;
+        this.sUserName = sUsername;
     }
 
     public String getsUsername() {
@@ -94,12 +117,5 @@ public staff()
     public double get_sSalary(){
         return this.sSalary;
     }
-/***
- * 
- * This method is used to login into the system
- * @param sUserName is first parameter
- * @param sPassword is second parameter
- * @return true if login, false if not
- * return type is changeable
- */
+
  }

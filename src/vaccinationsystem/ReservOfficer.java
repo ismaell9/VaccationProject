@@ -24,11 +24,25 @@ public class ReservOfficer extends staff implements Serializable  {
    {         super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
    
    }
-   
+   /*
      Reservation reservation;
    public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, Appointment apoint, String VaccineName){
        
        this.reservation = new Reservation (ID, Fname, Lname, age,  Email, Gender, apoint,VaccineName);
+       
+    if (reservation.AddReservation()) {
+       System.out.println(reservation.toString() + "added successfully");
+    } else {
+       System.out.println("Failed to insert ... !");
+    }
+       }
+   */
+  
+   Reservation reservation;
+   public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, Appointment appoint , String VaccineName){
+       
+       this.reservation = new Reservation (ID, Fname, Lname, age,  Email, Gender, appoint,VaccineName);
+       
     if (reservation.AddReservation()) {
        System.out.println(reservation.toString() + "added successfully");
     } else {
@@ -36,7 +50,6 @@ public class ReservOfficer extends staff implements Serializable  {
     }
        }
    
-  
   /*
     public void set_reservation(Reservation reservation){
         this.reservation = reservation;

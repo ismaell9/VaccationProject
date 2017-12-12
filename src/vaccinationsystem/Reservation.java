@@ -13,13 +13,11 @@ public class Reservation implements Serializable {
     
        Appointment appoint;
     
-   /* private int reservationId;
-    private final Appointment appointment;
-    private final Invoice invoice; */
-    
+   
     private final String ReservationFileName ="Reservation.bin";
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
     public static ArrayList<Reservation> reservation =new ArrayList<Reservation>();
+    
     Client c = new Client ();
     Vaccine v= new Vaccine ();
   
@@ -51,6 +49,7 @@ public class Reservation implements Serializable {
       public boolean AddReservation(){
           loadFromFile();
         reservation.add(this);
+        
         return commitToFile();
         }
       /*

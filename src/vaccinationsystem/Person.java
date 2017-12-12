@@ -9,9 +9,11 @@ public class Person {
     protected String pLastName ;
     protected String pEmail ;
 
-   
-    
+       
     FileManger FManger = new FileManger();
+    
+    static MyException MyEX = new MyException("Vaccination Exception");
+
     
     public Person(){
         
@@ -19,31 +21,46 @@ public class Person {
     
     public Person(int pId , int pAge , String pFirstName , String pLastName , String pEmail)
   {
+      /*
       this.pId = pId ;
       this.pAge = pAge ;
       this.pFirstName = pFirstName ;
       this.pLastName = pLastName ;
       this.pEmail = pEmail ;
+      */
+      if (pId < 0) {
+            this.pId = MyEX.checkPositive("ID");
+        } else {
+            this.pId = pId;
+        }
+      
+      if (pAge < 0) {
+            this.pAge = MyEX.checkPositive("Age");
+        } else {
+            this.pAge = pAge;
+        }
+      
+        this.pFirstName = pFirstName;
+        this.pLastName = pLastName;
+        
+        if (!pEmail.contains("@") || !pEmail.contains(".")) {
+            this.pEmail = MyEX.checkEmail("Email");
+        } else {
+            this.pEmail = pEmail;
+        }
       
       }
-    //OverRide ...
- //   @Override
-    
-   //public abstract String toString(); 
+   
     
  //Setter
     public void setPId(int id){
         this.pId = id ;
     }    
     
-    public boolean setPAge(int age){ // this function to check if age true or false
-        if(pAge < 0){
-          return false ;
-       } else {
-         this.pAge = pAge ;
-           return true ;
-      }
-    }  
+    public void setPAge(int age){ // this function to check if age true or false
+               this.pAge = pAge ;
+            }
+      
     public void setPFirstName(String fname){
         this.pFirstName = fname ;
     }
@@ -52,14 +69,12 @@ public class Person {
         this.pLastName = lname ;
     }  
     
-    public boolean setPEmail(String email){ // this function to check if Ema@il true or false
-        if(!pEmail.contains("@") || !pEmail.contains(".") ){
-            return false ;
-       } else {
-         this.pEmail = pEmail ;
-            return true ;
-              }
+    public void setPEmail(String email){ // this function to check if Ema@il true or false
+        
+        this.pEmail = pEmail ;
+           
     }    
+    
     //Getter
     public int getPId(){
         
