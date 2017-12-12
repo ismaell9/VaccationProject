@@ -1,8 +1,12 @@
 package vaccinationsystem;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -19,19 +23,20 @@ public class Email implements Serializable {
 
     FileMangerBinary FManger = new FileMangerBinary();
 
-    private final String EmailFileName = "Email.bin";
-    public static ArrayList<Email> E = new ArrayList<Email>();
+    private final String EmailFileName = "E:\\VaccinationSystem\\Email.bin";
+    public static ArrayList<Email> E = new ArrayList<>();
 
     static Properties mailServerProperties;
     static Session getMailSession;
     static MimeMessage generateMailMessage;
-
+    File file = new File("E:\\VaccinationSystem\\Email.bin");
     String ToEmail = "";
     String CcEmail = "";
     String Subject = "";
     String Emailbody = "";
 
     public Email() {
+        
     }
 
     public Email(String ToEmail, String CcEmail, String Subject, String Emailbody) {
@@ -39,6 +44,13 @@ public class Email implements Serializable {
         this.CcEmail = CcEmail;
         this.Subject = Subject;
         this.Emailbody = Emailbody;
+        if(!this.file.exists()){
+            try {
+                this.file.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public void generateAndSendEmail() throws AddressException, MessagingException {
@@ -64,7 +76,7 @@ public class Email implements Serializable {
             generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(CcEmail));
         }
         generateMailMessage.setSubject(Subject);
-        String emailBody = Emailbody + "<br><br> Regards, <br>Eng. Tamer AbdElaziz";
+        String emailBody = Emailbody + "<br><br> Regards, <br>Vaccination Manegment.";
         generateMailMessage.setContent(emailBody, "text/html");
 
         System.out.println("Mail Session has been created successfully..");
@@ -75,14 +87,16 @@ public class Email implements Serializable {
 
         // Enter your correct gmail UserID and Password
         // if you have 2FA enabled then provide App Specific Password
-        transport.connect("smtp.gmail.com", "PL2CS213@gmail.com", "SW2CS352");
+        transport.connect("smtp.gmail.com", "VaccinationSystemPl2@gmail.com", "Vaccine4You");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
         System.out.println("\n\n ===> Your Java Program has just sent an Email successfully. Check your email..");
 
         loadFromFile();
-        E.add(this);
-        commitToFile();
+        if(this!=null){
+            E.add(this);
+            commitToFile();
+        }
     }
 
     public boolean commitToFile() {
