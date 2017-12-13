@@ -132,5 +132,9 @@ public class Appointment {
         }
         return AllApp ;
     }
+
+   public  boolean Check(String _vac) {
+       return false;
+    }
  
 }

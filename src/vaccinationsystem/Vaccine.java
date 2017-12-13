@@ -23,12 +23,14 @@ public class Vaccine implements Serializable{
     private String vacAbbreviation;
     private String vacType;
     private String vacComment;
+     private double price;
+     
     final private FileMangerBinary file = new FileMangerBinary();
     final static String FILE_NAME = "E:\\VaccinationSystem\\Vaccine.bin";
     File tmpFile = new File(FILE_NAME);
     private static ArrayList<ArrayList> vacs = new ArrayList<>();
     
-    Vaccine(String vac, String vacTradeName, String vacAbbreviation, String vacType, String vacComment,int vacExpirationYear){
+    Vaccine(String vac, String vacTradeName, String vacAbbreviation, String vacType, String vacComment,int vacExpirationYear ,double price){
         if(vacs.isEmpty()){
             Vaccine.set_vacId(1);
         }
@@ -38,6 +40,7 @@ public class Vaccine implements Serializable{
         this.vacType = vacType;
         this.vacExpirationYear = vacExpirationYear;
         this.vacComment = vacComment;
+        this.price = price;
         
         if(!tmpFile.exists()){
             try{
@@ -77,6 +80,10 @@ public class Vaccine implements Serializable{
     public void set_comments(String vacComment){
         this.vacComment = vacComment;
     }
+    
+    public void set_price(double price){
+        this.price = price;
+    }
     public int get_vacId(){
         return Vaccine.vacId;
     }
@@ -98,7 +105,9 @@ public class Vaccine implements Serializable{
     public String get_vacComment(){
         return this.vacComment;
     }
-    
+     public double get_price(){
+        return this.price; 
+    }
 // end setters and getters        
     
 
