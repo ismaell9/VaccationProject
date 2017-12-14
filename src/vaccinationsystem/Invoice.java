@@ -57,6 +57,11 @@ public static ArrayList<Invoice> Invoices = new ArrayList <Invoice>();
       
         return TotalCost ;
     }
+
+    void Generateinvoices(String name, int age, String date, String VaccineName) {
+    }
+
+    
 }
 /*
  * add invoice to invoice file

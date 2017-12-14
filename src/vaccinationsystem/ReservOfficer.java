@@ -39,12 +39,16 @@ public class ReservOfficer extends staff implements Serializable  {
    */
   
    Reservation reservation;
-   public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, Appointment appoint , String VaccineName){
+   Invoice INVO;
+   
+   public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, String date , String VaccineName){
        
-       this.reservation = new Reservation (ID, Fname, Lname, age,  Email, Gender, appoint,VaccineName);
+       this.reservation = new Reservation (ID, Fname, Lname, age,  Email, Gender, date ,VaccineName);
        
     if (reservation.AddReservation()) {
        System.out.println(reservation.toString() + "added successfully");
+        INVO.Generateinvoices(Fname + Lname , age , date , VaccineName);
+
     } else {
        System.out.println("Failed to insert ... !");
     }

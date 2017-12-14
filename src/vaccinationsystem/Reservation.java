@@ -5,13 +5,11 @@ import java.util.Date;
 import java.util.ArrayList;
 
 
-/**
- * composition relationship with Invoice
- * composition relationship with Appointment
- */
+
 public class Reservation implements Serializable {
     
        Appointment appoint;
+        String date ;
     
    
     private final String ReservationFileName ="Reservation.bin";
@@ -25,15 +23,17 @@ public class Reservation implements Serializable {
     {
     }
      
-   public Reservation(int ID, String Fname,String Lname, int Age, String Email,String Gender, Appointment appoint, String VaccineName){
+    
+   public Reservation(int ID, String Fname,String Lname, int Age, String Email,String Gender, String date, String VaccineName){
        c.pId= ID;
        c.pFirstName= Fname;
        c.pLastName= Lname;
        c.pAge= Age;
        c.pEmail= Email;
        c.set_cGender(Gender);
-                  
-       this.appoint= appoint;
+              
+       this.date = date;
+       /*this.appoint= appoint;*/
        v.set_vac(VaccineName);
             
        }
@@ -45,12 +45,14 @@ public class Reservation implements Serializable {
         this.appoint = appoint;
     }
        
-  
+   
       public boolean AddReservation(){
           loadFromFile();
-        reservation.add(this);
-        
-        return commitToFile();
+          if (appoint.Check (this.date)){
+                reservation.add(this);
+                return commitToFile();
+          }
+          return false;
         }
       /*
       //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
