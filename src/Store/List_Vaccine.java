@@ -5,6 +5,10 @@
  */
 package Store;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import vaccinationsystem.Vaccine;
+
 /**
  *
  * @author Nagham
@@ -16,6 +20,7 @@ public class List_Vaccine extends javax.swing.JFrame {
      */
     public List_Vaccine() {
         initComponents();
+        addRowsToTable();
     }
 
     /**
@@ -28,32 +33,32 @@ public class List_Vaccine extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        List_vacc = new javax.swing.JTable();
+        VaccTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        List_vacc.setModel(new javax.swing.table.DefaultTableModel(
+        VaccTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "vaccID", "Vacc name", "Vacc type", "expiration date", "abbreviation", "price", "comment"
+                "Vacc name", "Vacc type", "expiration date", "abbreviation", "price", "comment"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(List_vacc);
+        jScrollPane1.setViewportView(VaccTable);
 
         jMenu1.setText("Back");
         jMenuBar1.add(jMenu1);
@@ -112,9 +117,34 @@ public class List_Vaccine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable List_vacc;
+    private javax.swing.JTable VaccTable;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    public void addRowsToTable() {
+        
+        DefaultTableModel model = (DefaultTableModel) VaccTable.getModel();
+        Object rowData[] = new Object[9];
+
+        Vaccine vac = new Vaccine();
+        ArrayList<Vaccine> vaccine = new ArrayList<Vaccine>();
+
+        //vaccine = vac.listVac();
+        vac.listVac();
+
+        for (Vaccine x : vaccine) {
+            rowData[0] = vac.get_vacTradeName();
+            rowData[1] = vac.get_vacType();
+            rowData[2] = vac.get_vacExpirationYear();
+            rowData[3] = vac.get_vacAbbreviation();
+            rowData[4] = vac.get_price();
+            rowData[5] = vac.get_vacComment();
+            model.addRow(rowData);
+        }
+
+        
+        
+    }
 }
