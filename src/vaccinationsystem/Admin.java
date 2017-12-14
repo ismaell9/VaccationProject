@@ -18,7 +18,7 @@ public Admin (int pId,int pAge,String pFirstName,String pLastName ,String pEmail
    super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
 }
 
-    Admin() {
+   public Admin() {
     }
 
 
