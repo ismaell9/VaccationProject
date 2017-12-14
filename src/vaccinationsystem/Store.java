@@ -7,6 +7,7 @@ public class Store {
     private int storeId;
     private static int storeCapacity;
     private static int storeFreeSpace;
+    
 
     private final String StoreFileName = "Store.txt";
     private final Vaccine vac = new Vaccine();
@@ -133,8 +134,10 @@ public class Store {
         return S;
     }
  
-/*    public String showVaccineinstore(){
+   public ArrayList<Store> listStore() {
         loadFromFile();
+        return store;
+    }
         
         
         
@@ -142,8 +145,6 @@ public class Store {
 
     
    
-    */
     
     
-    
-}
+
