@@ -1,5 +1,7 @@
 package vaccinationsystem;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Reputation
@@ -13,6 +15,7 @@ public  class staff extends Person{
     
 public staff()
 {
+    
 }   
     
     public staff(int pId,int pAge,String pFirstName,String pLastName,String pEmail,String sUserName,String sPassword,double sSalary){
@@ -44,78 +47,55 @@ public staff()
              this.sSalary = sSalary ;
          }
         
-    }
-    public void setSalary(double sSalary) {
-        this.sSalary = sSalary;
-    }
-
-    public double getSalary() {
-        return this.sSalary;
-    }
+}
         
         
-        public void setsUsername(String sUsername) {
-        this.sUserName = sUsername;
-    }
-
-    public String getsUsername() {
-        return this.sUserName;
-    }
         
-        public void setPassword(String sPassword) {
-        this.sPassword = sPassword;
-    }
-
-    public String getPassword() {
-        return this.sPassword;
-    }
-        
-        
-    
-    
-    
-    
-
-    public boolean login(String userName , String Pass) {
-       if ( userName.equals("Admin@yahoo.com") && Pass.equals("12345678")){
-           return true ;
-       }
-       else {
-           System.out.println("the em@il and the password is false ! please try again");
-           return false ;
-       }
-        
-    }
-/***
- * 
- * Person class setters && getters
- * Initializing Person attributes by setters and using it by getters
- * 
- ***/
-    
 /**
  * Person class setters and getters
  *Initializing Person attributes by setters and using it by getters
  * @param username
  */
-    public void set_sUserName(String username){
+    public void setUserName(String username){
         this.sUserName = username ;
     }
-    public void set_sPassword(String pass){
+    public void setPassword(String pass){
         this.sPassword = pass ;
     }
-    public void set_sSalary(double salary){
+    public void setSalary(double salary){
         this.sSalary = salary ;
     }
  
-    public String get_sUserName(){
+    public String getUserName(){
         return this.sUserName;
     }
-    public String get_sPassword(){
+    public String getPassword(){
         return this.sPassword;
     }
-    public double get_sSalary(){
+    public double getSalary(){
         return this.sSalary;
     }
+        
+    
+    
+    
+    
 
- }
+    public boolean login(String userName , char[] password) {
+        char[] c;
+        try{
+            c = this.getPassword().toCharArray();
+        }catch(NullPointerException e){
+            System.out.println(e);
+            return false;
+        }
+        if ( userName.equals(this.getUserName()) && Arrays.equals(c, password)){
+            return true ;
+        }
+        else {
+            System.out.println("the em@il and the password is false ! please try again");
+            return false ;
+        }
+        
+    }   
+}

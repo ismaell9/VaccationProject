@@ -1,9 +1,9 @@
 package vaccinationsystem;
-
+/*
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
+*/import java.io.Serializable;
+/*import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +20,7 @@ import javax.mail.internet.MimeMessage;
  * @author Shenouda farouk
  */
 public class Email implements Serializable {
-
+/*
     FileMangerBinary FManger = new FileMangerBinary();
 
     private final String EmailFileName = "E:\\VaccinationSystem\\Email.bin";
@@ -126,5 +126,5 @@ public class Email implements Serializable {
 
     public String getBody() {
         return Emailbody;
-    }
+    }*/
 }

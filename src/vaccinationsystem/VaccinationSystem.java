@@ -1,7 +1,9 @@
 package vaccinationsystem;
 
 import java.io.File;
-
+import StaffPersonGUI.LoginFrame;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 public class VaccinationSystem {
 
     
@@ -16,7 +18,20 @@ public class VaccinationSystem {
     }
     
      public static void checkDirectoryContents(File dir){
-        File[] files = dir.listFiles();
+        
+        SwingUtilities.invokeLater(new Runnable() {
+        public void run() {
+            LoginFrame f = new LoginFrame();
+            //JFrame frame = new JFrame();
+            f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
+            //frame.getContentPane().
+            f.pack();
+            f.setVisible(true);
+        }
+    });
+       
+      /*   File[] files = dir.listFiles();
         boolean reservationFile = true ;
         boolean storeFile = true;
         boolean adminFile = true;
@@ -34,7 +49,7 @@ public class VaccinationSystem {
             } else if (file.getName().contains("admin.txt")) {
                 adminFile = false;
             } */
-        }
+        /*}
         
         if (reservationFile) {
             Reservation x = new Reservation();

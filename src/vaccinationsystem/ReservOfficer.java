@@ -17,7 +17,7 @@ public class ReservOfficer extends staff implements Serializable  {
    
    public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<ReservOfficer>();
   
-    ReservOfficer() {
+    public ReservOfficer() {
     }
     
        public ReservOfficer(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) 

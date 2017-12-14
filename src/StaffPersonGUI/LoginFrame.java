@@ -1,9 +1,11 @@
 package StaffPersonGUI;
+import javax.swing.JOptionPane;
 import vaccinationsystem.Admin;
 import vaccinationsystem.Person;
-import vaccinationsystem.Doctor;
+import vaccinationsystem.StoreKeeper;
 import vaccinationsystem.ReservOfficer;
 import vaccinationsystem.StoreKeeper;
+import vaccinationsystem.staff;
 
 /**
  *
@@ -14,10 +16,14 @@ public class LoginFrame extends javax.swing.JFrame {
     /**
      * Creates new form LoginFrame
      */
+    public String userName;
+    public char[] password;
+    String s;
+    
     public LoginFrame() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -98,78 +104,74 @@ public class LoginFrame extends javax.swing.JFrame {
 
     private void jTextFieldusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldusernameActionPerformed
         // TODO add your handling code here:
+        this.userName = jTextFieldusername.toString();
     }//GEN-LAST:event_jTextFieldusernameActionPerformed
 
     private void jPasswordFielduserpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFielduserpasswordActionPerformed
         // TODO add your handling code here:
+        this.password =  jPasswordFielduserpassword.getPassword();
     }//GEN-LAST:event_jPasswordFielduserpasswordActionPerformed
 
     private void jButtonloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonloginActionPerformed
         // TODO add your handling code here:
-      
-        person x = new Admin ()  ; 
-        if (x.login(jTextFieldusername.getText(), jPasswordFielduserpassword.getText())){
-            this.setVisible(false);
-            new AdminDashboard ().setVisible(true);
-        }
-        else  {
-            x = new Doctor ;
-            if (x.login(jTextFieldusername.getText(), jPasswordFielduserpassword.getText() )){
+        System.out.println("Password is not hidden hehe" + this.password);
+        //Person x = new Admin ()  ; 
+        staff x;
+        String identify = jTextFieldusername.getText();
+        identify = identify.trim();
+        String cap = identify.substring(0, 1).toUpperCase(); 
+        
+        switch(cap){
+            
+            case "A":
+                x = new Admin();
+                if (x.login(userName,password) ){
                     this.setVisible(false);
-            new DoctorDashboard ().setVisible(true);
-            }
+                    new AdminDashboard ().setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Password or userName is wrong");
+
                 }
-        else  {
-            x = new ReservationOfficer ; 
-             if(x.login(jTextFieldusername.getText(),jPasswordFielduserpassword.getText() )) {
-                 this.setVisible(false);
-                new ReservationOfficerDashboard ().setVisible(true) ;
-                }   
-            }
+            case "K":
+                x = new StoreKeeper();
+                if(x.login(userName, password)){
+                    this.setVisible(false);
+                    new StoreKeeperDashboard().setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Password or userName is worng");
+                }
+            case "R":
+                x = new ReservOfficer();
+        }
+         /*   
             else  {
-             x new = StoreKeeper ;
-             if(x.login(jTextFieldusername.getText(), jPasswordFielduserpassword.getText())){
-                this.setVisible(false);
-                new StoreKeeperDashboard ().setVisible(false);
+                y = new Doctor() ;
+                if (x.login(jTextFieldusername.getText(), jPasswordFielduserpassword.getText() )){
+                        this.setVisible(false);
+                new DoctorDashboard ().setVisible(true);
                 }
-             }
-    
+                    }
+            else  {
+                y = new ReservationOfficer() ; 
+                 if(x.login(jTextFieldusername.getText(),jPasswordFielduserpassword.getText() )) {
+                     this.setVisible(false);
+                    new ReservationOfficerDashboard ().setVisible(true) ;
+                    }   
+                }
+                else  {
+                 x new = StoreKeeper ;
+                 if(x.login(jTextFieldusername.getText(), jPasswordFielduserpassword.getText())){
+                    this.setVisible(false);
+                    new StoreKeeperDashboard ().setVisible(false);
+                    }
+                 }
+    }*/
     }//GEN-LAST:event_jButtonloginActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginFrame().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonlogin;
@@ -179,13 +181,4 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldusername;
     // End of variables declaration//GEN-END:variables
 
-    private static class person {
-
-        public person() {
-        }
-
-        private boolean login(String text, String text0) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
 }

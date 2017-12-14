@@ -20,7 +20,7 @@ public class Doctor extends staff{
         super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
     }
 
-    Doctor() {
+    public Doctor() {
     }
 
     

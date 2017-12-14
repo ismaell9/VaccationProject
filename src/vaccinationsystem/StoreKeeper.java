@@ -15,7 +15,7 @@ public class StoreKeeper extends staff{
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
     }   
 
-    StoreKeeper() {
+    public StoreKeeper() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
