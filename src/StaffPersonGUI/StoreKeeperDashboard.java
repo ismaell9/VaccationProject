@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package StaffPersonGUI;
 
-/**
- *
- * @author Jesus
- */
+import Store.Add_vaccine;
+import Store.Edit_Vaccine;
+import Store.List_Vaccine;
+
 public class StoreKeeperDashboard extends javax.swing.JFrame {
 
     /**
@@ -28,18 +23,28 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jButton_LiistVaccine = new javax.swing.JButton();
+        jButton_ListVaccine = new javax.swing.JButton();
         jButtonAddVaccine = new javax.swing.JButton();
         jButton_GenerateReport = new javax.swing.JButton();
         jButton_EditVaccine = new javax.swing.JButton();
         jButton_deleteVaccine = new javax.swing.JButton();
+        Search = new javax.swing.JTextField();
+        jButtonSearch = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1_back = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 255, 255));
 
-        jButton_LiistVaccine.setText("List Vaccine");
+        jButton_ListVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
+        jButton_ListVaccine.setText("List Vaccine");
+        jButton_ListVaccine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ListVaccineActionPerformed(evt);
+            }
+        });
 
+        jButtonAddVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButtonAddVaccine.setText("Add Vaccine");
         jButtonAddVaccine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -47,6 +52,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             }
         });
 
+        jButton_GenerateReport.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_GenerateReport.setText("Generate Report");
         jButton_GenerateReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,6 +60,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             }
         });
 
+        jButton_EditVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_EditVaccine.setText("Edit Vaccine");
         jButton_EditVaccine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,8 +68,23 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             }
         });
 
+        jButton_deleteVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_deleteVaccine.setText("Delete Vaccine");
 
+        Search.setBackground(new java.awt.Color(204, 255, 255));
+        Search.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Search.setToolTipText("Search");
+        Search.setName("Search"); // NOI18N
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+
+        jButtonSearch.setFont(new java.awt.Font("Trebuchet MS", 3, 14)); // NOI18N
+        jButtonSearch.setText("Search");
+
+        jMenu1_back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu1_back.setText("Back");
         jMenuBar1.add(jMenu1_back);
 
@@ -85,46 +107,71 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
                         .addComponent(jButton_EditVaccine)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 253, Short.MAX_VALUE)
+                .addContainerGap(225, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButtonSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton_deleteVaccine)
                         .addGap(173, 173, 173))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton_LiistVaccine)
+                        .addComponent(jButton_ListVaccine)
                         .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonSearch))
+                .addGap(26, 26, 26)
                 .addComponent(jButtonAddVaccine)
                 .addGap(36, 36, 36)
                 .addComponent(jButton_EditVaccine)
                 .addGap(37, 37, 37)
                 .addComponent(jButton_deleteVaccine)
                 .addGap(37, 37, 37)
-                .addComponent(jButton_LiistVaccine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addComponent(jButton_ListVaccine)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jButton_GenerateReport)
                 .addContainerGap())
         );
+
+        getAccessibleContext().setAccessibleName("Search");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_GenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerateReportActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton_GenerateReportActionPerformed
 
     private void jButtonAddVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddVaccineActionPerformed
         // TODO add your handling code here:
+        Add_vaccine obj=new Add_vaccine();
+        obj.setVisible(true);
         
     }//GEN-LAST:event_jButtonAddVaccineActionPerformed
 
     private void jButton_EditVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditVaccineActionPerformed
         // TODO add your handling code here:
+       
+        Edit_Vaccine obj2=new Edit_Vaccine();
+        obj2.setVisible(true);
     }//GEN-LAST:event_jButton_EditVaccineActionPerformed
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchActionPerformed
+
+    private void jButton_ListVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ListVaccineActionPerformed
+        // TODO add your handling code here:
+        List_Vaccine obj3=new List_Vaccine();
+        obj3.setVisible(true);
+    }//GEN-LAST:event_jButton_ListVaccineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,10 +209,12 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Search;
     private javax.swing.JButton jButtonAddVaccine;
+    private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButton_EditVaccine;
     private javax.swing.JButton jButton_GenerateReport;
-    private javax.swing.JButton jButton_LiistVaccine;
+    private javax.swing.JButton jButton_ListVaccine;
     private javax.swing.JButton jButton_deleteVaccine;
     private javax.swing.JMenu jMenu1_back;
     private javax.swing.JMenuBar jMenuBar1;
