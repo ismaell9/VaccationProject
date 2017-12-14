@@ -3,6 +3,7 @@ package StaffPersonGUI;
 import Store.Add_vaccine;
 import Store.Edit_Vaccine;
 import Store.List_Vaccine;
+import vaccinationsystem.Store;
 
 public class StoreKeeperDashboard extends javax.swing.JFrame {
 
@@ -28,8 +29,6 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
         jButton_GenerateReport = new javax.swing.JButton();
         jButton_EditVaccine = new javax.swing.JButton();
         jButton_deleteVaccine = new javax.swing.JButton();
-        Search = new javax.swing.JTextField();
-        jButtonSearch = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1_back = new javax.swing.JMenu();
 
@@ -70,19 +69,11 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
 
         jButton_deleteVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
         jButton_deleteVaccine.setText("Delete Vaccine");
-
-        Search.setBackground(new java.awt.Color(204, 255, 255));
-        Search.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Search.setToolTipText("Search");
-        Search.setName("Search"); // NOI18N
-        Search.addActionListener(new java.awt.event.ActionListener() {
+        jButton_deleteVaccine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchActionPerformed(evt);
+                jButton_deleteVaccineActionPerformed(evt);
             }
         });
-
-        jButtonSearch.setFont(new java.awt.Font("Trebuchet MS", 3, 14)); // NOI18N
-        jButtonSearch.setText("Search");
 
         jMenu1_back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jMenu1_back.setText("Back");
@@ -110,10 +101,6 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
                 .addContainerGap(225, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton_deleteVaccine)
                         .addGap(173, 173, 173))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -123,10 +110,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonSearch))
-                .addGap(26, 26, 26)
+                .addGap(52, 52, 52)
                 .addComponent(jButtonAddVaccine)
                 .addGap(36, 36, 36)
                 .addComponent(jButton_EditVaccine)
@@ -134,7 +118,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
                 .addComponent(jButton_deleteVaccine)
                 .addGap(37, 37, 37)
                 .addComponent(jButton_ListVaccine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(jButton_GenerateReport)
                 .addContainerGap())
         );
@@ -163,15 +147,17 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
         obj2.setVisible(true);
     }//GEN-LAST:event_jButton_EditVaccineActionPerformed
 
-    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SearchActionPerformed
-
     private void jButton_ListVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ListVaccineActionPerformed
         // TODO add your handling code here:
         List_Vaccine obj3=new List_Vaccine();
         obj3.setVisible(true);
     }//GEN-LAST:event_jButton_ListVaccineActionPerformed
+
+    private void jButton_deleteVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteVaccineActionPerformed
+        // TODO add your handling code here:
+        Edit_Vaccine obj2=new Edit_Vaccine();
+        obj2.setVisible(true);
+    }//GEN-LAST:event_jButton_deleteVaccineActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,9 +195,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Search;
     private javax.swing.JButton jButtonAddVaccine;
-    private javax.swing.JButton jButtonSearch;
     private javax.swing.JButton jButton_EditVaccine;
     private javax.swing.JButton jButton_GenerateReport;
     private javax.swing.JButton jButton_ListVaccine;

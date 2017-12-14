@@ -58,12 +58,15 @@ public class Store {
         Iterator<ArrayList> it = s.iterator();
         while(it.hasNext()){
             it.next().get(0);
-        }/*
-        for (int i = 0; i < Store.size(); i++)
-            if(Store.get(i).get_vacId() == vacId)
-                return i;
-        return -1;*/
+        }
         return 0;
+        /*
+         for (int i = 0; i < Store.size(); i++) {
+            if (vac.get(i).get_vacId() == vacId) {
+                return i;
+            }
+        }
+        */
     }
     
     

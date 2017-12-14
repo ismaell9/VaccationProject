@@ -50,7 +50,7 @@ public class Vaccine implements Serializable{
         
     }
 // setters and getters
-       public static void set_vacId(int value){
+    public static void set_vacId(int value){
         Vaccine.vacId = value;
     }
 

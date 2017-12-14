@@ -41,17 +41,17 @@ public class List_Vaccine extends javax.swing.JFrame {
 
         VaccTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Vacc name", "Vacc type", "expiration date", "abbreviation", "price", "comment"
+                "Vacc ID", "Vacc name", "Vacc type", "expiration date", "abbreviation", "price", "comment"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Float.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -126,7 +126,7 @@ public class List_Vaccine extends javax.swing.JFrame {
     public void addRowsToTable() {
         
         DefaultTableModel model = (DefaultTableModel) VaccTable.getModel();
-        Object rowData[] = new Object[9];
+        Object rowData[] = new Object[7];
 
         Vaccine vac = new Vaccine();
         ArrayList<Vaccine> vaccine = new ArrayList<Vaccine>();
@@ -135,12 +135,13 @@ public class List_Vaccine extends javax.swing.JFrame {
         vac.listVac();
 
         for (Vaccine x : vaccine) {
-            rowData[0] = vac.get_vacTradeName();
-            rowData[1] = vac.get_vacType();
-            rowData[2] = vac.get_vacExpirationYear();
-            rowData[3] = vac.get_vacAbbreviation();
-            rowData[4] = vac.get_price();
-            rowData[5] = vac.get_vacComment();
+            rowData[0] = vac.get_vacId();
+            rowData[1] = vac.get_vacTradeName();
+            rowData[2] = vac.get_vacType();
+            rowData[3] = vac.get_vacExpirationYear();
+            rowData[4] = vac.get_vacAbbreviation();
+            rowData[5] = vac.get_price();
+            rowData[6] = vac.get_vacComment();
             model.addRow(rowData);
         }
 
