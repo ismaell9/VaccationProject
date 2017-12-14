@@ -48,7 +48,7 @@ public class Reservation implements Serializable {
    
       public boolean AddReservation(){
           loadFromFile();
-          if (appoint.Check (this.date)){
+          if (!appoint.Check (this.date)){
                 reservation.add(this);
                 return commitToFile();
           }

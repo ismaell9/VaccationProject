@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Tamer A.Yassen
+ * 
  */
 public class FileManger {
     

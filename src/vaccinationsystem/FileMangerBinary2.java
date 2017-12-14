@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Tamer A.Yassen
+ * 
  */
 public class FileMangerBinary2 implements Serializable {
 

@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.RootPaneUI;
 /**
  *
- * @author Shenouda Farouk
+ * 
  */
 public class MyException extends Exception implements Serializable {
     
