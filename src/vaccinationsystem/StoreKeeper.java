@@ -4,13 +4,13 @@ import java.util.*;
 
 public class StoreKeeper extends staff{
 
-    private final Vaccine vac = new Vaccine();
-    private final String storekeeperFileName = "StoreKeeper.txt";
+    private final Vaccine vac = new Vaccine(); //use "vac" object to use methods in "vaccine" class
+    private final Store store = new Store();  //use "store" object to use methods in "Store" class
     FileManger FManger = new FileManger();
+    private final String storekeeperFileName = "StoreKeeper.txt";
     public static ArrayList<StoreKeeper> StoreKeepers= new ArrayList<>();
-        //use "store" object to use methods in "Store" class
-    private final Store store = new Store();
-  
+   
+    
     public StoreKeeper(int pId,int pAge,String pFirstName,String pLastName ,String pEmail,String sUsername,String sPassword,double sSalary){
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
     }   
@@ -83,25 +83,10 @@ public class StoreKeeper extends staff{
         return "I'm Store Keeper : " + pFirstName + " " + pLastName + "\n" + "ID : " + pId + " Age : " + pAge + "\n"
                 + "\nUserName: " + sUserName + "\t Password: " + sPassword + "\nSalary: " + sSalary;
     }
-    
-    //use "vac" object to use methods in "Vaccine" class
-   /* public void set_vac(Vaccine vac){
-        this.vac = vac;
-    
-    }*/
- 
-    
-    
-/**
- * Create instance of Store class for aggregation
- * It's completely changeable
- */
-    
 
-    
-    /*public void set_store(Store store){
-        this.store = store;
-    }*/
+
+/*    
+
     //msh fahm brdo, w leh elfunction mtkrara bnfs elimplementation??
    private int getvacIndex(int vacId){
         
@@ -110,16 +95,11 @@ public class StoreKeeper extends staff{
        /*for (int i = 0; i < vac.size(); i++)
              if(vac.get(i).get_vacId()== vacId)
                 return i;
-        return -1;*/
+        return -1;
        return 0;
     }
 
-/**
- * access modifier is changeable 
- * remember it's better to stay "private"
- * @return true if found, false if not
- */
-   
+
    //msh fahm 3yza t3mli eh?? w ezai??\\
      public boolean searchVac(int vacId){
         loadFromFile();
@@ -130,7 +110,6 @@ public class StoreKeeper extends staff{
         else 
             //return "\nNot Found ...!";
             return false;
-
     }
-
+*/
 }

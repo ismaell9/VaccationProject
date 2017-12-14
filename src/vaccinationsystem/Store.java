@@ -20,8 +20,8 @@ public class Store {
         Store.setstoreFreeSpace(storeFreeSpace);
     }
     public Store(){
-        
     }
+    
     //setter
     public static void setstoreCapacity(int storeCapacity) {
         Store.storeCapacity = storeCapacity;
@@ -49,6 +49,8 @@ public class Store {
         return Store.storeCapacity;
     }
 
+    
+    
     // msh fahm 3yza t3mli eh??
     private int getvacIndex(int vacId){
         //gets all vaccine IDs
@@ -82,8 +84,7 @@ public class Store {
             FManger.write(store.get(i).getstoreData(), StoreFileName, true);
         }
     }
-   /* 
- */
+   
  
 /**
  * search for vaccine by id
@@ -107,7 +108,7 @@ public class Store {
  */
     public boolean storeIsFull(){
         ArrayList<Store> s = loadFromFile();
-        //read storeFreeSpace from last index of arraylist written in file and compare it to zero\\
+        //read storeFreeSpace from last index of arraylist written in file and compare it to zero
        if(this.getstoreFreeSpace() == 0)
        {
            //System.out.println("Store Is FULL");
@@ -128,4 +129,18 @@ public class Store {
         }
         return S;
     }
+ 
+/*    public String showVaccineinstore(){
+        loadFromFile();
+        
+        
+        
+    }
+
+    
+   
+    */
+    
+    
+    
 }

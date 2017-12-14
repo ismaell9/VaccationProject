@@ -6,11 +6,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
-/**
- *
- * 
- */
 public class Vaccine implements Serializable{
 /**
  * access modifiers are better to stay private 
