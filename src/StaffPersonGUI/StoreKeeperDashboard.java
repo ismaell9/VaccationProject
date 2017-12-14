@@ -3,7 +3,9 @@ package StaffPersonGUI;
 import Store.Add_vaccine;
 import Store.Edit_Vaccine;
 import Store.List_Vaccine;
+import java.util.ArrayList;
 import vaccinationsystem.Store;
+import vaccinationsystem.Vaccine;
 
 public class StoreKeeperDashboard extends javax.swing.JFrame {
 
@@ -130,6 +132,34 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
 
     private void jButton_GenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerateReportActionPerformed
         // TODO add your handling code here:
+        Store x = new Store();
+        ArrayList<Store> s = x.listStore();
+        double[] values = new double[s.size()];
+        String[] names = new String[s.size()];
+        for (int i = 0; i < s.size(); i++) {
+            values[i] = s.get(i).getstoreId();
+            values[i] = s.get(i).getstoreFreeSpace();
+            values[i] = s.get(i).getsetstoreCapacity();
+            
+            Vaccine vac = new Vaccine();
+            
+            names[i] = vac.get(i).get_vacTradeName();
+        }
+        /*        for (int i = 0; i < 25; i++) {
+
+            names[i] = "Item " + i;
+            if (i % 2 == 0) {
+                values[i] = i * 5 + 1;
+            } else {
+                values[i] = i * 3 + 2;
+            }
+        }
+         */
+        BarChart chart = new BarChart(" Store Report ", names, values);
+
+        chart.pack();
+        RefineryUtilities.centerFrameOnScreen(chart);
+        chart.setVisible(true);
         
     }//GEN-LAST:event_jButton_GenerateReportActionPerformed
 
