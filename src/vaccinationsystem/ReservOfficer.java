@@ -176,6 +176,15 @@ public void updateRes(int oldID, ReservOfficer x){
         return "I'm Reservation Officer : " + pFirstName + " " + pLastName + "\n" + "ID : " + pId + " Age : " + pAge + "\n"
                 + "\nUserName: " + sUserName + "\t Password: " + sPassword + "\nSalary: " + sSalary;
     } 
-    
+    @Override
+    public boolean login(String userName, String Pass) {
+        loadFromFile();
+        for (ReservOfficer x : reservOfficers ) {
+            if (userName.equals(x.sUserName) && Pass.equals(x.sPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }
        
 }

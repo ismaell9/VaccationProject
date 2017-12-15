@@ -161,4 +161,16 @@ public boolean deleteStoree(int id) {
             return false;
     }
 */
+    
+    
+    @Override
+    public boolean login(String userName, String Pass) {
+        loadFromFile();
+        for (StoreKeeper x : StoreKeepers) {
+            if (userName.equals(x.sUserName) && Pass.equals(x.sPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

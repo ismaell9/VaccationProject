@@ -6,7 +6,7 @@ import java.util.Arrays;
  *
  * @author Reputation
  */
-public  class staff extends Person{
+public  abstract class staff extends Person implements Ilogin{
     
     protected String sUserName;
     protected String sPassword;

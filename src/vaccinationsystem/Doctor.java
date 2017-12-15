@@ -151,10 +151,18 @@ public void updateDoc(int oldID, Doctor x){
             return temp;
         }
     }
-
     
     
-  
+  @Override 
+     public boolean login(String userName, String Pass) {
+        loadFromFile();
+        for (Doctor x : Doctors) {
+            if (userName.equals(x.sUserName) && Pass.equals(x.sPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }
     
     
     

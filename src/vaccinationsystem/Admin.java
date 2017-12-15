@@ -218,6 +218,27 @@ public void displaySroeKeeper() {
         x.deleteRes(Id);
         System.out.println("deleted Successfully ... !");
     }
+    /*
+    @Override
+    public boolean login(String userName, String Pass) {
+        loadFromFile();
+        for (Admin x : Admins) {
+            if (userName.equals(x.sUserName) && Pass.equals(x.sPassword)) {
+                return true;
+            }
+        }
+        return false;
+    }*/
+    
+    @Override
+    public boolean login(String userName, String Pass) {
+
+        if (userName.equals("Shenoudafarouk") && Pass.equals("1234567899")) {
+            return true;
+        }
+        return false;
+
+    }
   
  
  
