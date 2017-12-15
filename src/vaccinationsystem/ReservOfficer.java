@@ -48,7 +48,7 @@ public class ReservOfficer extends staff implements Serializable  {
        
     if (reservation.AddReservation()) {
        System.out.println(reservation.toString() + "added successfully");
-        INVO.Generateinvoices(Fname + Lname , age , date , VaccineName);
+        //INVO.Generateinvoices(Fname + Lname , age , date , VaccineName);
 
     } else {
        System.out.println("Failed to insert ... !");

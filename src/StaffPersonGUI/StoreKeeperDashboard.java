@@ -143,7 +143,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             
             Vaccine vac = new Vaccine();
             
-            names[i] = vac.get(i).get_vacTradeName();
+            //names[i] = vac.get(i).get_vacTradeName();
         }
         /*        for (int i = 0; i < 25; i++) {
 
@@ -155,11 +155,11 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             }
         }
          */
-        BarChart chart = new BarChart(" Store Report ", names, values);
+        /*BarChart chart = new BarChart(" Store Report ", names, values);
 
         chart.pack();
         RefineryUtilities.centerFrameOnScreen(chart);
-        chart.setVisible(true);
+        chart.setVisible(true);*/
         
     }//GEN-LAST:event_jButton_GenerateReportActionPerformed
 
