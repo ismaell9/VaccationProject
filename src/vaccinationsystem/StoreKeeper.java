@@ -15,8 +15,7 @@ public class StoreKeeper extends staff{
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
     }   
 
-    public StoreKeeper() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public StoreKeeper() {
     }
     
     public boolean addstorekeeper() {
@@ -30,14 +29,64 @@ public class StoreKeeper extends staff{
            StoreKeepers = (ArrayList<StoreKeeper>) (Object) FManger.read("StoreKeeper.txt");
     }           
     
-    public String displayAllStoreKeeper() {
+    public ArrayList<StoreKeeper> displayAllStoreKeeper() {
         loadFromFile();
         String S = "\nAll Professors Data:\n";
         for (StoreKeeper x : StoreKeepers) {
             S = S + x.toString();
         }
-        return S;
+        return StoreKeepers;
     }
+    
+        public StoreKeeper searchStoreById(int id) {
+        StoreKeeper temp = new StoreKeeper();
+        loadFromFile();
+        int index = getStoreKeeperIndex(id);
+        if (index != -1) {
+            return StoreKeepers.get(index);
+        } else {
+            return temp;
+        }
+    }
+  public boolean UpdateStore() {
+        loadFromFile();
+        int index = getStoreKeeperIndex(this.pId);
+
+        if (index != -1) {
+            StoreKeepers.set(index, this);
+
+            return commitToFilee();
+        }
+
+        return false;
+    }
+
+  public boolean commitToFilee() {
+        return FManger.write(storekeeperFileName,StoreKeepers);
+    }
+  
+  
+  
+public boolean deleteStoree(int id) {
+        loadFromFile();
+        int index = getStoreKeeperIndex(id);
+
+        if (index != -1) {
+            StoreKeepers.remove(index);
+
+            return commitToFilee();
+        }
+        
+        return false;
+}
+    
+    
+    
+    
+    
+    
+    
+    
          
     private int getStoreKeeperIndex(int id){
         for (int i = 0; i < StoreKeepers.size(); i++)

@@ -22,7 +22,7 @@ public class FileManger {
         try {
             System.out.print("\nwritting in ! " + FilePath);
 
-            writter = new PrintWriter((new FileWriter(new File(FilePath),appendType)));
+            writter = new PrintWriter((new FileWriter(new File((String) FilePath),appendType)));
             writter.println(Query);
 
             System.out.println(" ... Done ! ");
@@ -188,5 +188,20 @@ public class FileManger {
          return null;
      }
     }
+
+    boolean write(String doctorFileName, ArrayList<Doctor> Doctors) {
+        
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean write(String storekeeperFileName, ArrayList<StoreKeeper> StoreKeepers) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    boolean write(String ReservOfficerFileName, ArrayList<ReservOfficer> reservOfficers) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }

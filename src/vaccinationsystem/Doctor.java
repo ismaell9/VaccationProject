@@ -11,7 +11,7 @@ public class Doctor extends staff{
     
     private Date appointmentDate;
     private boolean isAvilable;
-   private final String doctorFileName = "doctor.txt";
+   public final String doctorFileName = "doctor.txt";
      public static ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
   FileManger FManger = new FileManger();
 
@@ -51,13 +51,13 @@ public boolean adddoctor() {
 
     
     
-  public String displayAllDoctors() {
+   public ArrayList<Doctor> displayAllDoctors() {
         loadFromFile();
-        String S = "\nAll Professors Data:\n";
+        String S = "\nAll Doctors Data:\n";
         for (Doctor x : Doctors) {
             S = S + x.toString();
         }
-        return S;
+        return Doctors;
     }
 
     private int getDocIndex(int id){
@@ -87,9 +87,39 @@ public boolean adddoctor() {
 
     }
  
- 
- 
+   public boolean commitToFilee() {
+        return FManger.write(doctorFileName ,Doctors);
+    }
+  
+  
+  
+  
+  
+   public boolean UpdateDoc() {
+        loadFromFile();
+        int index = getDocIndex(this.pId);
 
+        if (index != -1) {
+            Doctors.set(index, this);
+
+            return commitToFilee();
+        }
+
+        return false;
+    }
+
+public boolean deleteDocc(int id) {
+        loadFromFile();
+        int index = getDocIndex(id);
+
+        if (index != -1) {
+            Doctors.remove(index);
+
+            return commitToFilee();
+        }
+
+        return false;
+    }
 public void updateDoc(int oldID, Doctor x){
         loadFromFile();
         int index = getDocIndex(oldID);
@@ -111,7 +141,17 @@ public void updateDoc(int oldID, Doctor x){
     }
     
     
-    
+     public Doctor searchDocById(int id) {
+        Doctor temp = new Doctor();
+        loadFromFile();
+        int index = getDocIndex(id);
+        if (index != -1) {
+            return Doctors.get(index);
+        } else {
+            return temp;
+        }
+    }
+
     
     
   

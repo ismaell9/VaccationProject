@@ -11,14 +11,15 @@ import static vaccinationsystem.Doctor.Doctors;
 public class ReservOfficer extends staff implements Serializable  {
     
    
-   private final String ReservOfficerFileName = "ReservOfficer.txt";
+   public final String ReservOfficerFileName = "ReservOfficer.txt";
    
    FileManger FManger = new FileManger();
    
    public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<ReservOfficer>();
   
-    public ReservOfficer() {
-    }
+    public ReservOfficer() {}
+    
+   
     
        public ReservOfficer(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) 
    {         super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
@@ -77,13 +78,13 @@ public class ReservOfficer extends staff implements Serializable  {
     }
     
     
-  public String displayAllReservOfficers() {
+  public ArrayList<ReservOfficer>  displayAllReservOfficers() {
         loadFromFile();
         String S = "\nAll Professors Data:\n";
         for (ReservOfficer x : reservOfficers) {
             S = S + x.toString();
         }
-        return S;
+        return reservOfficers;
     }
 
     private int getReservOfficersIndex(int id){
@@ -111,7 +112,51 @@ public class ReservOfficer extends staff implements Serializable  {
         }
 
     }
- 
+  public ReservOfficer searchResById(int id) {
+        ReservOfficer temp = new ReservOfficer();
+        loadFromFile();
+        int index = getReservOfficersIndex(id);
+        if (index != -1) {
+            return reservOfficers.get(index);
+        } else {
+            return temp;
+        }
+    }
+  
+   public boolean commitToFilee() {
+        return FManger.write( ReservOfficerFileName,reservOfficers);
+    }
+  
+  
+  
+  
+  
+   public boolean UpdateRes() {
+        loadFromFile();
+        int index = getReservOfficersIndex(this.pId);
+
+        if (index != -1) {
+            reservOfficers.set(index, this);
+
+            return commitToFilee();
+        }
+
+        return false;
+    }
+
+public boolean deleteRess(int id) {
+        loadFromFile();
+        int index = getReservOfficersIndex(id);
+
+        if (index != -1) {
+            reservOfficers.remove(index);
+
+            return commitToFilee();
+        }
+
+        return false;
+    }
+  
 public void updateRes(int oldID, ReservOfficer x){
         loadFromFile();
         int index = getReservOfficersIndex(oldID);
