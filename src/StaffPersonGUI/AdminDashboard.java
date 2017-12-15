@@ -5,7 +5,6 @@
  */
 package StaffPersonGUI;
 
-import vaccination_gui.*;
 import Frames.Admin_DoctorsFrame;
 import Frames.Admin_StoreKepperFrame;
 import Frames.Admin_ReserveOfficerFrame;
