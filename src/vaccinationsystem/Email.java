@@ -7,13 +7,20 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
+import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 /**
  *
@@ -25,7 +32,7 @@ public class Email implements Serializable {
 
     private final String EmailFileName = "E:\\VaccinationSystem\\Email.bin";
     public static ArrayList<Email> E = new ArrayList<>();
-
+    
     static Properties mailServerProperties;
     static Session getMailSession;
     static MimeMessage generateMailMessage;
@@ -34,16 +41,16 @@ public class Email implements Serializable {
     String CcEmail = "";
     String Subject = "";
     String Emailbody = "";
-
-    public Email() {
-        
-    }
+    public String attachment;
+    public String attachmentPath;
 
     public Email(String ToEmail, String CcEmail, String Subject, String Emailbody) {
         this.ToEmail = ToEmail;
         this.CcEmail = CcEmail;
         this.Subject = Subject;
         this.Emailbody = Emailbody;
+        this.attachment = "";
+        this.attachmentPath="";
         if(!this.file.exists()){
             try {
                 this.file.createNewFile();
@@ -76,9 +83,26 @@ public class Email implements Serializable {
             generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(CcEmail));
         }
         generateMailMessage.setSubject(Subject);
-        String emailBody = Emailbody + "<br><br> Regards, <br>Vaccination Manegment.";
-        generateMailMessage.setContent(emailBody, "text/html");
+        BodyPart messageBodyPart1 = new MimeBodyPart();     
+        messageBodyPart1.setText(Emailbody);          
+        
+        MimeBodyPart messageBodyPart2 = new MimeBodyPart();      
+        
+        Multipart multipart = new MimeMultipart();    
+        multipart.addBodyPart(messageBodyPart1);
+        if(!attachment.equals("") && !attachment.equals("")){
 
+            String filename = this.attachmentPath;//change accordingly     
+            DataSource source = new FileDataSource(filename);    
+            messageBodyPart2.setDataHandler(new DataHandler(source));    
+            messageBodyPart2.setFileName(this.attachment);             
+
+            multipart.addBodyPart(messageBodyPart2);
+        }
+        generateMailMessage.setContent(multipart);
+        //String emailBody = Emailbody + "<br><br> Regards, <br>Vaccination Manegment.";
+        //generateMailMessage.setContent(emailBody, "text/html");
+        //Transport.send(generateMailMessage);
         System.out.println("Mail Session has been created successfully..");
 
         // Step3
@@ -96,9 +120,9 @@ public class Email implements Serializable {
         if(this!=null){
             E.add(this);
             commitToFile();
-        }
+        
     }
-
+}
     public boolean commitToFile() {
         return FManger.write(EmailFileName, E);
     }
