@@ -11,8 +11,9 @@ public class Appointment {
     Client appointmentNumber;
    
    
+    final static String FILE_NAME = "Appointment.bin";
+  
     public static ArrayList<Appointment> Appointments = new ArrayList <Appointment>();
-    private final String AppointmentFileName = "Appointment.txt";
     FileMangerBinary2 FManger =new FileMangerBinary2();
   
     public Appointment (){
@@ -31,6 +32,7 @@ public class Appointment {
         this.appointmentNumber= appointmentNumber;
     }
 
+
     public String getappointmentDate () {
         return this.appointmentDate;
     }
@@ -41,23 +43,29 @@ public class Appointment {
     
            
       private void ReadFromFile() {
-           Appointments = (ArrayList<Appointment>) (Object) FManger.read(AppointmentFileName);
+           Appointments = (ArrayList<Appointment>) FManger.read(FILE_NAME);
        }
       
       public boolean commitToFile() {
-        return FManger.write (AppointmentFileName, Appointments);
+        return FManger.write (FILE_NAME, Appointments);
     }   
         
 
    public  boolean Check(String appointmentDate) {
       
 
+
+   for (int k=0 ; k <Appointments.size(); k++ )
+
+           if (Appointments.get(k).getappointmentDate().equals (appointmentDate))
+               return true;
+
       for (Appointment Appointment : Appointments) {
           if (Appointment.getappointmentDate().equals(appointmentDate)) {
               return true;
           }
       }
-   
+
           return false;
     }
  
@@ -74,7 +82,7 @@ public class Appointment {
        }
   
 
-    public boolean  deleteAppointment ( int appointmentNumber){
+    protected boolean  deleteAppointment ( int appointmentNumber){
           ReadFromFile();
         int index = getAppointmentIndex ( appointmentNumber); 
     Appointments.remove(index);
@@ -84,7 +92,7 @@ public class Appointment {
     }
     
    
- public String DisplayAllAppointments() {
+ protected  String DisplayAllAppointments() {
      ReadFromFile();
         String AllApp = "\n All Appointments :\n";
         for (Appointment x : Appointments) {
