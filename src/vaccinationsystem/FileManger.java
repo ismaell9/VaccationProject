@@ -162,18 +162,7 @@ public class FileManger {
      }
     }
 
-    boolean write(String doctorFileName, ArrayList<Doctor> Doctors) {
-        return true;
-        
-    }
-
-    boolean write(String storekeeperFileName, ArrayList<StoreKeeper> StoreKeepers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    boolean write(String ReservOfficerFileName, ArrayList<ReservOfficer> reservOfficers) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 
     
     

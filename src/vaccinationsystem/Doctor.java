@@ -11,9 +11,9 @@ public class Doctor extends staff{
     
     private Date appointmentDate;
     private boolean isAvilable;
-   public final String doctorFileName = "doctor.txt";
+   public final String doctorFileName = "doctor.bin";
      public static ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
-  FileManger FManger = new FileManger();
+    FileMangerBinary2 Fmanger =new FileMangerBinary2();
 
     
     public Doctor(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) {
@@ -46,8 +46,11 @@ public boolean adddoctor() {
     } 
 
       private void loadFromFile() {
-            Doctors = (ArrayList<Doctor>) (Object) FManger.read("doctor.txt");
-    }
+            Doctors =(ArrayList <Doctor>)this.Fmanger.read(doctorFileName);
+
+                    
+                    
+                    }
 
     
     
@@ -79,18 +82,14 @@ public boolean adddoctor() {
             return "\nNot Found ...!";
     }
 
-  private void commitToFile() {
-        FManger.write(Doctors.get(0).getDoctorData(), doctorFileName, false);
-        for (int i = 1; i < Doctors.size(); i++) {
-            FManger.write(Doctors.get(i).getDoctorData(), doctorFileName, true);
-        }
+  
 
-    }
+    
  
    public boolean commitToFilee() {
-        return FManger.write(doctorFileName ,Doctors);
-    }
-  
+        return Fmanger.write(doctorFileName ,Doctors);
+   }
+
   
   
   
@@ -124,14 +123,14 @@ public void updateDoc(int oldID, Doctor x){
         loadFromFile();
         int index = getDocIndex(oldID);
         Doctors.set(index, x);
-        commitToFile();
+        commitToFilee();
     } 
     
     public void deleteDoc(int id){
         loadFromFile();
         int index = getDocIndex(id);
         Doctors.remove(index);
-        commitToFile();
+        commitToFilee();
     } 
     
     @Override

@@ -6,8 +6,9 @@ public class StoreKeeper extends staff{
 
     private final Vaccine vac = new Vaccine(); //use "vac" object to use methods in "vaccine" class
     private final Store store = new Store();  //use "store" object to use methods in "Store" class
-    FileManger FManger = new FileManger();
-    private final String storekeeperFileName = "StoreKeeper.txt";
+    FileMangerBinary2 Fmanger =new FileMangerBinary2();
+
+    private final String storekeeperFileName = "StoreKeeper.bin";
     public static ArrayList<StoreKeeper> StoreKeepers= new ArrayList<>();
    
     
@@ -26,7 +27,7 @@ public class StoreKeeper extends staff{
     }
          
     private void loadFromFile() {
-           StoreKeepers = (ArrayList<StoreKeeper>) (Object) FManger.read("StoreKeeper.txt");
+           StoreKeepers = (ArrayList<StoreKeeper>) this.Fmanger.read("StoreKeeper.bin");
     }           
     
     public ArrayList<StoreKeeper> displayAllStoreKeeper() {
@@ -62,7 +63,7 @@ public class StoreKeeper extends staff{
     }
 
   public boolean commitToFilee() {
-        return FManger.write(storekeeperFileName,StoreKeepers);
+        return Fmanger.write(storekeeperFileName,StoreKeepers);
     }
   
   
@@ -105,26 +106,20 @@ public boolean deleteStoree(int id) {
             return "\nNot Found ...!";
     }    
     
-    private void commitToFile() {
-        FManger.write(StoreKeepers.get(0).getStoreKeeperData(), storekeeperFileName, false);
-        for (int i = 1; i <StoreKeepers.size(); i++) {
-            FManger.write(StoreKeepers.get(i).getStoreKeeperData(), storekeeperFileName, true);
-        }
 
-    }
  
     public void updateStore(int oldID, StoreKeeper x){
         loadFromFile();
         int index = getStoreKeeperIndex(oldID);
         StoreKeepers.set(index, x);
-        commitToFile();
+        commitToFilee();
     } 
     
     public void deleteStore(int id){
         loadFromFile();
         int index = getStoreKeeperIndex(id);
         StoreKeepers.remove(index);
-        commitToFile();
+        commitToFilee();
     } 
     
     @Override

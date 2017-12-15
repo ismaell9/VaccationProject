@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 public class Admin extends staff{
 
-private final String adminFileName = "admin.txt";
-  FileManger FManger = new FileManger();
-    public static ArrayList<Admin> Admins = new ArrayList<Admin>();
+private final String adminFileName = "admin.bin";
+    FileMangerBinary2 Fmanger =new FileMangerBinary2();
+
+
+public static ArrayList<Admin> Admins = new ArrayList<Admin>();
 
    
 
@@ -57,7 +59,7 @@ public void addNewAdmin(int pId,int pAge,String pFirstName,String LastName ,Stri
 
   
    private void loadFromFile() {
-            Admins= (ArrayList<Admin>) (Object) FManger.read("admin.txt");
+            Admins= (ArrayList<Admin>) this.Fmanger.read("admin.bin");
     }
   public String displayAllAdmins() {
         loadFromFile();
@@ -92,11 +94,8 @@ public void addNewAdmin(int pId,int pAge,String pFirstName,String LastName ,Stri
         System.out.println(x.searchAdmin(id));
     }
 
-     public void commitToFile() {
-        FManger.write(Admins.get(0).getadminData(), "Admin.txt", false);
-        for (int i = 1; i < Admins.size(); i++) {
-            FManger.write(Admins.get(i).getadminData(), "Admin.txt", true);
-        }
+     public boolean commitToFile() {
+         return Fmanger.write(adminFileName, Admins);
 
     }
   

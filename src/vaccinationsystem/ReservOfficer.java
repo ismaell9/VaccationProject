@@ -11,10 +11,10 @@ import static vaccinationsystem.Doctor.Doctors;
 public class ReservOfficer extends staff implements Serializable  {
     
    
-   public final String ReservOfficerFileName = "ReservOfficer.txt";
+   public final String ReservOfficerFileName = "ReservOfficer.bin";
    
-   FileManger FManger = new FileManger();
-   
+       FileMangerBinary2 Fmanger =new FileMangerBinary2();
+
    public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<ReservOfficer>();
   
     public ReservOfficer() {}
@@ -74,7 +74,7 @@ public class ReservOfficer extends staff implements Serializable  {
     }
      
          private void loadFromFile() {
-            reservOfficers = (ArrayList<ReservOfficer>) (Object) FManger.read("ReservOfficer.txt");
+            reservOfficers = (ArrayList<ReservOfficer>) this.Fmanger.read("ReservOfficer.txt");
     }
     
     
@@ -105,13 +105,8 @@ public class ReservOfficer extends staff implements Serializable  {
             return "\nNot Found ...!";
     }
 
-  private void commitToFile() {
-        FManger.write(reservOfficers.get(0).getReservOfficerData(),ReservOfficerFileName, false);
-        for (int i = 1; i < reservOfficers.size(); i++) {
-            FManger.write(reservOfficers.get(i).getReservOfficerData(), ReservOfficerFileName, true);
-        }
 
-    }
+
   public ReservOfficer searchResById(int id) {
         ReservOfficer temp = new ReservOfficer();
         loadFromFile();
@@ -124,7 +119,7 @@ public class ReservOfficer extends staff implements Serializable  {
     }
   
    public boolean commitToFilee() {
-        return FManger.write( ReservOfficerFileName,reservOfficers);
+        return Fmanger.write( ReservOfficerFileName,reservOfficers);
     }
   
   
@@ -161,14 +156,14 @@ public void updateRes(int oldID, ReservOfficer x){
         loadFromFile();
         int index = getReservOfficersIndex(oldID);
         reservOfficers.set(index, x);
-        commitToFile();
+        commitToFilee();
     } 
     
     public void deleteRes(int id){
         loadFromFile();
         int index = getReservOfficersIndex(id);
         reservOfficers.remove(index);
-        commitToFile();
+        commitToFilee();
     } 
            
     @Override
