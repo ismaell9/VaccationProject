@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Reservation implements Serializable {
     
        Appointment appoint;
-        String date ;
+       public String date ;
     
    
     private final String ReservationFileName ="Reservation.bin";
