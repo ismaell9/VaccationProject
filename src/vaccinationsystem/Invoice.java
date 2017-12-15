@@ -1,4 +1,4 @@
-package sudoku;
+package vaccinationsystem;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -216,16 +216,10 @@ for (int i = 0; i < Invoices.size(); i++)
         }
         try (FileOutputStream out = new FileOutputStream(f)) {
             pdf.render(out);
-            this.generatEmail = new Email();
+           
             //"muhammad.a.esmael@gmail.com","ahussien753@gmail.com","Invoice details","Invoice chechout"
-            this.generatEmail.ToEmail = "muhammad.a.esmael@gmail.com";
-            this.generatEmail.CcEmail = "ahussien753@gmail.com";
-            this.generatEmail.Subject = "Invoice details";
-            this.generatEmail.Emailbody = "Invoice chechout";
-            this.generatEmail.attachment = "Invoice.pdf";
-            this.generatEmail.attachmentPath ="C:\\Users\\Reputation\\Documents\\NetBeansProjects\\FinalProject\\FinalProject\\Invoice.pdf"; 
-            this.generatEmail.generateAndSendEmail();
-        }
+            this.generatEmail = new Email("muhammad.a.esmael@gmail.com","ahussien753@gmail.com","Invoice details","Invoice checkout","Invoice.pdf","C:\\Users\\Reputation\\Documents\\NetBeansProjects\\FinalProject\\FinalProject\\Invoice.pdf");
+        }   this.generatEmail.generateAndSendEmail();
    }
 
 }

@@ -27,7 +27,7 @@ import javax.mail.internet.MimeMultipart;
  * 
  */
 public class Email implements Serializable {
-
+    
     FileMangerBinary FManger = new FileMangerBinary();
 
     private final String EmailFileName = "E:\\VaccinationSystem\\Email.bin";
@@ -43,14 +43,19 @@ public class Email implements Serializable {
     String Emailbody = "";
     public String attachment;
     public String attachmentPath;
-
-    public Email(String ToEmail, String CcEmail, String Subject, String Emailbody) {
+   
+    public Email(){
+        
+    }
+    public Email(String ToEmail, String CcEmail, String Subject, String Emailbody, String Attach , String AttachPath) {
         this.ToEmail = ToEmail;
         this.CcEmail = CcEmail;
         this.Subject = Subject;
         this.Emailbody = Emailbody;
         this.attachment = "";
         this.attachmentPath="";
+        this.attachment = Attach;
+        this.attachmentPath = AttachPath;
         if(!this.file.exists()){
             try {
                 this.file.createNewFile();

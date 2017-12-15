@@ -75,6 +75,7 @@ public class Email_ListPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         Object rowData[] = new Object[4];
 
+        
         Email e = new Email();
         ArrayList<Email> Emails = new ArrayList<Email>();
 
