@@ -10,7 +10,7 @@ import java.util.Iterator;
  *
  */
 public class Client extends Person implements Serializable{
-    
+    private static final long serialVersionUID = 11L;
     private static int cId;
     private int cPhoneNumber;
     private String cAdress;

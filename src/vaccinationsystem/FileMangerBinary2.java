@@ -19,7 +19,8 @@ import java.util.logging.Logger;
  * 
  */
 public class FileMangerBinary2 implements Serializable {
-
+    private static final long serialVersionUID = 9L;
+    
     public boolean write(String FilePath, Object data) {
 
         try {

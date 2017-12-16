@@ -1,6 +1,10 @@
 package vaccinationsystem;
 //Nagham 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Store {
 
@@ -10,6 +14,7 @@ public class Store {
     
 
     private final String StoreFileName = "Store.txt";
+    private final File file = new File(StoreFileName);
     private final Vaccine vac = new Vaccine();
     FileManger FManger = new FileManger();
     public static ArrayList<Store> store = new ArrayList<>();
@@ -19,8 +24,24 @@ public class Store {
         Store.setstoreCapacity(storeCapacity);
         this.storeId = storeId;
         Store.setstoreFreeSpace(storeFreeSpace);
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
     }
     public Store(){
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }
     
     //setter

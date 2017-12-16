@@ -27,7 +27,7 @@ import javax.mail.internet.MimeMultipart;
  * 
  */
 public class Email implements Serializable {
-    
+    private static final long serialVersionUID = 8L;
     FileMangerBinary FManger = new FileMangerBinary();
 
     private final String EmailFileName = "E:\\VaccinationSystem\\Email.bin";

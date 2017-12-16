@@ -2,15 +2,22 @@ package vaccinationsystem;
 
 
 
+import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Admin extends staff{
+public class Admin extends staff implements Serializable{
 
-private final String adminFileName = "admin.bin";
+    private static final long serialVersionUID = 4L;    
+    private final String adminFileName = "admin.bin";
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
+    private final File file = new File(adminFileName);
 
 
-public static ArrayList<Admin> Admins = new ArrayList<Admin>();
+public static ArrayList<Admin> Admins = new ArrayList<>();
 
    
 
@@ -18,9 +25,25 @@ public static ArrayList<Admin> Admins = new ArrayList<Admin>();
 
 public Admin (int pId,int pAge,String pFirstName,String pLastName ,String pEmail,String sUsername,String sPassword,double sSalary){
    super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
 }
 
-   public Admin()   {
+   public Admin(){
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
     }
 
 

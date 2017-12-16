@@ -20,6 +20,7 @@ import java.util.logging.Logger;
  * 
  */
 public class FileMangerBinary implements Serializable {
+    private static final long serialVersionUID = 10L;
     public Object t;
     
     public boolean write(String FilePath, ArrayList data) {

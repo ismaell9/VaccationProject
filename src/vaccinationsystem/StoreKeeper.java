@@ -1,25 +1,29 @@
 package vaccinationsystem;
 //Nagham 
 import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class StoreKeeper extends staff{
-
+public class StoreKeeper extends staff implements Serializable{
+    
+    private static final long serialVersionUID = 5L;
     private final Vaccine vac = new Vaccine(); //use "vac" object to use methods in "vaccine" class
     private final Store store = new Store();  //use "store" object to use methods in "Store" class
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
-    
     private final String storekeeperFileName = "StoreKeeper.bin";
-    File file = new File(storekeeperFileName);
+    private final File file = new File(storekeeperFileName);
     public static ArrayList<StoreKeeper> StoreKeepers= new ArrayList<>();
     private String firstName;
-    private String lastName ;
-    private String email    ;
-    private String userName ;
-    private double salary   ;
-    private int    Id       ;
-    private String password ;
-    private int    age      ;
+    private String lastName;
+    private String email;
+    private String userName;
+    private double salary;
+    private int Id;
+    private String password;
+    private int age;
     
     public StoreKeeper(int pId,int pAge,String pFirstName,String pLastName ,String pEmail,String sUsername,String sPassword,double sSalary){
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
@@ -31,11 +35,26 @@ public class StoreKeeper extends staff{
         Id = this.getPId();
         password = this.getPassword();
         age = this.getPAge();
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }   
 
    public StoreKeeper() {
-    }
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+   }
     
     public boolean addstorekeeper() {
         if(file.length()!= 0){

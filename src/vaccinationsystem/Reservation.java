@@ -1,42 +1,58 @@
 package vaccinationsystem;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
 public class Reservation implements Serializable {
-    
-       Appointment appoint;
-       public String date ;
-    
-   
+    Appointment appoint;
+    public String date ;
+    private static final long serialVersionUID = 6L;
     private final String ReservationFileName ="Reservation.bin";
+    private final File file = new File(ReservationFileName);
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
-    public static ArrayList<Reservation> reservation =new ArrayList<Reservation>();
+    public static ArrayList<Reservation> reservation =new ArrayList<>();
     
     Client c = new Client ();
     Vaccine v= new Vaccine ();
   
-    public Reservation()
-    {
+    public Reservation(){
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
      
     
    public Reservation(int ID, String Fname,String Lname, int Age, String Email,String Gender, String date, String VaccineName){
-       c.pId= ID;
-       c.pFirstName= Fname;
-       c.pLastName= Lname;
-       c.pAge= Age;
-       c.pEmail= Email;
-       c.set_cGender(Gender);
-              
-       this.date = date;
-       /*this.appoint= appoint;*/
-       v.set_vac(VaccineName);
+        c.pId= ID;
+        c.pFirstName= Fname;
+        c.pLastName= Lname;
+        c.pAge= Age;
+        c.pEmail= Email;
+        c.set_cGender(Gender);
+
+        this.date = date;
+        /*this.appoint= appoint;*/
+        v.set_vac(VaccineName);
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
             
-       }
+    }
 
     //setter
       

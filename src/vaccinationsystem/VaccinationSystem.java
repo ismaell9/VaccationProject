@@ -81,11 +81,12 @@ public class VaccinationSystem {
         System.out.println(d2.getPFirstName());
         d2.adddoctor(d2);
         */
-        for( ReservOfficer s : (d.displayAllReservOfficers())){
+        /*for( ReservOfficer s : (d.displayAllReservOfficers())){
             System.out.println(s.toString());
             
-        }
-        
+        }*/
+ //       Vaccine vac = new Vaccine();
+ //       vac.addVac(vac);
        
     }
     

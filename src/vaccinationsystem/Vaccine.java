@@ -11,6 +11,7 @@ public class Vaccine implements Serializable{
  * access modifiers are better to stay private 
  * but they are changeable if needed
  */
+    private static final long serialVersionUID = 12L;    
     private static int vacId;
     private int vacExpirationYear;
     private String vac;

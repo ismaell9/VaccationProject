@@ -1,9 +1,12 @@
 package vaccinationsystem;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
 import static vaccinationsystem.Doctor.Doctors;
@@ -11,22 +14,36 @@ import static vaccinationsystem.Doctor.Doctors;
 
 public class ReservOfficer extends staff implements Serializable  {
     
-   
+    private static final long serialVersionUID = 7L;   
     public final String ReservOfficerFileName = "ReservOfficer.bin";
     File file = new File(ReservOfficerFileName);
-   
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
+    public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<>();
+    public ReservOfficer() {
+        if(!this.file.exists()){
+         try {
+             this.file.createNewFile();
+         } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
 
-    public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<ReservOfficer>();
-  
-    public ReservOfficer() {}
+    }
     
    
     
     public ReservOfficer(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) {
         super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
    
-   }
+    }
    /*
      Reservation reservation;
    public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, Appointment apoint, String VaccineName){

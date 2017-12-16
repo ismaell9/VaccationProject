@@ -1,9 +1,12 @@
 package vaccinationsystem;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * test editing 1
@@ -38,9 +41,24 @@ public Doctor(int pId, int pAge, String pFirstName, String pLastName, String pEm
         Id = this.getPId();
         password = this.getPassword();
         age = this.getPAge();
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
 }
 
 public Doctor() {
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     
 }
 

@@ -1,27 +1,45 @@
 package vaccinationsystem;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static vaccinationsystem.Reservation.reservation;
 
-public class Appointment {
+public class Appointment implements Serializable{
   public String appointmentDate;
-
     Client appointmentNumber;
-   
-   
+    private static final long serialVersionUID = 3L;
     final static String FILE_NAME = "Appointment.bin";
-  
+    private final File file = new File(FILE_NAME);
     public static ArrayList<Appointment> Appointments = new ArrayList <Appointment>();
     FileMangerBinary2 FManger =new FileMangerBinary2();
   
     public Appointment (){
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
     }
     
     public Appointment (String appointmentDate , Client appointmentNumber ) {
         this.appointmentDate = appointmentDate;
         this.appointmentNumber = appointmentNumber; 
+        if(!this.file.exists()){
+            try {
+            this.file.createNewFile();
+            } catch (IOException ex) {
+             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
     }
       public void setappontmentdate (String appointmentDate) {
         this.appointmentDate = appointmentDate;
