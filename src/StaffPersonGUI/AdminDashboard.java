@@ -9,7 +9,10 @@ import Frames.Admin_DoctorsFrame;
 import Frames.Admin_StoreKepperFrame;
 import Frames.Admin_ReserveOfficerFrame;
 import Frames.Panels.ChartPanel;
+import java.beans.PropertyVetoException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -144,24 +147,39 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void menuDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuDoctorsActionPerformed
         // TODO add your handling code here:
-Admin_DoctorsFrame f = new Admin_DoctorsFrame();
-          desktop.add(f);
+        Admin_DoctorsFrame f = new Admin_DoctorsFrame();
         f.setVisible(true);
+        desktop.add(f);        
+        try {
+            f.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuDoctorsActionPerformed
 
     private void menuStoreKeeperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuStoreKeeperActionPerformed
         // TODO add your handling code here:
-    Admin_StoreKepperFrame f = new Admin_StoreKepperFrame();
+        Admin_StoreKepperFrame f = new Admin_StoreKepperFrame();
 
-        desktop.add(f);
         f.setVisible(true);
+        desktop.add(f);        
+        try {
+            f.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuStoreKeeperActionPerformed
 
     private void menuReservOfficerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReservOfficerActionPerformed
         // TODO add your handling code here:
         Admin_ReserveOfficerFrame f = new Admin_ReserveOfficerFrame();
-        desktop.add(f);
         f.setVisible(true);
+        desktop.add(f);        
+        try {
+            f.setSelected(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(AdminDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_menuReservOfficerActionPerformed
 
     

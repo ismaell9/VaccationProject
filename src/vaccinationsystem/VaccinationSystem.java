@@ -8,7 +8,7 @@ public class VaccinationSystem {
 
     
     public static void main(String[] args) {
-        String projectPath = System.getProperty("user.dir");
+        /*String projectPath = System.getProperty("user.dir");
         System.out.println("Project Path: " + projectPath);
         File currentDir = new File(projectPath); // current directory				
 	checkDirectoryContents(currentDir);
@@ -65,6 +65,27 @@ public class VaccinationSystem {
             Admin  x = new Admin();
             x.commitToFile();
         } */
+       
+        //ReservOfficer r =new ReservOfficer(1, 20, null, null, null, null, null, 20);
+        //r.addReservOfficer();
+       
+        ReservOfficer d = new ReservOfficer(1, 20, "Muhammad","Ahmed", "muhammad.a.esmael@gmail.com", "Reputation", "535348843", 52);
+        d.addReservOfficer();
+        //Doctor d2 = new Doctor();
+        /*d2.setPAge(20);
+        d2.setPFirstName("Muhammad");
+       
+        d2.setPLastName("ahH");
+        d2.setSalary(100.5);
+        System.out.println(d2.getSalary());
+        System.out.println(d2.getPFirstName());
+        d2.adddoctor(d2);
+        */
+        for( ReservOfficer s : (d.displayAllReservOfficers())){
+            System.out.println(s.toString());
+            
+        }
+        
        
     }
     

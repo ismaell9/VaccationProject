@@ -1,5 +1,6 @@
 package vaccinationsystem;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.io.Serializable;
@@ -11,18 +12,19 @@ import static vaccinationsystem.Doctor.Doctors;
 public class ReservOfficer extends staff implements Serializable  {
     
    
-   public final String ReservOfficerFileName = "ReservOfficer.bin";
+    public final String ReservOfficerFileName = "ReservOfficer.bin";
+    File file = new File(ReservOfficerFileName);
    
-       FileMangerBinary2 Fmanger =new FileMangerBinary2();
+    FileMangerBinary2 Fmanger =new FileMangerBinary2();
 
-   public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<ReservOfficer>();
+    public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<ReservOfficer>();
   
     public ReservOfficer() {}
     
    
     
-       public ReservOfficer(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) 
-   {         super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
+    public ReservOfficer(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) {
+        super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
    
    }
    /*
@@ -62,30 +64,21 @@ public class ReservOfficer extends staff implements Serializable  {
     */
    
    public boolean addReservOfficer() {
-        if (this.FManger.write(this.getReservOfficerData(),ReservOfficerFileName, true)) 
-        {
-            return true;
-        } else {
-            return false;
-        }
-}
-         private String getReservOfficerData() {
-        return this.pId + "@" + this.pFirstName + "@" + this.pLastName + "@" + this.pAge + "@" + this.pEmail + "@" + this.sUserName + "@" + this.sPassword+ "@" + this.sSalary + "@";
-    }
-     
-         private void loadFromFile() {
-            reservOfficers = (ArrayList<ReservOfficer>) this.Fmanger.read("ReservOfficer.txt");
-    }
-    
-    
-  public ArrayList<ReservOfficer>  displayAllReservOfficers() {
         loadFromFile();
-        String S = "\nAll Professors Data:\n";
-        for (ReservOfficer x : reservOfficers) {
-            S = S + x.toString();
-        }
+        reservOfficers.add(this);
+        return commitToFilee();
+}
+         
+         private void loadFromFile() {
+            if(file.length()!=0)
+             reservOfficers = (ArrayList<ReservOfficer>) this.Fmanger.read(ReservOfficerFileName);
+    }
+     public ArrayList<ReservOfficer> displayAllReservOfficers() {
+        loadFromFile();
         return reservOfficers;
     }
+
+    
 
     private int getReservOfficersIndex(int id){
         for (int i = 0; i < reservOfficers.size(); i++)
@@ -94,16 +87,7 @@ public class ReservOfficer extends staff implements Serializable  {
         
         return -1;
     }
-    
-  
- public String searchReservOfficer(int id){
-        loadFromFile();
-        int index = getReservOfficersIndex(id);
-        if(index != -1)
-            return "\nFound ...!" + reservOfficers.get(index).toString();
-        else 
-            return "\nNot Found ...!";
-    }
+   
 
 
 

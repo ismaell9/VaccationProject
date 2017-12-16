@@ -69,20 +69,21 @@ public class Store_ListPanel extends javax.swing.JPanel {
         Object rowData[] = new Object[8];
 
         StoreKeeper e = new StoreKeeper();
-        ArrayList<StoreKeeper> StoreKeepers = new ArrayList<StoreKeeper>();
+        ArrayList<StoreKeeper> StoreKeepers = new ArrayList<>();
+        if(!StoreKeepers.isEmpty()){
+            StoreKeepers = e.displayAllStoreKeeper();
 
-        StoreKeepers = e.displayAllStoreKeeper();
+            for (StoreKeeper x : StoreKeepers) {
+                rowData[0] = x.getPId();
+                rowData[1] = x.getPAge();
+                rowData[2] = x.getPFirstName();
+                rowData[3] = x.getPLastName();
+                rowData[4] = x.getUserName();
+                rowData[5] = x.getPassword();
+                rowData[6] = x.getSalary();
 
-        for (StoreKeeper x : StoreKeepers) {
-            rowData[0] = x.getPId();
-            rowData[1] = x.getPAge();
-            rowData[2] = x.getPFirstName();
-            rowData[3] = x.getPLastName();
-            rowData[4] = x.getUserName();
-            rowData[5] = x.getPassword();
-            rowData[6] = x.getSalary();
-            
-           model.addRow(rowData);
+               model.addRow(rowData);
+            }
         }
 
     }

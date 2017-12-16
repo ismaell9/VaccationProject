@@ -96,7 +96,7 @@ public class Admin_ReserveOfficerFrame extends javax.swing.JInternalFrame {
                 .addComponent(btnList)
                 .addGap(34, 34, 34)
                 .addComponent(btnUpdate)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
@@ -105,11 +105,11 @@ public class Admin_ReserveOfficerFrame extends javax.swing.JInternalFrame {
         DynamicPanal.setLayout(DynamicPanalLayout);
         DynamicPanalLayout.setHorizontalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 686, Short.MAX_VALUE)
         );
         DynamicPanalLayout.setVerticalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
 
         getContentPane().add(DynamicPanal, java.awt.BorderLayout.CENTER);

@@ -5,7 +5,7 @@
  */
 package Frames.Panels;
 
-import vaccinationsystem.VaccinationSystem;
+
 import vaccinationsystem.Doctor;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -19,7 +19,7 @@ public class Doc_ListPanel extends javax.swing.JPanel {
      */
     public Doc_ListPanel() {
         initComponents();
-        addRowsTojTable();
+        //addRowsTojTable();
     }
 
     /**
@@ -70,21 +70,21 @@ public class Doc_ListPanel extends javax.swing.JPanel {
 
         Doctor e = new Doctor();
         ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
-
+        
         Doctors = e.displayAllDoctors();
+        if(!Doctors.isEmpty()){
+            for (Doctor x : Doctors) {
+                rowData[0] = x.getPId();
+                rowData[1] = x.getPAge();
+                rowData[2] = x.getPFirstName();
+                rowData[3] = x.getPLastName();
+                rowData[4] = x.getUserName();
+                rowData[5] = x.getPassword();
+                rowData[6] = x.getSalary();
 
-        for (Doctor x : Doctors) {
-            rowData[0] = x.getPId();
-            rowData[1] = x.getPAge();
-            rowData[2] = x.getPFirstName();
-            rowData[3] = x.getPLastName();
-            rowData[4] = x.getUserName();
-            rowData[5] = x.getPassword();
-            rowData[6] = x.getSalary();
-            
-           model.addRow(rowData);
+               model.addRow(rowData);
+            }
         }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

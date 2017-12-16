@@ -1,8 +1,11 @@
 package vaccinationsystem;
 
+//import java.io.Serializable;
 
-public class Person {
-    
+
+public class Person{
+    //private static final long serialVersionUID = 0L;
+
     protected int pId ;
     protected int pAge ;
     protected String pFirstName ;
@@ -21,8 +24,8 @@ public class Person {
     
     public Person(int pId , int pAge , String pFirstName , String pLastName , String pEmail)
   {
-      /*
-      this.pId = pId ;
+      
+      /*this.pId = pId ;
       this.pAge = pAge ;
       this.pFirstName = pFirstName ;
       this.pLastName = pLastName ;
@@ -43,10 +46,10 @@ public class Person {
         this.pFirstName = pFirstName;
         this.pLastName = pLastName;
         
-        if (!pEmail.contains("@") || !pEmail.contains(".")) {
-            this.pEmail = MyEX.checkEmail("Email");
-        } else {
+        if (pEmail.contains("@") && pEmail.contains(".")) {
             this.pEmail = pEmail;
+        } else {
+            this.pEmail = MyEX.checkEmail("Email");
         }
       
       }

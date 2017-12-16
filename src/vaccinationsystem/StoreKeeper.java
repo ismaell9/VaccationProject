@@ -1,5 +1,6 @@
 package vaccinationsystem;
 //Nagham 
+import java.io.File;
 import java.util.*;
 
 public class StoreKeeper extends staff{
@@ -7,37 +8,59 @@ public class StoreKeeper extends staff{
     private final Vaccine vac = new Vaccine(); //use "vac" object to use methods in "vaccine" class
     private final Store store = new Store();  //use "store" object to use methods in "Store" class
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
-
+    
     private final String storekeeperFileName = "StoreKeeper.bin";
+    File file = new File(storekeeperFileName);
     public static ArrayList<StoreKeeper> StoreKeepers= new ArrayList<>();
-   
+    private String firstName;
+    private String lastName ;
+    private String email    ;
+    private String userName ;
+    private double salary   ;
+    private int    Id       ;
+    private String password ;
+    private int    age      ;
     
     public StoreKeeper(int pId,int pAge,String pFirstName,String pLastName ,String pEmail,String sUsername,String sPassword,double sSalary){
         super(pId,pAge,pFirstName,pLastName,pEmail,sUsername,sPassword,sSalary);
+        firstName = this.getPFirstName();
+        lastName = this.getPLastName();
+        email = this.getPEmail();
+        userName = this.getUserName();
+        salary = this.getSalary();
+        Id = this.getPId();
+        password = this.getPassword();
+        age = this.getPAge();
+
     }   
 
    public StoreKeeper() {
     }
     
     public boolean addstorekeeper() {
-        return this.FManger.write(this.getStoreKeeperData(), "StoreKeeper.txt" , true);
+        if(file.length()!= 0){
+            loadFromFile();
+            StoreKeepers.add(this);
+            return commitToFilee();
+        }
+        return false;
 }
+    /*
     private String getStoreKeeperData() {
         return this.pId + "@" + this.pFirstName + "@" + this.pLastName + "@" + this.pAge + "@" + this.pEmail + "@" + this.sUserName + "@" + this.sPassword+ "@" + this.sSalary + "@";
     }
-         
+         */
     private void loadFromFile() {
-           StoreKeepers = (ArrayList<StoreKeeper>) this.Fmanger.read("StoreKeeper.bin");
+           
+        StoreKeepers = (ArrayList<StoreKeeper>) this.Fmanger.read("StoreKeeper.bin");
     }           
     
     public ArrayList<StoreKeeper> displayAllStoreKeeper() {
         loadFromFile();
-        String S = "\nAll Professors Data:\n";
-        for (StoreKeeper x : StoreKeepers) {
-            S = S + x.toString();
-        }
+
         return StoreKeepers;
     }
+    
     
         public StoreKeeper searchStoreById(int id) {
         StoreKeeper temp = new StoreKeeper();
@@ -81,12 +104,7 @@ public boolean deleteStoree(int id) {
         return false;
 }
     
-    
-    
-    
-    
-    
-    
+   
     
          
     private int getStoreKeeperIndex(int id){
@@ -97,35 +115,50 @@ public boolean deleteStoree(int id) {
         return -1;
     }
      
-    public String searchStoreKeeper(int id){
+  
+    public StoreKeeper searchStoreKeeper(int id){
+       StoreKeeper temp = new StoreKeeper();
         loadFromFile();
         int index = getStoreKeeperIndex(id);
         if(index != -1)
-            return "\nFound ...!" + StoreKeepers.get(index).toString();
+            return StoreKeepers.get(index);
         else 
-            return "\nNot Found ...!";
+            return temp;
     }    
     
-
  
-    public void updateStore(int oldID, StoreKeeper x){
+ 
+    public boolean updateStore(int oldID, StoreKeeper x){
         loadFromFile();
-        int index = getStoreKeeperIndex(oldID);
-        StoreKeepers.set(index, x);
-        commitToFilee();
+        int index = getStoreKeeperIndex(this.pId);
+        if(index!= -1){
+            StoreKeepers.set(index, this);
+        
+                   return commitToFilee();
+
+        }       
+        return false;
+        
     } 
-    
-    public void deleteStore(int id){
+    public boolean deleteStore(int id) {
         loadFromFile();
         int index = getStoreKeeperIndex(id);
-        StoreKeepers.remove(index);
-        commitToFilee();
-    } 
+
+        if (index != -1) {
+            StoreKeepers.remove(index);
+
+            return commitToFilee();
+        }
+        return false;
+    }
+
+    
+  
     
     @Override
     public String toString() {
-        return "I'm Store Keeper : " + pFirstName + " " + pLastName + "\n" + "ID : " + pId + " Age : " + pAge + "\n"
-                + "\nUserName: " + sUserName + "\t Password: " + sPassword + "\nSalary: " + sSalary;
+        return "I'm Store Keeper : " + firstName + " " + lastName + "\n" + "ID : " + Id + " Age : " + age + "\n"
+                + "\nUserName: " + userName + "\t Password: " + password + "\nSalary: " + salary + "\tEmail: " + email;
     }
 
 

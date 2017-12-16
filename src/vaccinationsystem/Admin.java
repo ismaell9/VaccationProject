@@ -25,7 +25,7 @@ public Admin (int pId,int pAge,String pFirstName,String pLastName ,String pEmail
 
 
    
-  
+  /*
 public boolean addadmin() {
         if (this.FManger.write(this.getadminData(), adminFileName, true)) {
             return true;
@@ -194,7 +194,7 @@ public void displaySroeKeeper() {
         else 
             System.out.println("Failed to insert ... !");
     }
-   
+   /*
    public void displayReservOfficer() {
         ReservOfficer x = new ReservOfficer();
         System.out.println(x.displayAllReservOfficers());
@@ -205,7 +205,7 @@ public void displaySroeKeeper() {
         System.out.println(x.searchReservOfficer(id));
     }
 
- 
+ */
       public void updateReservOfficer(int oldID, ReservOfficer newResValues) {
         ReservOfficer x = new ReservOfficer();
         x.updateRes(oldID, newResValues);
@@ -228,7 +228,11 @@ public void displaySroeKeeper() {
         }
         return false;
     }*/
-    
+    @Override
+    public String toString() {
+        return "I'm admin : " + pFirstName + " " + pLastName + "\n" + "ID : " + pId + " Age : " + pAge + "\n"
+                + "\nUserName: " + sUserName + "\t Password: " + sPassword + "\nSalary: " + sSalary;
+    }
     @Override
     public boolean login(String userName, String Pass) {
 

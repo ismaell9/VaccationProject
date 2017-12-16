@@ -5,7 +5,6 @@
  */
 package Frames.Panels;
 
-import vaccinationsystem.VaccinationSystem;
 import vaccinationsystem.Doctor;
 public class Doc_AddPanel extends javax.swing.JPanel {
 

@@ -108,7 +108,7 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
                 .addComponent(btnList)
                 .addGap(41, 41, 41)
                 .addComponent(btnUpdate)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
@@ -117,11 +117,11 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
         DynamicPanal.setLayout(DynamicPanalLayout);
         DynamicPanalLayout.setHorizontalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 744, Short.MAX_VALUE)
         );
         DynamicPanalLayout.setVerticalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 329, Short.MAX_VALUE)
+            .addGap(0, 453, Short.MAX_VALUE)
         );
 
         getContentPane().add(DynamicPanal, java.awt.BorderLayout.CENTER);
@@ -132,7 +132,7 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
     private void btnAddDocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDocActionPerformed
         // TODO add your handling code here:
         
-           p1.setVisible(true);
+          p1.setVisible(true);
           p2.setVisible(false);
           p3.setVisible(false);
   
