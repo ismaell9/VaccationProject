@@ -125,15 +125,13 @@ for (int i = 0; i < Invoices.size(); i++)
    
        }
   
-
-    public boolean  deleteAppointment ( int appointmentNumber){
-          ReadFromFile();
-        int index = getInvoiceIndex ( appointmentNumber); 
-    Invoices.remove(index);
-    commitToFile();
+    public boolean  deleteINVOICE ( int INVOICENumber){
+        ReadFromFile();
+        int index = getInvoiceIndex ( INVOICENumber); 
+        Invoices.remove(index);
+        commitToFile();
         return true;
     }
-
    
  public String DisplayAllInvoices() {
      ReadFromFile();
