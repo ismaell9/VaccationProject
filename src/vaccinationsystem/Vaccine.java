@@ -171,18 +171,32 @@ public class Vaccine implements Serializable{
         return v;
     }
  
-    public boolean searchVac(String vac){
+    public ArrayList searchVac(String vac){
         ArrayList s = (ArrayList<ArrayList>)(this.file.read(Vaccine.FILE_NAME));
         for(Object cs: s){
             ArrayList<Object> l = (ArrayList<Object>)cs;
             String f = (String)l.get(1);
-            if(f.equals(cs)){
+            if(f.equals(vac)){
                 System.out.println(cs);    
-            return true;
+                return l;
             }
             
         }
-            return false;
+            return null;
+        }
+    
+    public ArrayList searchVac(int id){
+        ArrayList s = (ArrayList<ArrayList>)(this.file.read(Vaccine.FILE_NAME));
+        for(Object cs: s){
+            ArrayList<Object> l = (ArrayList<Object>)cs;
+            int f = (int)l.get(0);
+            if(f == id){
+                System.out.println(cs);    
+                return l;
+            }
+            
+        }
+            return null;
         }
     }
 
