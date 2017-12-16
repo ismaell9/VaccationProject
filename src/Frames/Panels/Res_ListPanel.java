@@ -56,22 +56,22 @@ public class Res_ListPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
   public void addRowsTojTable() {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        Object rowData[] = new Object[8];
+        Object rowData[] = new Object[7];
 
         ReservOfficer e = new ReservOfficer();
         ArrayList<ReservOfficer> ReservOfficers = new ArrayList<ReservOfficer>();
         if(!ReservOfficers.isEmpty()){
-            ReservOfficers = e.displayAllReservOfficers();
+            ReservOfficers = e.ListAllReservOfficers();
             for (ReservOfficer x : ReservOfficers) {
                 rowData[0] = x.getPId();
                 rowData[1] = x.getPAge();

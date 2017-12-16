@@ -29,11 +29,9 @@ public staff()
       
       */
         
-        if (!sUserName.contains("@") || !sUserName.contains(".") ){
-            this.sUserName = MyEX.checkEmail("UserName");
-            } else {
-            this.sUserName = sUserName;
-        }
+       
+          this.sUserName = sUserName;
+       
         
          if (sPassword.length() < 8) {
             this.sPassword = MyEX.checkPassLength("Password");
@@ -51,11 +49,6 @@ public staff()
         
         
         
-/**
- * Person class setters and getters
- *Initializing Person attributes by setters and using it by getters
- * @param username
- */
     public void setUserName(String username){
         this.sUserName = username ;
     }
@@ -75,27 +68,13 @@ public staff()
     public double getSalary(){
         return this.sSalary;
     }
+      @Override
+    public boolean equals(Object o) {
+        staff u = (staff) o;
+        return pId == u.pId && pFirstName.equals(u.pFirstName) && pLastName.equals(u.pLastName) && pAge == u.pAge && pEmail.equals(u.pEmail) && sSalary == u.sSalary ;
+    }
         
+} 
     
     
-    
-    
-
-    public boolean login(String userName , char[] password) {
-        char[] c;
-        try{
-            c = this.getPassword().toCharArray();
-        }catch(NullPointerException e){
-            System.out.println(e);
-            return false;
-        }
-        if ( userName.equals(this.getUserName()) && Arrays.equals(c, password)){
-            return true ;
-        }
-        else {
-            System.out.println("the em@il and the password is false ! please try again");
-            return false ;
-        }
-        
-    }   
-}
+  

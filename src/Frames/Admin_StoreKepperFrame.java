@@ -14,7 +14,8 @@ import java.awt.GridBagLayout;
 
 
 public class Admin_StoreKepperFrame extends javax.swing.JInternalFrame {
-GridBagLayout layout = new GridBagLayout();
+
+    GridBagLayout layout = new GridBagLayout();
 
     Store_AddPanel p1;
     Store_ListPanel p2;
@@ -54,6 +55,8 @@ GridBagLayout layout = new GridBagLayout();
         btnUpdate = new javax.swing.JButton();
         DynamicPanal = new javax.swing.JPanel();
 
+        setClosable(true);
+
         btnAddStore.setText("Add New StoreKepper");
         btnAddStore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +71,7 @@ GridBagLayout layout = new GridBagLayout();
             }
         });
 
-        btnUpdate.setText("Update/Delet");
+        btnUpdate.setText("Update/Delete");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -81,25 +84,22 @@ GridBagLayout layout = new GridBagLayout();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAddStore, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnList, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAddStore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(btnUpdate)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(btnAddStore)
-                .addGap(39, 39, 39)
+                .addGap(83, 83, 83)
                 .addComponent(btnList)
-                .addGap(37, 37, 37)
+                .addGap(92, 92, 92)
                 .addComponent(btnUpdate)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
@@ -108,11 +108,11 @@ GridBagLayout layout = new GridBagLayout();
         DynamicPanal.setLayout(DynamicPanalLayout);
         DynamicPanalLayout.setHorizontalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 294, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
         );
         DynamicPanalLayout.setVerticalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 579, Short.MAX_VALUE)
         );
 
         getContentPane().add(DynamicPanal, java.awt.BorderLayout.CENTER);

@@ -1,12 +1,9 @@
 package vaccinationsystem;
 
-import java.io.File;
-import java.io.IOException;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /*
 import static vaccinationsystem.Doctor.Doctors;
@@ -14,36 +11,22 @@ import static vaccinationsystem.Doctor.Doctors;
 
 public class ReservOfficer extends staff implements Serializable  {
     
-    private static final long serialVersionUID = 7L;   
     public final String ReservOfficerFileName = "ReservOfficer.bin";
-    File file = new File(ReservOfficerFileName);
-    FileMangerBinary2 Fmanger =new FileMangerBinary2();
     public static ArrayList<ReservOfficer> reservOfficers = new ArrayList<>();
+    
     public ReservOfficer() {
-        if(!this.file.exists()){
-         try {
-             this.file.createNewFile();
-         } catch (IOException ex) {
-             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-         }
-    }
-
+     
     }
     
    
     
     public ReservOfficer(int pId, int pAge, String pFirstName, String pLastName, String pEmail, String sUserName, String sPassword, double sSalary) {
         super(pId, pAge, pFirstName, pLastName, pEmail, sUserName, sPassword, sSalary);
-        if(!this.file.exists()){
-            try {
-            this.file.createNewFile();
-            } catch (IOException ex) {
-             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        
         }
        
    
-    }
+    
    /*
      Reservation reservation;
    public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, Appointment apoint, String VaccineName){
@@ -87,10 +70,10 @@ public class ReservOfficer extends staff implements Serializable  {
 }
          
          private void loadFromFile() {
-            if(file.length()!=0)
-             reservOfficers = (ArrayList<ReservOfficer>) this.Fmanger.read(ReservOfficerFileName);
+             reservOfficers = (ArrayList<ReservOfficer>) this.FManger.read(ReservOfficerFileName);
     }
-     public ArrayList<ReservOfficer> displayAllReservOfficers() {
+         
+     public ArrayList<ReservOfficer> ListAllReservOfficers() {
         loadFromFile();
         return reservOfficers;
     }
@@ -120,14 +103,12 @@ public class ReservOfficer extends staff implements Serializable  {
     }
   
    public boolean commitToFilee() {
-        return Fmanger.write( ReservOfficerFileName,reservOfficers);
+        return FManger.write( ReservOfficerFileName,reservOfficers);
     }
   
   
-  
-  
-  
-   public boolean UpdateRes() {
+ 
+   public boolean UpdateReservationOfficer() {
         loadFromFile();
         int index = getReservOfficersIndex(this.pId);
 
@@ -140,7 +121,7 @@ public class ReservOfficer extends staff implements Serializable  {
         return false;
     }
 
-public boolean deleteRess(int id) {
+public boolean deleteReservationOfficer(int id) {
         loadFromFile();
         int index = getReservOfficersIndex(id);
 
@@ -153,25 +134,14 @@ public boolean deleteRess(int id) {
         return false;
     }
   
-public void updateRes(int oldID, ReservOfficer x){
-        loadFromFile();
-        int index = getReservOfficersIndex(oldID);
-        reservOfficers.set(index, x);
-        commitToFilee();
-    } 
-    
-    public void deleteRes(int id){
-        loadFromFile();
-        int index = getReservOfficersIndex(id);
-        reservOfficers.remove(index);
-        commitToFilee();
-    } 
+
            
     @Override
     public String toString() {
         return "I'm Reservation Officer : " + pFirstName + " " + pLastName + "\n" + "ID : " + pId + " Age : " + pAge + "\n"
                 + "\nUserName: " + sUserName + "\t Password: " + sPassword + "\nSalary: " + sSalary;
     } 
+    
     @Override
     public boolean login(String userName, String Pass) {
         loadFromFile();

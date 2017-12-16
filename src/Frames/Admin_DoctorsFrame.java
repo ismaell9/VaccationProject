@@ -16,11 +16,6 @@ import java.awt.GridBagLayout;
 
 
 
-
-
-
-
-
 public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
 
     /**
@@ -63,6 +58,8 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
         btnUpdate = new javax.swing.JButton();
         DynamicPanal = new javax.swing.JPanel();
 
+        setClosable(true);
+
         btnAddDoc.setText("Add New Doctor");
         btnAddDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,24 +88,21 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnList)
-                    .addComponent(btnUpdate))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAddDoc)
+                    .addComponent(btnAddDoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(105, 105, 105)
+                .addGap(86, 86, 86)
                 .addComponent(btnAddDoc)
-                .addGap(28, 28, 28)
+                .addGap(95, 95, 95)
                 .addComponent(btnList)
-                .addGap(41, 41, 41)
+                .addGap(85, 85, 85)
                 .addComponent(btnUpdate)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.LINE_START);
@@ -117,11 +111,11 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
         DynamicPanal.setLayout(DynamicPanalLayout);
         DynamicPanalLayout.setHorizontalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addGap(0, 654, Short.MAX_VALUE)
         );
         DynamicPanalLayout.setVerticalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addGap(0, 576, Short.MAX_VALUE)
         );
 
         getContentPane().add(DynamicPanal, java.awt.BorderLayout.CENTER);

@@ -156,7 +156,7 @@ for (int i = 0; i < Invoices.size(); i++)
         /*Date invoiceDate , double voiceCost, String cGender ,String pEmail  ,String pLastName
         , String pFirstName, int pAge, String cAdress , int cPhoneNumber ,String date appointment date , double Totalcost
        , int vacId, String vacTradeName , String vacAbbreviation, String vacType, double price*/
-        String name    = "Name           :  ";
+       String name    = "Name           :  ";
         name = name + cli.getPFirstName() + " " + cli.getPLastName();
                 
         String Date    = "CheckOut Date  :  12.7.2017";

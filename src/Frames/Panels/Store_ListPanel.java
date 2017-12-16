@@ -56,11 +56,11 @@ public class Store_ListPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -71,7 +71,7 @@ public class Store_ListPanel extends javax.swing.JPanel {
         StoreKeeper e = new StoreKeeper();
         ArrayList<StoreKeeper> StoreKeepers = new ArrayList<>();
         if(!StoreKeepers.isEmpty()){
-            StoreKeepers = e.displayAllStoreKeeper();
+            StoreKeepers = e.ListStoreKeepers();
 
             for (StoreKeeper x : StoreKeepers) {
                 rowData[0] = x.getPId();

@@ -19,7 +19,7 @@ public class Doc_ListPanel extends javax.swing.JPanel {
      */
     public Doc_ListPanel() {
         initComponents();
-        //addRowsTojTable();
+        addRowsTojTable();
     }
 
     /**
@@ -56,22 +56,22 @@ public class Doc_ListPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
   public void addRowsTojTable() {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        Object rowData[] = new Object[8];
+        Object rowData[] = new Object[7];
 
         Doctor e = new Doctor();
         ArrayList<Doctor> Doctors = new ArrayList<Doctor>();
         
-        Doctors = e.displayAllDoctors();
+        Doctors = e.listDoctors();
         if(!Doctors.isEmpty()){
             for (Doctor x : Doctors) {
                 rowData[0] = x.getPId();

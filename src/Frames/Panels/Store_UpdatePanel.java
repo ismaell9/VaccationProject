@@ -5,7 +5,6 @@
  */
 package Frames.Panels;
 
-import vaccinationsystem.VaccinationSystem;
 import vaccinationsystem.StoreKeeper;
 
 
@@ -39,7 +38,7 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
         jTextFieldAge = new javax.swing.JTextField();
         jTextFieldFname = new javax.swing.JTextField();
         jTextFieldLname = new javax.swing.JTextField();
-        jTextFieldUserName = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         jLabelSucessOrFail = new javax.swing.JLabel();
         btnUpdate = new javax.swing.JButton();
@@ -49,6 +48,8 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jTextFieldSalary = new javax.swing.JTextField();
         jTextFieldSearchKey = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jTextFieldUsername = new javax.swing.JTextField();
 
         jLabel1.setText("ID");
 
@@ -93,7 +94,15 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setText("jLabel9");
+        jLabel9.setText("Salary");
+
+        jTextFieldSalary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldSalaryActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("User name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,34 +120,40 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
                         .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)))
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel6))
+                                    .addGap(4, 4, 4)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
+                                .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel7))))
-                        .addGap(29, 29, 29)
+                        .addGap(33, 33, 33)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
                                 .addComponent(btnUpdate)
-                                .addGap(81, 81, 81)
-                                .addComponent(btnDelete))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDelete)
+                                .addGap(17, 17, 17))
                             .addComponent(jTextFieldAge)
                             .addComponent(jTextFieldID)
                             .addComponent(jTextFieldFname)
                             .addComponent(jTextFieldLname)
-                            .addComponent(jTextFieldUserName)
+                            .addComponent(jTextFieldEmail)
                             .addComponent(jPasswordField1)
                             .addComponent(jPasswordField2)
-                            .addComponent(jTextFieldSalary, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))))
-                .addContainerGap(55, Short.MAX_VALUE))
+                            .addComponent(jTextFieldSalary, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(jTextFieldUsername))))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,17 +162,20 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
                     .addComponent(jTextFieldSearchKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(jLabelSucessOrFail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextFieldFname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,10 +183,14 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldLname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextFieldUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jTextFieldUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -177,11 +199,11 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jTextFieldSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete))
@@ -193,7 +215,7 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
 
   if (!jTextFieldSearchKey.getText().equals("")) {
             StoreKeeper x = new StoreKeeper();
-            StoreKeeper returned = x.searchStoreById(Integer.parseInt(jTextFieldSearchKey.getText()));
+            StoreKeeper returned = x.searchStoreKeeperById(Integer.parseInt(jTextFieldSearchKey.getText()));
             if (returned.getPId()> 0) {
                 setPanelData(returned);
             } else {
@@ -210,13 +232,14 @@ public class Store_UpdatePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextFieldAgeActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") && !jTextFieldLname.getText().equals("") && !jTextFieldUserName.getText().equals("") && !jPasswordField1.getText().equals("") && !jPasswordField2.getText().equals("") && !jTextFieldAge.getText().equals("") && !jTextFieldSalary.getText().equals("")) {
+if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") && !jTextFieldLname.getText().equals("") && !jTextFieldEmail.getText().equals("") && !jPasswordField1.getText().equals("") && !jPasswordField2.getText().equals("") && !jTextFieldAge.getText().equals("") && !jTextFieldSalary.getText().equals("")) {
 
             StoreKeeper x = new StoreKeeper();
             x.setPId(Integer.parseInt(jTextFieldID.getText()));
             x.setPFirstName(jTextFieldFname.getText());
             x.setPLastName(jTextFieldLname.getText());
-            x.setUserName(jTextFieldUserName.getText());
+            x.setPEmail(jTextFieldEmail.getText());
+            x.setUserName(jTextFieldUsername.getText());
             if (jPasswordField1.getText().equals(jPasswordField2.getText())) {
                 x.setPassword(jPasswordField1.getText());
             }
@@ -225,7 +248,7 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
 
             x.setSalary(Double.parseDouble(jTextFieldSalary.getText()));
 
-            if (x.UpdateStore()) {
+            if (x.UpdateStoreKeeper()) {
                 jLabelSucessOrFail.setText("Updated Successfully ... !");
                 resetPanelData();
             } else 
@@ -243,7 +266,7 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
 
   if (!jTextFieldSearchKey.getText().equals("")) {
            StoreKeeper x = new StoreKeeper();
-            if (x.deleteStoree(Integer.parseInt(jTextFieldSearchKey.getText()))) {
+            if (x.deleteStoreKeeper(Integer.parseInt(jTextFieldSearchKey.getText()))) {
                 jLabelSucessOrFail.setText("Deleted Successfully ... !");
                 resetPanelData();
             } else {
@@ -256,13 +279,18 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
   
 
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void jTextFieldSalaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSalaryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldSalaryActionPerformed
   
     
      protected void resetPanelData() {
         jTextFieldID.setText("");
         jTextFieldFname.setText("");
         jTextFieldLname.setText("");
-        jTextFieldUserName.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldUsername.setText("");
         jPasswordField1.setText("");
         jPasswordField2.setText("");
         jTextFieldAge.setText("");
@@ -273,7 +301,8 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
         jTextFieldID.setText("" + x.getPId());
         jTextFieldFname.setText("" + x.getPFirstName());
         jTextFieldLname.setText("" + x.getPLastName());
-        jTextFieldUserName.setText("" + x.getUserName());
+        jTextFieldEmail.setText("" + x.getPEmail());
+        jTextFieldUsername.setText("" + x.getUserName());
         jPasswordField1.setText("" + x.getPassword());
         jPasswordField2.setText("" + x.getPassword());
         jTextFieldAge.setText("" + x.getPAge());
@@ -293,16 +322,18 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelSucessOrFail;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextFieldAge;
+    private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldFname;
     private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldLname;
     private javax.swing.JTextField jTextFieldSalary;
     private javax.swing.JTextField jTextFieldSearchKey;
-    private javax.swing.JTextField jTextFieldUserName;
+    private javax.swing.JTextField jTextFieldUsername;
     // End of variables declaration//GEN-END:variables
 }

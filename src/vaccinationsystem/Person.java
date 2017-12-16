@@ -13,7 +13,7 @@ public class Person{
     protected String pEmail ;
 
        
-    FileManger FManger = new FileManger();
+    FileMangerBinary2 FManger = new FileMangerBinary2();
     
     static MyException MyEX = new MyException("Vaccination Exception");
 
@@ -25,12 +25,7 @@ public class Person{
     public Person(int pId , int pAge , String pFirstName , String pLastName , String pEmail)
   {
       
-      /*this.pId = pId ;
-      this.pAge = pAge ;
-      this.pFirstName = pFirstName ;
-      this.pLastName = pLastName ;
-      this.pEmail = pEmail ;
-      */
+    
       if (pId < 0) {
             this.pId = MyEX.checkPositive("ID");
         } else {
@@ -46,10 +41,10 @@ public class Person{
         this.pFirstName = pFirstName;
         this.pLastName = pLastName;
         
-        if (pEmail.contains("@") && pEmail.contains(".")) {
-            this.pEmail = pEmail;
+        if (!pEmail.contains("@") && !pEmail.contains(".")) {
+                this.pEmail = MyEX.checkEmail("Email");
         } else {
-            this.pEmail = MyEX.checkEmail("Email");
+            this.pEmail= pEmail;
         }
       
       }
