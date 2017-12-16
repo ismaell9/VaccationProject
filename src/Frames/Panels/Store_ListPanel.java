@@ -70,9 +70,9 @@ public class Store_ListPanel extends javax.swing.JPanel {
 
         StoreKeeper e = new StoreKeeper();
         ArrayList<StoreKeeper> StoreKeepers = new ArrayList<>();
+        
+        StoreKeepers = e.ListStoreKeepers();
         if(!StoreKeepers.isEmpty()){
-            StoreKeepers = e.ListStoreKeepers();
-
             for (StoreKeeper x : StoreKeepers) {
                 rowData[0] = x.getPId();
                 rowData[1] = x.getPAge();
