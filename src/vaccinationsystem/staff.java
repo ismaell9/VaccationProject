@@ -7,7 +7,7 @@ import java.util.Arrays;
  *
  * @author Reputation
  */
-public  abstract class staff extends Person implements Ilogin, Serializable{
+public  abstract class staff extends Person implements Ilogin , Serializable{
     
     protected String sUserName;
     protected String sPassword;

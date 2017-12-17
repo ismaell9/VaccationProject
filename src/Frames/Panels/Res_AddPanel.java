@@ -184,10 +184,10 @@ public class Res_AddPanel extends javax.swing.JPanel {
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
 
-if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") && !jTextFieldLname.getText().equals("") && !jTextFieldEmail.getText().equals("") && !jPasswordField1.getText().equals("") && !jPasswordField2.getText().equals("") && !jTextFieldAge.getText().equals("") && !jTextFieldSalary.getText().equals("")) {
+if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") && !jTextFieldLname.getText().equals("") && !jTextFieldEmail.getText().equals("") && !jTextFieldUsername.getText().equals("") && !jPasswordField1.getText().equals("") && !jPasswordField2.getText().equals("") && !jTextFieldAge.getText().equals("") && !jTextFieldSalary.getText().equals("")) {
 
             ReservOfficer x = new ReservOfficer();
-            x.setPassword(jTextFieldID.getText());
+            x.setPId(Integer.parseInt(jTextFieldID.getText()));
             x.setPFirstName(jTextFieldFname.getText());
             x.setPLastName(jTextFieldLname.getText());
             x.setPEmail(jTextFieldEmail.getText());

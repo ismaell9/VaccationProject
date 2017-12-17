@@ -71,6 +71,12 @@ public class Doc_UpdatePanel extends javax.swing.JPanel {
             }
         });
 
+        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmailActionPerformed(evt);
+            }
+        });
+
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +252,7 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
             x.setPFirstName(jTextFieldFname.getText());
             x.setPLastName(jTextFieldLname.getText());
             x.setPEmail(jTextFieldEmail.getText());
-            x.setUserName(jTextFieldEmail.getText());
+            x.setUserName(jTextFieldUsername.getText());
             if (jPasswordField1.getText().equals(jPasswordField2.getText())) {
                 x.setPassword(jPasswordField1.getText());
             }
@@ -290,6 +296,10 @@ if (!jTextFieldID.getText().equals("") && !jTextFieldFname.getText().equals("") 
     private void jTextFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsernameActionPerformed
+
+    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmailActionPerformed
   
     
      protected void resetPanelData() {

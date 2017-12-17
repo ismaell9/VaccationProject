@@ -22,7 +22,7 @@ public class Vaccine implements Serializable{
      private double price;
      
     final private FileMangerBinary file = new FileMangerBinary();
-    final static String FILE_NAME = "E:\\VaccinationSystem\\Vaccine.bin";
+    final static String FILE_NAME = "Vaccine.bin";
     File tmpFile = new File(FILE_NAME);
     private static ArrayList<ArrayList> vacs = new ArrayList<>();
     
@@ -140,19 +140,25 @@ public class Vaccine implements Serializable{
                 i.remove();
             }
             
-            write = this.updateVac(s);
+            write = this.updateVac2(s);
         }
         return write;
     }
 
 
-    private boolean updateVac(ArrayList<ArrayList> vacs){
+    public boolean updateVac(){//nagham el 3mlaha 
         Vaccine.vacs = vacs;
         boolean write = this.file.write(Vaccine.FILE_NAME, Vaccine.vacs);
     
         return write;
     }
-
+    ///
+    private boolean updateVac2(ArrayList<ArrayList> vacs){
+        Vaccine.vacs = vacs;
+        boolean write = this.file.write(Vaccine.FILE_NAME, Vaccine.vacs);
+    
+        return write;
+    }
 /**
  * method return type maybe changed
  */
@@ -198,5 +204,8 @@ public class Vaccine implements Serializable{
         }
             return null;
         }
+    
+
+    
     }
 

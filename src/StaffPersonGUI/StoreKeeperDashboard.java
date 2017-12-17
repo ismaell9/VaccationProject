@@ -1,18 +1,22 @@
 package StaffPersonGUI;
 
-import Store.Add_vaccine;
-import Store.Edit_Vaccine;
-import Store.List_Vaccine;
-import java.util.ArrayList;
+
+import Frames.Store_Frame;
+import vaccinationsystem.BarChart;
 import vaccinationsystem.Store;
 import vaccinationsystem.Vaccine;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import org.jfree.ui.RefineryUtilities;
 
 public class StoreKeeperDashboard extends javax.swing.JFrame {
 
     /**
-     * Creates new form StoreKeeperDashboard
+     * Creates new form StoreKeeperDashboard2
      */
     public StoreKeeperDashboard() {
+        setLocation(250, 10);
+        setTitle("Store Keeper Dashboard");
         initComponents();
     }
 
@@ -25,125 +29,125 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jButton_ListVaccine = new javax.swing.JButton();
-        jButtonAddVaccine = new javax.swing.JButton();
-        jButton_GenerateReport = new javax.swing.JButton();
-        jButton_EditVaccine = new javax.swing.JButton();
-        jButton_deleteVaccine = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        Desktop = new javax.swing.JDesktopPane();
+        jMenuBar1_storeKeeper = new javax.swing.JMenuBar();
         jMenu1_back = new javax.swing.JMenu();
+        exit = new javax.swing.JMenuItem();
+        jMenu1_store = new javax.swing.JMenu();
+        jMenuItem1_store = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        generateReport = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(204, 255, 255));
 
-        jButton_ListVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jButton_ListVaccine.setText("List Vaccine");
-        jButton_ListVaccine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_ListVaccineActionPerformed(evt);
-            }
-        });
+        Desktop.setBackground(new java.awt.Color(51, 0, 51));
 
-        jButtonAddVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jButtonAddVaccine.setText("Add Vaccine");
-        jButtonAddVaccine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddVaccineActionPerformed(evt);
-            }
-        });
-
-        jButton_GenerateReport.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jButton_GenerateReport.setText("Generate Report");
-        jButton_GenerateReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_GenerateReportActionPerformed(evt);
-            }
-        });
-
-        jButton_EditVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jButton_EditVaccine.setText("Edit Vaccine");
-        jButton_EditVaccine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_EditVaccineActionPerformed(evt);
-            }
-        });
-
-        jButton_deleteVaccine.setFont(new java.awt.Font("Verdana", 3, 14)); // NOI18N
-        jButton_deleteVaccine.setText("Delete Vaccine");
-        jButton_deleteVaccine.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_deleteVaccineActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
+        Desktop.setLayout(DesktopLayout);
+        DesktopLayout.setHorizontalGroup(
+            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 729, Short.MAX_VALUE)
+        );
+        DesktopLayout.setVerticalGroup(
+            DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 441, Short.MAX_VALUE)
+        );
 
         jMenu1_back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu1_back.setText("Back");
-        jMenuBar1.add(jMenu1_back);
+        jMenu1_back.setText("File");
 
-        setJMenuBar(jMenuBar1);
+        exit.setText("Exit");
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        jMenu1_back.add(exit);
+
+        jMenuBar1_storeKeeper.add(jMenu1_back);
+
+        jMenu1_store.setText("Store");
+        jMenu1_store.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1_storeActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1_store.setText("Open Store");
+        jMenuItem1_store.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1_storeActionPerformed(evt);
+            }
+        });
+        jMenu1_store.add(jMenuItem1_store);
+
+        jMenuBar1_storeKeeper.add(jMenu1_store);
+
+        jMenu1.setText("Report");
+
+        generateReport.setText("Generate Report");
+        generateReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateReportActionPerformed(evt);
+            }
+        });
+        jMenu1.add(generateReport);
+
+        jMenuBar1_storeKeeper.add(jMenu1);
+
+        setJMenuBar(jMenuBar1_storeKeeper);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton_GenerateReport))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jButtonAddVaccine))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jButton_EditVaccine)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton_deleteVaccine)
-                        .addGap(173, 173, 173))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton_ListVaccine)
-                        .addGap(35, 35, 35))))
+            .addGap(0, 729, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Desktop))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jButtonAddVaccine)
-                .addGap(36, 36, 36)
-                .addComponent(jButton_EditVaccine)
-                .addGap(37, 37, 37)
-                .addComponent(jButton_deleteVaccine)
-                .addGap(37, 37, 37)
-                .addComponent(jButton_ListVaccine)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(jButton_GenerateReport)
-                .addContainerGap())
+            .addGap(0, 441, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(Desktop))
         );
-
-        getAccessibleContext().setAccessibleName("Search");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_GenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GenerateReportActionPerformed
+    private void jMenu1_storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1_storeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu1_storeActionPerformed
+
+    private void jMenuItem1_storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_storeActionPerformed
+        // TODO add your handling code here:
+        Store_Frame s = new Store_Frame();
+        Desktop.add(s);
+        s.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1_storeActionPerformed
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+        // TODO add your handling code here:
+        int c = JOptionPane.showConfirmDialog(null, "Are you Sure, System will Exit");
+        if (c == JOptionPane.OK_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_exitActionPerformed
+    
+    
+    
+    private void generateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateReportActionPerformed
         // TODO add your handling code here:
         Store x = new Store();
-        ArrayList<Store> s = x.listStore();
-        double[] values = new double[s.size()];
-        String[] names = new String[s.size()];
-        for (int i = 0; i < s.size(); i++) {
-            values[i] = s.get(i).getstoreId();
-            values[i] = s.get(i).getstoreFreeSpace();
-            values[i] = s.get(i).getsetstoreCapacity();
-            
-            Vaccine vac = new Vaccine();
-            
-            //names[i] = vac.get(i).get_vacTradeName();
+        ArrayList<Store> stores = x.listStore();
+        
+        Vaccine v =new Vaccine();
+      
+        double[] values = new double[stores.size()];
+        String[] names = new String[stores.size()];
+        for (int i = 0; i < stores.size(); i++) {
+            values[i] = stores.get(i).getsetstoreCapacity();
+            //names[i] = stores.get(i).get_vacTradeName();
         }
         /*        for (int i = 0; i < 25; i++) {
 
@@ -155,40 +159,15 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             }
         }
          */
-        /*BarChart chart = new BarChart(" Store Report ", names, values);
+        BarChart chart = new BarChart(" Store Report ", names, values);
 
         chart.pack();
         RefineryUtilities.centerFrameOnScreen(chart);
-        chart.setVisible(true);*/
+        chart.setVisible(true);
         
-    }//GEN-LAST:event_jButton_GenerateReportActionPerformed
+    }//GEN-LAST:event_generateReportActionPerformed
 
-    private void jButtonAddVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddVaccineActionPerformed
-        // TODO add your handling code here:
-        Add_vaccine obj=new Add_vaccine();
-        obj.setVisible(true);
-        
-    }//GEN-LAST:event_jButtonAddVaccineActionPerformed
-
-    private void jButton_EditVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_EditVaccineActionPerformed
-        // TODO add your handling code here:
-       
-        Edit_Vaccine obj2=new Edit_Vaccine();
-        obj2.setVisible(true);
-    }//GEN-LAST:event_jButton_EditVaccineActionPerformed
-
-    private void jButton_ListVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ListVaccineActionPerformed
-        // TODO add your handling code here:
-        List_Vaccine obj3=new List_Vaccine();
-        obj3.setVisible(true);
-    }//GEN-LAST:event_jButton_ListVaccineActionPerformed
-
-    private void jButton_deleteVaccineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteVaccineActionPerformed
-        // TODO add your handling code here:
-        Edit_Vaccine obj2=new Edit_Vaccine();
-        obj2.setVisible(true);
-    }//GEN-LAST:event_jButton_deleteVaccineActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -215,6 +194,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(StoreKeeperDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -225,13 +205,13 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAddVaccine;
-    private javax.swing.JButton jButton_EditVaccine;
-    private javax.swing.JButton jButton_GenerateReport;
-    private javax.swing.JButton jButton_ListVaccine;
-    private javax.swing.JButton jButton_deleteVaccine;
+    private javax.swing.JDesktopPane Desktop;
+    private javax.swing.JMenuItem exit;
+    private javax.swing.JMenuItem generateReport;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu1_back;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu jMenu1_store;
+    private javax.swing.JMenuBar jMenuBar1_storeKeeper;
+    private javax.swing.JMenuItem jMenuItem1_store;
     // End of variables declaration//GEN-END:variables
 }

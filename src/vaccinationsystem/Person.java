@@ -1,13 +1,11 @@
 package vaccinationsystem;
 
-//import java.io.Serializable;
 
 import java.io.Serializable;
 
 
 
 public class Person implements Serializable{
-    //private static final long serialVersionUID = 0L;
 
     protected int pId ;
     protected int pAge ;
@@ -59,7 +57,7 @@ public class Person implements Serializable{
     }    
     
     public void setPAge(int age){ // this function to check if age true or false
-               this.pAge = pAge ;
+               this.pAge = age ;
             }
       
     public void setPFirstName(String fname){
@@ -72,7 +70,7 @@ public class Person implements Serializable{
     
     public void setPEmail(String email){ // this function to check if Ema@il true or false
         
-        this.pEmail = pEmail ;
+        this.pEmail = email ;
            
     }    
     

@@ -111,7 +111,7 @@ public class Admin_DoctorsFrame extends javax.swing.JInternalFrame {
         DynamicPanal.setLayout(DynamicPanalLayout);
         DynamicPanalLayout.setHorizontalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 634, Short.MAX_VALUE)
+            .addGap(0, 654, Short.MAX_VALUE)
         );
         DynamicPanalLayout.setVerticalGroup(
             DynamicPanalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -56,11 +56,17 @@ public class Store_ListPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 606, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -70,9 +76,9 @@ public class Store_ListPanel extends javax.swing.JPanel {
 
         StoreKeeper e = new StoreKeeper();
         ArrayList<StoreKeeper> StoreKeepers = new ArrayList<>();
-        
+
         StoreKeepers = e.ListStoreKeepers();
-        if(!StoreKeepers.isEmpty()){
+
             for (StoreKeeper x : StoreKeepers) {
                 rowData[0] = x.getPId();
                 rowData[1] = x.getPAge();
@@ -84,7 +90,7 @@ public class Store_ListPanel extends javax.swing.JPanel {
 
                model.addRow(rowData);
             }
-        }
+        
 
     }
 

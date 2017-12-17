@@ -70,8 +70,9 @@ public class Res_ListPanel extends javax.swing.JPanel {
 
         ReservOfficer e = new ReservOfficer();
         ArrayList<ReservOfficer> ReservOfficers = new ArrayList<ReservOfficer>();
-            ReservOfficers = e.ListAllReservOfficers();
-        if(!ReservOfficers.isEmpty()){
+
+        ReservOfficers = e.ListAllReservOfficers();
+        
             for (ReservOfficer x : ReservOfficers) {
                 rowData[0] = x.getPId();
                 rowData[1] = x.getPAge();
@@ -82,7 +83,7 @@ public class Res_ListPanel extends javax.swing.JPanel {
                 rowData[6] = x.getSalary();
                 model.addRow(rowData);
             }
-        }
+        
 
     }
 
