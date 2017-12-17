@@ -2,8 +2,11 @@ package vaccinationsystem;
 
 //import java.io.Serializable;
 
+import java.io.Serializable;
 
-public class Person{
+
+
+public class Person implements Serializable{
     //private static final long serialVersionUID = 0L;
 
     protected int pId ;
