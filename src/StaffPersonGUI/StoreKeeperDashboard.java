@@ -1,7 +1,6 @@
 package StaffPersonGUI;
 
-
-import Frames.Store_Frame;
+import Frames.StoreFrame;
 import vaccinationsystem.BarChart;
 import vaccinationsystem.Store;
 import vaccinationsystem.Vaccine;
@@ -16,7 +15,6 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
      */
     public StoreKeeperDashboard() {
         setLocation(250, 10);
-        setTitle("Store Keeper Dashboard");
         initComponents();
     }
 
@@ -39,18 +37,17 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
         generateReport = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Desktop.setBackground(new java.awt.Color(51, 0, 51));
+        setTitle("StoreKeeper Dashboard");
 
         javax.swing.GroupLayout DesktopLayout = new javax.swing.GroupLayout(Desktop);
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
+            .addGap(0, 844, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
+            .addGap(0, 601, Short.MAX_VALUE)
         );
 
         jMenu1_back.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -101,15 +98,11 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 729, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Desktop))
+            .addComponent(Desktop)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 441, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(Desktop))
+            .addComponent(Desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -121,7 +114,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
 
     private void jMenuItem1_storeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1_storeActionPerformed
         // TODO add your handling code here:
-        Store_Frame s = new Store_Frame();
+        StoreFrame s = new StoreFrame();
         Desktop.add(s);
         s.setVisible(true);
     }//GEN-LAST:event_jMenuItem1_storeActionPerformed
@@ -133,9 +126,7 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_exitActionPerformed
-    
-    
-    
+
     private void generateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateReportActionPerformed
         // TODO add your handling code here:
         Store x = new Store();
@@ -149,24 +140,14 @@ public class StoreKeeperDashboard extends javax.swing.JFrame {
             values[i] = stores.get(i).getsetstoreCapacity();
             //names[i] = stores.get(i).get_vacTradeName();
         }
-        /*        for (int i = 0; i < 25; i++) {
-
-            names[i] = "Item " + i;
-            if (i % 2 == 0) {
-                values[i] = i * 5 + 1;
-            } else {
-                values[i] = i * 3 + 2;
-            }
-        }
-         */
         BarChart chart = new BarChart(" Store Report ", names, values);
 
         chart.pack();
         RefineryUtilities.centerFrameOnScreen(chart);
+        Desktop.add(chart);
         chart.setVisible(true);
         
     }//GEN-LAST:event_generateReportActionPerformed
-
     
     /**
      * @param args the command line arguments
