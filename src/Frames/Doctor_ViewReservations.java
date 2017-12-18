@@ -5,6 +5,8 @@
  */
 package Frames;
 
+import Frames.Panels.Doc_PushComments;
+import Frames.Panels.Doc_listReserv;
 import Frames.Panels.Store_AddPanel;
 import Frames.Panels.Store_ListPanel;
 import Frames.Panels.Store_UpdatePanel;
@@ -21,19 +23,16 @@ public class Doctor_ViewReservations extends javax.swing.JInternalFrame {
      * Creates new form Doctor_ViewReservations
      */
     
-    GridBagLayout layout = new GridBagLayout();
+    GridBagLayout layout;
 
     Store_AddPanel p1;
     Store_ListPanel p2;
-    Store_UpdatePanel p3;
     
     public Doctor_ViewReservations() {
         initComponents();
     
-        p1 = new Store_AddPanel();
-        p2 = new Store_ListPanel();
+        layout = new GridBagLayout();
 
-        DynamicPanal.setLayout(layout);
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -134,10 +133,15 @@ public class Doctor_ViewReservations extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        p1.setVisible(true);
+        p2.setVisible(false);
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        p1.setVisible(false);
+        p2.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
