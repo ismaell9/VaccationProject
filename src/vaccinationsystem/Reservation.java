@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class Reservation implements Serializable {
     
     public int ReserId;
-    
+    private String comments;
+
     public String date ;
     private final String ReservationFileName ="Reservation.bin";
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
@@ -139,6 +140,19 @@ public class Reservation implements Serializable {
     public String toString(){
         return "\n Client Name : " + c.pFirstName + " " + c.pLastName + "\n" + "ID : " + c.pId + " Age : " + c.pAge + "\n"
                +"phone Number : "+ c.cPhoneNumber + "Address : " + c.cAdress + "\n" + "Email : " + c.pEmail + " Gender: " + c.cGender  + "\nAppointment :" + date + "\nVaccineName : " + vac.get_vac() + "\n";
+    }
+        /**
+     * @return the comments
+     */
+    public String getComments() {
+        return comments;
+    }
+
+    /**
+     * @param comments the comments to set
+     */
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 }
   
