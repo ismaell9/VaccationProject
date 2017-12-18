@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import org.faceless.pdf2.*;
+//import org.faceless.pdf2.*;
 import java.util.Date;
 import java.util.ArrayList;
 import java.io.Serializable;
@@ -14,36 +14,38 @@ import javax.mail.MessagingException;
 
 public class Invoice implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     public static ArrayList<Invoice> Invoices = new ArrayList <>();
     private final String InvoiceFileName = "Invoices.bin";
-    private final File file = new File(InvoiceFileName);
     FileMangerBinary2 FManger =new FileMangerBinary2();
-    protected final int service = 100;    
-    private String invoiceDAte;
-    protected int InvoiceNumber;
-    double TotalCost;
-    public Date currentdate ;
-    private Client cli = new Client ();
-    private Vaccine vac= new Vaccine ();
-    Person per = new Person ();
-    Appointment appoint = new Appointment ();
+    protected final int service = 30;    
+    //private String invoiceDAte;
+    //protected int InvoiceNumber;
+    double TotalCost = 0;
+   // public Date currentdate ;
+
+    Vaccine vac= new Vaccine ();
     Reservation rev = new Reservation  ();
     private Email generatEmail;
     //  Invoice inv = new Invoice();
     
    public Invoice (){
         
-       if(!this.file.exists()){
-          try {
-              this.file.createNewFile();
-          }catch(IOException ex){
-              Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-          }
-     }
-
+       
    }
-     
+   
+   //   public void AddNewReservation (int RId , int cID, String Fname,String Lname, int Age, String Email, int PhoneNumber, String Address,String Gender, String date, Vaccine v){
+    Reservation reserv;
+    Client c;
+     public Invoice (int RId , int cID, String Fname,String Lname, int Age, String Email, int PhoneNumber, String Address,String Gender, String date, Vaccine v){
+         
+         
+         reserv.ReserId = RId;
+        this.c = new Client (cID,Age,Fname,Lname,Email,PhoneNumber, Address, Gender);
+
+        reserv.date = date;
+        this.vac= v; 
+     }
+     /*
     public Invoice  (int invoiceNumber,String invoiceDate , double voiceCost, 
            int cID, String cGender ,String pEmail  ,String pLastName, 
            String pFirstName, int pAge, String cAdress , int cPhoneNumber ,
@@ -66,17 +68,11 @@ public class Invoice implements Serializable {
         vac.get_vacAbbreviation();
         this.InvoiceNumber = invoiceNumber;
        //this.currentdate = currentdate;
-       if(!this.file.exists()){
-            try {
-                this.file.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-            }
-       }
        
-}
+       
+}*/
     
-    
+    /*
   public void setinvoiceNumber (int INumber) {
         this.InvoiceNumber = INumber;
     }
@@ -92,47 +88,77 @@ public class Invoice implements Serializable {
  public Date getcurrentDate(){
  
     return this.currentdate;
- }
+ }*/
         
     public double invoiceSum(double Totalcost, int service){
         
         TotalCost = service + vac.get_price() ; 
         return TotalCost ;
     }
-
+/*
     void Generateinvoices(Date invoiceDate , double voiceCost, String cGender ,String pEmail  ,String pLastName
-    , String pFirstName, int pAge, int cPhoneNumber ,String date/*appointment date*/ , double Totalcost
+    , String pFirstName, int pAge, int cPhoneNumber ,String date , double Totalcost
    , int vacId, String vacTradeName , String vacAbbreviation, String vacType, double price
        ){
          ReadFromFile();
      commitToFile() ;
      
-    }
+    }*/
    
-      private void ReadFromFile() {
-           Invoices = (ArrayList<Invoice>) FManger.read(InvoiceFileName);
+      private void loadFromFile() {
+           Invoices = (ArrayList<Invoice>) this.FManger.read(InvoiceFileName);
        }
       
       public boolean commitToFile() {
         return FManger.write (InvoiceFileName, Invoices);
     }   
         
-public int getInvoiceIndex  (int InvoiceNumber){
-for (int i = 0; i < Invoices.size(); i++)
-            if(Invoices.get(i).getinvoiceNumber()==(InvoiceNumber))
+public int getInvoiceIndex  (int id){ //InvoiceNumber
+        for (int i = 0; i < Invoices.size(); i++)
+            if(Invoices.get(i).reserv.ReserId== id)
                 return i;
+        
         return -1;
-   
-       }
-  
-    public boolean  deleteINVOICE ( int INVOICENumber){
-        ReadFromFile();
-        int index = getInvoiceIndex ( INVOICENumber); 
-        Invoices.remove(index);
-        commitToFile();
-        return true;
     }
-   
+
+public Invoice searchInvoiceById(int id) {
+        Invoice temp = new Invoice();
+        loadFromFile();
+        int index = getInvoiceIndex(id);
+        if (index != -1) {
+            return Invoices.get(index);
+        } else {
+            return temp;
+        }
+    }
+   public boolean UpdateInvoice() {
+        loadFromFile();
+        int index = getInvoiceIndex(reserv.ReserId);
+
+        if (index != -1) {
+            Invoices.set(index, this);
+
+            return commitToFile();
+        }
+
+        return false;
+    }
+
+public boolean deleteInvoice(int id) {
+        loadFromFile();
+        int index = getInvoiceIndex(id);
+
+        if (index != -1) {
+           Invoices.remove(index);
+
+            return commitToFile();
+        }
+
+        return false;
+    }
+  
+    
+   /*
  public String DisplayAllInvoices() {
      ReadFromFile();
         String AllInvoices = "\n All Appointments :\n";
@@ -141,9 +167,9 @@ for (int i = 0; i < Invoices.size(); i++)
         }
         return AllInvoices ;
     }
-
+*/
  
-    public void invoicePdf() throws IOException, MessagingException{ 
+   /* public void invoicePdf() throws IOException, MessagingException{ 
         PDF pdf = new PDF();
 
         PDFPage page = pdf.newPage("A4");
@@ -156,7 +182,7 @@ for (int i = 0; i < Invoices.size(); i++)
         /*Date invoiceDate , double voiceCost, String cGender ,String pEmail  ,String pLastName
         , String pFirstName, int pAge, String cAdress , int cPhoneNumber ,String date appointment date , double Totalcost
        , int vacId, String vacTradeName , String vacAbbreviation, String vacType, double price*/
-       String name    = "Name           :  ";
+    /*   String name    = "Name           :  ";
         name = name + cli.getPFirstName() + " " + cli.getPLastName();
                 
         String Date    = "CheckOut Date  :  12.7.2017";
@@ -198,7 +224,7 @@ for (int i = 0; i < Invoices.size(); i++)
             //"muhammad.a.esmael@gmail.com","ahussien753@gmail.com","Invoice details","Invoice chechout"
             this.generatEmail = new Email("muhammad.a.esmael@gmail.com","ahussien753@gmail.com","Invoice details","Invoice checkout","Invoice.pdf","C:\\Users\\Reputation\\Documents\\NetBeansProjects\\FinalProject\\FinalProject\\Invoice.pdf");
         }   this.generatEmail.generateAndSendEmail();
-   }
+   }*/
 
 }
 

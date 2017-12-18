@@ -11,10 +11,10 @@ import java.util.Iterator;
  */
 public class Client extends Person implements Serializable{
     
-    private int cPhoneNumber;
-    private String cAdress;
-    private String cGender;
-    final private FileMangerBinary file = new FileMangerBinary();
+    protected int cPhoneNumber;
+    protected String cAdress;
+    protected String cGender;
+    
     final static String FILE_NAME = "Client.bin";
     public static ArrayList<Client> clients = new ArrayList<Client>();
     

@@ -44,9 +44,9 @@ public class ReservOfficer extends staff implements Serializable  {
    Reservation reservation;
    Invoice INVO;
    
-   public void AddNewReservation (int ID ,String Fname,String Lname, int age, String Email,String Gender, String date , String VaccineName){
+   public void AddNewReservation (int RId , int cID, String Fname,String Lname, int Age, String Email, int PhoneNumber, String Address,String Gender, String date, Vaccine v){
        
-       this.reservation = new Reservation (ID, Fname, Lname, age,  Email, Gender, date ,VaccineName);
+       this.reservation = new Reservation (RId , cID ,  Fname, Lname,  Age,  Email,  PhoneNumber,  Address, Gender,  date,  v);
        
     if (reservation.AddReservation()) {
        System.out.println(reservation.toString() + "added successfully");

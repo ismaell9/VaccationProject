@@ -27,11 +27,11 @@ public Doctor() {
        
     
 }
+     ArrayList<Reservation> reserv =new ArrayList<>();
 
 public void displayReservation(){
     Reservation r = new Reservation();
-    String se = r.displayAllReservation();
-    System.out.println(se);
+     reserv = r.ListAllReservation();
 }
     
 

@@ -1,66 +1,72 @@
 package vaccinationsystem;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 
 public class Reservation implements Serializable {
-    Appointment appoint;
+    
+    public int ReserId;
+    
     public String date ;
-    private static final long serialVersionUID = 6L;
     private final String ReservationFileName ="Reservation.bin";
-    private final File file = new File(ReservationFileName);
     FileMangerBinary2 Fmanger =new FileMangerBinary2();
     public static ArrayList<Reservation> reservation =new ArrayList<>();
     
-    Client c = new Client ();
-    Vaccine v= new Vaccine ();
+    public Vaccine vac;
   
     public Reservation(){
-        if(!this.file.exists()){
-            try {
-            this.file.createNewFile();
-            } catch (IOException ex) {
-             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+           
+        
     }
      
+    Client c;
     
-   public Reservation(int ID, String Fname,String Lname, int Age, String Email,String Gender, String date, String VaccineName){
-        c.pId= ID;
+   public Reservation(int RId ,int cID, String Fname,String Lname, int Age, String Email, int PhoneNumber, String Address,String Gender, String date, Vaccine v){
+        /*c.pId= ID;
         c.pFirstName= Fname;
         c.pLastName= Lname;
         c.pAge= Age;
         c.pEmail= Email;
-        c.set_cGender(Gender);
+        c.set_cGender(Gender);*/
+        this.ReserId = RId;
+        this.c = new Client (cID,Age,Fname,Lname,Email,PhoneNumber, Address, Gender);
 
         this.date = date;
-        /*this.appoint= appoint;*/
-        v.set_vac(VaccineName);
-        if(!this.file.exists()){
-            try {
-            this.file.createNewFile();
-            } catch (IOException ex) {
-             Logger.getLogger(Invoice.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        this.vac= v; 
             
     }
-
-    //setter
+   //Setter & getter
+   public void setRID(int RID){
+        this.ReserId= RID ;
+    }    
+    
+    public int getRID(){
+       return this.ReserId;
+    }    
+   
+    public void setDate(String date){
+        this.date = date ;
+    }    
+    
+    public String getDate(){
+       return this.date;
+    }    
+   
+   public boolean check (String date ){
+       for (Reservation x : reservation){
+           if(x.date.equalsIgnoreCase(date))
+               return true;
+       }
+       return false;
+   }
+    //
       
-    public void setAppointment (Appointment appoint)
-    {
-        this.appoint = appoint;
-    }
-       
+   
    
       public boolean AddReservation(){
           loadFromFile();
@@ -68,7 +74,7 @@ public class Reservation implements Serializable {
        return commitToFile();
         }
       /*
-      //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
+      //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@01126524979@Ramsis@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
    private String getReservationData (){
        return   c.pId + "@" + c.pFirstName + "@" + c.pLastName + "@" + c.pAge + "@" + c.pEmail + "@" + c.get_cGender() + "@" + this.appoint + v.get_vac() ;
    }
@@ -84,46 +90,55 @@ public class Reservation implements Serializable {
        
           return -1;
     }
-    public String SearchReservation (int id)
+   
+    public Reservation SearchReservationById (int id)
     {
+        Reservation temp = new Reservation();
         loadFromFile();
         int index = getReservationIndex(id);
         if (index != -1)
-            return "\nFound ...!" + reservation.get(index).toString();
+            return  reservation.get(index);
         else 
-            return "\nNot Found";        
+            return temp;
     }
-    public String displayAllReservation (){
+    
+    public ArrayList<Reservation> ListAllReservation (){
         loadFromFile();
-        String s = "\n All Reservation Data:\n";
-                for (Reservation x : reservation){
-                   s =s + x.toString();
-                   }
-                return s;
+        return reservation;
            }
     
         public boolean commitToFile() {
         return Fmanger.write(ReservationFileName, reservation);
     }   
         
-    public void updateReservation (int oldID, Reservation x){
+    public boolean updateReservation (){
         loadFromFile();
-        int index = getReservationIndex(oldID);
-        reservation.set(index, x);
-        commitToFile();
+        int index = getReservationIndex(this.ReserId);
+        if (index != -1){
+             reservation.set(index,this);
+             return commitToFile();
+        }
+        return false;
     }
-     public void deleteReservation (int id)
+    
+     public boolean deleteReservation (int id)
      {
          loadFromFile();
          int index = getReservationIndex(id);
-         reservation.remove(index);
-         commitToFile();
-     }
-    
+         if (index != -1){
+             reservation.remove(index);
+             return commitToFile();
+        }
+        return false;
+    }
+         
+     
+      //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@01126524979@Ramsis@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
+
     @Override
     public String toString(){
         return "\n Client Name : " + c.pFirstName + " " + c.pLastName + "\n" + "ID : " + c.pId + " Age : " + c.pAge + "\n"
-                + "Email : " + c.pEmail + " Gender: " + c.get_cGender() + "\nAppointment :" + appoint + "\nVaccineName : " + v.get_vac() + "\n";
+               +"phone Number : "+ c.cPhoneNumber + "Address : " + c.cAdress + "\n" + "Email : " + c.pEmail + " Gender: " + c.cGender  + "\nAppointment :" + date + "\nVaccineName : " + vac.get_vac() + "\n";
     }
 }
   

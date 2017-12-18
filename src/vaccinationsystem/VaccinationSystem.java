@@ -6,14 +6,22 @@ import StaffPersonGUI.LoginFrame;
 
 public class VaccinationSystem {
 
-    
+
     public static void main(String[] args) {
         String projectPath = System.getProperty("user.dir");
         System.out.println("Project Path: " + projectPath);
         File currentDir = new File(projectPath); // current directory				
 	checkDirectoryContents(currentDir);
-        
-         new LoginFrame().setVisible(true);
+          
+        Vaccine sa = new Vaccine();
+         String y = "flue";
+        sa.set_vac(y);
+         //new LoginFrame().setVisible(true);
+         ReservOfficer x = new ReservOfficer();
+               //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@01126524979@Ramsis@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
+//   public void AddNewReservation (int RId , int cID, String Fname,String Lname, int Age, String Email, int PhoneNumber, String Address,String Gender, String date, Vaccine v){
+
+         x.AddNewReservation( 1 , 1, "Shenouda", "Farouk", 20 ,"Shenouda@yahoo.com" ,01126, "ramsis" , "male" , "mon"  , sa );
  
     }
     
