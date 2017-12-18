@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="Store" package="vaccinationsystem" visibility="public" xPosition="2571.0" yPosition="753.0">
+      <Fields>
+        <Field name="storeId" type="int" visibility="private"/>
+        <Field name="storeCapacity" type="int" visibility="private" isStatic="true"/>
+        <Field name="storeFreeSpace" type="int" visibility="private" isStatic="true"/>
+        <Field name="StoreFileName" type="String" visibility="private" isFinal="true"/>
+        <Field name="file" type="File" visibility="private" isFinal="true"/>
+        <Field name="vac" type="Vaccine" visibility="private" isFinal="true"/>
+        <Field name="FManger" type="FileManger" visibility="package"/>
+        <Field name="store" type="ArrayList&lt;Store&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="storeCapacity"/>
+          <Argument type="int" name="storeId"/>
+          <Argument type="int" name="storeFreeSpace"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setstoreCapacity" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="storeCapacity"/>
+        </Method>
+        <Method name="setstoreFreeSpace" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="storeFreeSpace"/>
+        </Method>
+        <Method name="setstoreId" returnType="void" visibility="public">
+          <Argument type="int" name="storeId"/>
+        </Method>
+        <Method name="getstoreId" returnType="int" visibility="public"/>
+        <Method name="getstoreFreeSpace" returnType="int" visibility="public"/>
+        <Method name="getsetstoreCapacity" returnType="int" visibility="public"/>
+        <Method name="getvacIndex" returnType="int" visibility="private">
+          <Argument type="int" name="vacId"/>
+        </Method>
+        <Method name="getstoreData" returnType="String" visibility="private"/>
+        <Method name="loadFromFile" returnType="ArrayList&lt;Store&gt;" visibility="private"/>
+        <Method name="commitToFile" returnType="void" visibility="public"/>
+        <Method name="searchVac" returnType="boolean" visibility="public">
+          <Argument type="int" name="vacId"/>
+        </Method>
+        <Method name="storeIsFull" returnType="boolean" visibility="public"/>
+        <Method name="storeReport" returnType="String" visibility="public"/>
+        <Method name="listStore" returnType="ArrayList&lt;Store&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Client" package="vaccinationsystem" visibility="public" xPosition="1032.0" yPosition="1055.0">
+      <Fields>
+        <Field name="cPhoneNumber" type="int" visibility="private"/>
+        <Field name="cAdress" type="String" visibility="private"/>
+        <Field name="cGender" type="String" visibility="private"/>
+        <Field name="file" type="FileMangerBinary" visibility="private" isFinal="true"/>
+        <Field name="FILE_NAME" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="clients" type="ArrayList&lt;Client&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="set_cPhoneNumber" returnType="void" visibility="public">
+          <Argument type="int" name="cPhoneNumber"/>
+        </Method>
+        <Method name="get_cPhoneNumber" returnType="int" visibility="public"/>
+        <Method name="get_cGender" returnType="String" visibility="public"/>
+        <Method name="addClient" returnType="boolean" visibility="public"/>
+        <Method name="commitToFile" returnType="boolean" visibility="public"/>
+        <Method name="loadFromFile" returnType="void" visibility="public"/>
+        <Method name="getClientIndex" returnType="int" visibility="private">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="searchClientById" returnType="Client" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="listClients" returnType="ArrayList&lt;Client&gt;" visibility="public"/>
+        <Method name="updateClient" returnType="boolean" visibility="public"/>
+        <Method name="deleteClient" returnType="boolean" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Email" package="vaccinationsystem" visibility="public" xPosition="2631.0" yPosition="1447.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FManger" type="FileMangerBinary" visibility="package"/>
+        <Field name="EmailFileName" type="String" visibility="private" isFinal="true"/>
+        <Field name="E" type="ArrayList&lt;Email&gt;" visibility="public" isStatic="true"/>
+        <Field name="mailServerProperties" type="Properties" visibility="package" isStatic="true"/>
+        <Field name="getMailSession" type="Session" visibility="package" isStatic="true"/>
+        <Field name="generateMailMessage" type="MimeMessage" visibility="package" isStatic="true"/>
+        <Field name="file" type="File" visibility="package"/>
+        <Field name="ToEmail" type="String" visibility="package"/>
+        <Field name="CcEmail" type="String" visibility="package"/>
+        <Field name="Subject" type="String" visibility="package"/>
+        <Field name="Emailbody" type="String" visibility="package"/>
+        <Field name="attachment" type="String" visibility="public"/>
+        <Field name="attachmentPath" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="generateAndSendEmail" returnType="void" visibility="public"/>
+        <Method name="commitToFile" returnType="boolean" visibility="public"/>
+        <Method name="loadFromFile" returnType="void" visibility="public"/>
+        <Method name="listEmail" returnType="ArrayList&lt;Email&gt;" visibility="public"/>
+        <Method name="getTo" returnType="String" visibility="public"/>
+        <Method name="getCc" returnType="String" visibility="public"/>
+        <Method name="getSubject" returnType="String" visibility="public"/>
+        <Method name="getBody" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Reservation" package="vaccinationsystem" visibility="public" xPosition="1809.0" yPosition="992.0">
+      <Fields>
+        <Field name="appoint" type="Appointment" visibility="package"/>
+        <Field name="date" type="String" visibility="public"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="ReservationFileName" type="String" visibility="private" isFinal="true"/>
+        <Field name="file" type="File" visibility="private" isFinal="true"/>
+        <Field name="Fmanger" type="FileMangerBinary2" visibility="package"/>
+        <Field name="reservation" type="ArrayList&lt;Reservation&gt;" visibility="public" isStatic="true"/>
+        <Field name="c" type="Client" visibility="package"/>
+        <Field name="v" type="Vaccine" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="appoint"/>
+        </Method>
+        <Method name="AddReservation" returnType="boolean" visibility="public"/>
+        <Method name="loadFromFile" returnType="void" visibility="private"/>
+        <Method name="getReservationIndex" returnType="int" visibility="private">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="SearchReservation" returnType="String" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="displayAllReservation" returnType="String" visibility="public"/>
+        <Method name="commitToFile" returnType="boolean" visibility="public"/>
+        <Method name="updateReservation" returnType="void" visibility="public">
+          <Argument type="int" name="oldID"/>
+          <Argument type="Reservation" name="x"/>
+        </Method>
+        <Method name="deleteReservation" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="StoreKeeper" package="vaccinationsystem" visibility="public" xPosition="915.0" yPosition="1593.0">
+      <Fields>
+        <Field name="storekeeperFileName" type="String" visibility="private" isFinal="true"/>
+        <Field name="StoreKeepers" type="ArrayList&lt;StoreKeeper&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addstorekeeper" returnType="boolean" visibility="public"/>
+        <Method name="commitToFilee" returnType="boolean" visibility="public"/>
+        <Method name="loadFromFile" returnType="void" visibility="private"/>
+        <Method name="getStoreKeeperIndex" returnType="int" visibility="private">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="searchStoreKeeperById" returnType="StoreKeeper" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="ListStoreKeepers" returnType="ArrayList&lt;StoreKeeper&gt;" visibility="public"/>
+        <Method name="UpdateStoreKeeper" returnType="boolean" visibility="public"/>
+        <Method name="deleteStoreKeeper" returnType="boolean" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="login" returnType="boolean" visibility="public">
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="Pass"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ReservOfficer" package="vaccinationsystem" visibility="public" xPosition="1421.0" yPosition="1480.0">
+      <Fields>
+        <Field name="ReservOfficerFileName" type="String" visibility="public" isFinal="true"/>
+        <Field name="reservOfficers" type="ArrayList&lt;ReservOfficer&gt;" visibility="public" isStatic="true"/>
+        <Field name="reservation" type="Reservation" visibility="package"/>
+        <Field name="INVO" type="Invoice" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="AddNewReservation" returnType="void" visibility="public"/>
+        <Method name="addReservOfficer" returnType="boolean" visibility="public"/>
+        <Method name="loadFromFile" returnType="void" visibility="private"/>
+        <Method name="ListAllReservOfficers" returnType="ArrayList&lt;ReservOfficer&gt;" visibility="public"/>
+        <Method name="getReservOfficersIndex" returnType="int" visibility="private">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="searchResById" returnType="ReservOfficer" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="commitToFilee" returnType="boolean" visibility="public"/>
+        <Method name="UpdateReservationOfficer" returnType="boolean" visibility="public"/>
+        <Method name="deleteReservationOfficer" returnType="boolean" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="login" returnType="boolean" visibility="public">
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="Pass"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Admin" package="vaccinationsystem" visibility="public" xPosition="575.0" yPosition="1752.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="adminFileName" type="String" visibility="private" isFinal="true"/>
+        <Field name="Fmanger" type="FileMangerBinary2" visibility="package"/>
+        <Field name="file" type="File" visibility="private" isFinal="true"/>
+        <Field name="Admins" type="ArrayList&lt;Admin&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="login" returnType="boolean" visibility="public">
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="Pass"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Doctor" package="vaccinationsystem" visibility="public" xPosition="37.0" yPosition="1618.0">
+      <Fields>
+        <Field name="doctorFileName" type="String" visibility="public" isFinal="true"/>
+        <Field name="Doctors" type="ArrayList&lt;Doctor&gt;" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="displayReservation" returnType="void" visibility="public"/>
+        <Method name="adddoctor" returnType="boolean" visibility="public"/>
+        <Method name="commitToFilee" returnType="boolean" visibility="public"/>
+        <Method name="loadFromFile" returnType="void" visibility="private"/>
+        <Method name="getDocIndex" returnType="int" visibility="private">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="searchDoctorById" returnType="Doctor" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="listDoctors" returnType="ArrayList&lt;Doctor&gt;" visibility="public"/>
+        <Method name="UpdateDoc" returnType="boolean" visibility="public"/>
+        <Method name="deleteDocc" returnType="boolean" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="login" returnType="boolean" visibility="public">
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="Pass"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Person" package="vaccinationsystem" visibility="public" xPosition="451.0" yPosition="730.0">
+      <Fields>
+        <Field name="pId" type="int" visibility="protected"/>
+        <Field name="pAge" type="int" visibility="protected"/>
+        <Field name="pFirstName" type="String" visibility="protected"/>
+        <Field name="pLastName" type="String" visibility="protected"/>
+        <Field name="pEmail" type="String" visibility="protected"/>
+        <Field name="FManger" type="FileMangerBinary2" visibility="package"/>
+        <Field name="MyEX" type="MyException" visibility="package" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setPId" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="setPAge" returnType="void" visibility="public">
+          <Argument type="int" name="age"/>
+        </Method>
+        <Method name="setPFirstName" returnType="void" visibility="public">
+          <Argument type="String" name="fname"/>
+        </Method>
+        <Method name="setPLastName" returnType="void" visibility="public">
+          <Argument type="String" name="lname"/>
+        </Method>
+        <Method name="setPEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getPId" returnType="int" visibility="public"/>
+        <Method name="getPAge" returnType="int" visibility="public"/>
+        <Method name="getPFirstName" returnType="String" visibility="public"/>
+        <Method name="getPLastName" returnType="String" visibility="public"/>
+        <Method name="getPEmail" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="staff" package="vaccinationsystem" visibility="public" isAbstract="true" xPosition="443.0" yPosition="1246.0">
+      <Fields>
+        <Field name="sUserName" type="String" visibility="protected"/>
+        <Field name="sPassword" type="String" visibility="protected"/>
+        <Field name="sSalary" type="double" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setUserName" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="pass"/>
+        </Method>
+        <Method name="setSalary" returnType="void" visibility="public">
+          <Argument type="double" name="salary"/>
+        </Method>
+        <Method name="getUserName" returnType="String" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="getSalary" returnType="double" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="o"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MyException" package="vaccinationsystem" visibility="public" xPosition="37.0" yPosition="844.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="checkPositive" returnType="int" visibility="package">
+          <Argument type="String" name="x"/>
+        </Method>
+        <Method name="checkEmail" returnType="String" visibility="package">
+          <Argument type="String" name="x"/>
+        </Method>
+        <Method name="checkPassLength" returnType="String" visibility="package">
+          <Argument type="String" name="x"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Invoice" package="vaccinationsystem" visibility="public" xPosition="2223.0" yPosition="1428.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="Invoices" type="ArrayList&lt;Invoice&gt;" visibility="public" isStatic="true"/>
+        <Field name="InvoiceFileName" type="String" visibility="private" isFinal="true"/>
+        <Field name="file" type="File" visibility="private" isFinal="true"/>
+        <Field name="FManger" type="FileMangerBinary2" visibility="package"/>
+        <Field name="service" type="int" visibility="protected" isFinal="true"/>
+        <Field name="invoiceDAte" type="String" visibility="private"/>
+        <Field name="InvoiceNumber" type="int" visibility="protected"/>
+        <Field name="TotalCost" type="double" visibility="package"/>
+        <Field name="currentdate" type="Date" visibility="public"/>
+        <Field name="cli" type="Client" visibility="private"/>
+        <Field name="vac" type="Vaccine" visibility="private"/>
+        <Field name="per" type="Person" visibility="package"/>
+        <Field name="appoint" type="Appointment" visibility="package"/>
+        <Field name="rev" type="Reservation" visibility="package"/>
+        <Field name="generatEmail" type="Email" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setinvoiceNumber" returnType="void" visibility="public">
+          <Argument type="int" name="INumber"/>
+        </Method>
+        <Method name="getinvoiceNumber" returnType="int" visibility="public"/>
+        <Method name="invoiceSum" returnType="double" visibility="public">
+          <Argument type="double" name="Totalcost"/>
+          <Argument type="int" name="service"/>
+        </Method>
+        <Method name="Generateinvoices" returnType="void" visibility="package"/>
+        <Method name="ReadFromFile" returnType="void" visibility="private"/>
+        <Method name="commitToFile" returnType="boolean" visibility="public"/>
+        <Method name="getInvoiceIndex" returnType="int" visibility="public">
+          <Argument type="int" name="InvoiceNumber"/>
+        </Method>
+        <Method name="deleteINVOICE" returnType="boolean" visibility="public">
+          <Argument type="int" name="INVOICENumber"/>
+        </Method>
+        <Method name="DisplayAllInvoices" returnType="String" visibility="public"/>
+        <Method name="invoicePdf" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Vaccine" package="vaccinationsystem" visibility="public" xPosition="2164.0" yPosition="743.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="vacId" type="int" visibility="private" isStatic="true"/>
+        <Field name="vacExpirationYear" type="int" visibility="private"/>
+        <Field name="vac" type="String" visibility="private"/>
+        <Field name="vacTradeName" type="String" visibility="private"/>
+        <Field name="vacAbbreviation" type="String" visibility="private"/>
+        <Field name="vacType" type="String" visibility="private"/>
+        <Field name="vacComment" type="String" visibility="private"/>
+        <Field name="price" type="double" visibility="private"/>
+        <Field name="file" type="FileMangerBinary" visibility="private" isFinal="true"/>
+        <Field name="FILE_NAME" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="tmpFile" type="File" visibility="package"/>
+        <Field name="vacs" type="ArrayList&lt;ArrayList&gt;" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="set_vacId" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="set_vac" returnType="void" visibility="public">
+          <Argument type="String" name="vac"/>
+        </Method>
+        <Method name="get_vacId" returnType="int" visibility="public"/>
+        <Method name="get_vac" returnType="String" visibility="public"/>
+        <Method name="addVac" returnType="boolean" visibility="public">
+          <Argument type="Vaccine" name="vac"/>
+        </Method>
+        <Method name="deleteVac" returnType="boolean" visibility="public">
+          <Argument type="int" name="value"/>
+        </Method>
+        <Method name="updateVac" returnType="boolean" visibility="private">
+          <Argument type="ArrayList&lt;ArrayList&gt;" name="vacs"/>
+        </Method>
+        <Method name="listVac" returnType="void" visibility="public"/>
+        <Method name="vacData" returnType="ArrayList" visibility="public"/>
+        <Method name="searchVac" returnType="ArrayList" visibility="public">
+          <Argument type="String" name="vac"/>
+        </Method>
+        <Method name="searchVac" returnType="ArrayList" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Appointment" package="vaccinationsystem" visibility="public" xPosition="1346.0" yPosition="803.0">
+      <Fields>
+        <Field name="appointmentDate" type="String" visibility="public"/>
+        <Field name="appointmentNumber" type="Client" visibility="package"/>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="FILE_NAME" type="String" visibility="package" isStatic="true" isFinal="true"/>
+        <Field name="file" type="File" visibility="private" isFinal="true"/>
+        <Field name="Appointments" type="ArrayList&lt;Appointment&gt;" visibility="public" isStatic="true"/>
+        <Field name="FManger" type="FileMangerBinary2" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setappointNumber" returnType="void" visibility="public">
+          <Argument type="Client" name="appointmentNumber"/>
+        </Method>
+        <Method name="getappointmentDate" returnType="String" visibility="public"/>
+        <Method name="ReadFromFile" returnType="void" visibility="private"/>
+        <Method name="commitToFile" returnType="boolean" visibility="public"/>
+        <Method name="Check" returnType="boolean" visibility="public">
+          <Argument type="String" name="appointmentDate"/>
+        </Method>
+        <Method name="getAppointmentIndex" returnType="int" visibility="private">
+          <Argument type="int" name="Number"/>
+        </Method>
+        <Method name="deleteAppointment" returnType="boolean" visibility="protected">
+          <Argument type="int" name="appointmentNumber"/>
+        </Method>
+        <Method name="DisplayAllAppointments" returnType="String" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Interface name="Ilogin" package="vaccinationsystem" visibility="public" xPosition="37.0" yPosition="1337.0">
+      <Methods>
+        <Method name="login" returnType="boolean" visibility="public">
+          <Argument type="String" name="userName"/>
+          <Argument type="String" name="Pass"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="rev" source="vaccinationsystem.Invoice" target="vaccinationsystem.Reservation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="c" source="vaccinationsystem.Reservation" target="vaccinationsystem.Client" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="vaccinationsystem.Client" target="vaccinationsystem.Person"/>
+    <HasRelation name="reservation" source="vaccinationsystem.ReservOfficer" target="vaccinationsystem.Reservation" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="INVO" source="vaccinationsystem.ReservOfficer" target="vaccinationsystem.Invoice" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="vaccinationsystem.staff" target="vaccinationsystem.Person"/>
+    <IsRelation name="is" source="vaccinationsystem.Doctor" target="vaccinationsystem.staff"/>
+    <IsRelation name="is" source="vaccinationsystem.StoreKeeper" target="vaccinationsystem.staff"/>
+    <HasRelation name="vac" source="vaccinationsystem.Store" target="vaccinationsystem.Vaccine" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="vaccinationsystem.staff" target="vaccinationsystem.Ilogin"/>
+    <IsRelation name="is" source="vaccinationsystem.ReservOfficer" target="vaccinationsystem.staff"/>
+    <HasRelation name="generatEmail" source="vaccinationsystem.Invoice" target="vaccinationsystem.Email" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="appoint" source="vaccinationsystem.Reservation" target="vaccinationsystem.Appointment" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="vaccinationsystem.Admin" target="vaccinationsystem.staff"/>
+    <HasRelation name="MyEX" source="vaccinationsystem.Person" target="vaccinationsystem.MyException" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="vaccinationsystem.Reservation" target="vaccinationsystem.Appointment" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="v" source="vaccinationsystem.Reservation" target="vaccinationsystem.Vaccine" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="vac" source="vaccinationsystem.Invoice" target="vaccinationsystem.Vaccine" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
