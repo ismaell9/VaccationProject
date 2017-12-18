@@ -7,9 +7,6 @@ package Frames;
 
 import Frames.Panels.Doc_PushComments;
 import Frames.Panels.Doc_listReserv;
-import Frames.Panels.Store_AddPanel;
-import Frames.Panels.Store_ListPanel;
-import Frames.Panels.Store_UpdatePanel;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -25,14 +22,16 @@ public class Doctor_ViewReservations extends javax.swing.JInternalFrame {
     
     GridBagLayout layout;
 
-    Store_AddPanel p1;
-    Store_ListPanel p2;
+    Doc_listReserv p1;
+    Doc_PushComments p2;
     
     public Doctor_ViewReservations() {
         initComponents();
-    
-        layout = new GridBagLayout();
+        p1 = new Doc_listReserv();
+        p2 = new Doc_PushComments();
+       
 
+        DynamicPanal.setLayout(layout);
 
         GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -40,7 +39,6 @@ public class Doctor_ViewReservations extends javax.swing.JInternalFrame {
         
         DynamicPanal.add(p1, c);
         DynamicPanal.add(p2, c);
-
         p1.setVisible(false);
         p2.setVisible(false);
 
