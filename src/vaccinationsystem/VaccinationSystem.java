@@ -16,12 +16,12 @@ public class VaccinationSystem {
         Vaccine sa = new Vaccine();
          String y = "flue";
         sa.set_vac(y);
-         //new LoginFrame().setVisible(true);
+         new LoginFrame().setVisible(true);
          ReservOfficer x = new ReservOfficer();
                //20150280@Shenouda Farouk@20@Shenouda@yahoo.com@01126524979@Ramsis@Male@Sun Dec 03 01:52:55 EET 2017@swine flu){
 //   public void AddNewReservation (int RId , int cID, String Fname,String Lname, int Age, String Email, int PhoneNumber, String Address,String Gender, String date, Vaccine v){
 
-         x.AddNewReservation( 1 , 1, "Shenouda", "Farouk", 20 ,"Shenouda@yahoo.com" ,01126, "ramsis" , "male" , "mon"  , sa );
+        // x.AddNewReservation( 1 , 1, "Shenouda", "Farouk", 20 ,"Shenouda@yahoo.com" ,01126, "ramsis" , "male" , "mon"  , sa );
  
     }
     
@@ -34,6 +34,7 @@ public class VaccinationSystem {
         boolean doctorFile = true;
         boolean clientFile = true;
         boolean reservationFile = true;
+        boolean emailFile =true;
 
         
         for (File file : files) {
@@ -48,7 +49,10 @@ public class VaccinationSystem {
                 clientFile = false;
             } else if (file.getName().contains("Reservation.bin")) {
                 reservationFile = false;
-            }          
+            }      
+            else if (file.getName().contains(" Email.bin")) {
+                emailFile = false;
+            }         
         }
            
                 
@@ -76,7 +80,10 @@ public class VaccinationSystem {
             Reservation  x = new Reservation();
             x.commitToFile();
         } 
-       
+       if (emailFile) {
+            Email  x = new Email();
+            x.commitToFile();
+        } 
        
     }
     

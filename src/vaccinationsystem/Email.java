@@ -1,68 +1,44 @@
 package vaccinationsystem;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 
 /**
  *
- * 
+ * @author Tamer A.Yassen
  */
 public class Email implements Serializable {
-    private static final long serialVersionUID = 8L;
+
     FileMangerBinary FManger = new FileMangerBinary();
 
-    private final String EmailFileName = "E:\\VaccinationSystem\\Email.bin";
-    public static ArrayList<Email> E = new ArrayList<>();
-    
+    private final String EmailFileName = "Email.bin";
+    public static ArrayList<Email> E = new ArrayList<Email>();
+
     static Properties mailServerProperties;
     static Session getMailSession;
     static MimeMessage generateMailMessage;
-    File file = new File("E:\\VaccinationSystem\\Email.bin");
+
     String ToEmail = "";
     String CcEmail = "";
     String Subject = "";
     String Emailbody = "";
-    public String attachment;
-    public String attachmentPath;
-   
-    public Email(){
-        
+
+    public Email() {
     }
-    public Email(String ToEmail, String CcEmail, String Subject, String Emailbody, String Attach , String AttachPath) {
+
+    public Email(String ToEmail, String CcEmail, String Subject, String Emailbody) {
         this.ToEmail = ToEmail;
         this.CcEmail = CcEmail;
         this.Subject = Subject;
         this.Emailbody = Emailbody;
-        this.attachment = "";
-        this.attachmentPath="";
-        this.attachment = Attach;
-        this.attachmentPath = AttachPath;
-        if(!this.file.exists()){
-            try {
-                this.file.createNewFile();
-            } catch (IOException ex) {
-                Logger.getLogger(Email.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     }
 
     public void generateAndSendEmail() throws AddressException, MessagingException {
@@ -88,26 +64,9 @@ public class Email implements Serializable {
             generateMailMessage.addRecipient(Message.RecipientType.CC, new InternetAddress(CcEmail));
         }
         generateMailMessage.setSubject(Subject);
-        BodyPart messageBodyPart1 = new MimeBodyPart();     
-        messageBodyPart1.setText(Emailbody);          
-        
-        MimeBodyPart messageBodyPart2 = new MimeBodyPart();      
-        
-        Multipart multipart = new MimeMultipart();    
-        multipart.addBodyPart(messageBodyPart1);
-        if(!attachment.equals("") && !attachment.equals("")){
+        String emailBody = Emailbody + "<br><br> Regards, <br> Vaccination Center Admin";
+        generateMailMessage.setContent(emailBody, "text/html");
 
-            String filename = this.attachmentPath;//change accordingly     
-            DataSource source = new FileDataSource(filename);    
-            messageBodyPart2.setDataHandler(new DataHandler(source));    
-            messageBodyPart2.setFileName(this.attachment);             
-
-            multipart.addBodyPart(messageBodyPart2);
-        }
-        generateMailMessage.setContent(multipart);
-        //String emailBody = Emailbody + "<br><br> Regards, <br>Vaccination Manegment.";
-        //generateMailMessage.setContent(emailBody, "text/html");
-        //Transport.send(generateMailMessage);
         System.out.println("Mail Session has been created successfully..");
 
         // Step3
@@ -122,12 +81,10 @@ public class Email implements Serializable {
         System.out.println("\n\n ===> Your Java Program has just sent an Email successfully. Check your email..");
 
         loadFromFile();
-        if(this!=null){
-            E.add(this);
-            commitToFile();
-        
+        E.add(this);
+        commitToFile();
     }
-}
+
     public boolean commitToFile() {
         return FManger.write(EmailFileName, E);
     }

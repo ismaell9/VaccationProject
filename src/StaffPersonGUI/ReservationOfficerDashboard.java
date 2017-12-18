@@ -5,6 +5,16 @@
  */
 package StaffPersonGUI;
 
+import vaccinationsystem.Reservation;
+import Frames.ReservOff_Add;
+import Frames.ReservOff_update;
+import Frames.ReservOff_List;
+import Frames.EmailFrame;
+import Frames.ReservOff_SearchTime;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jesus
@@ -27,38 +37,42 @@ public class ReservationOfficerDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemEmail = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItemAdd = new javax.swing.JMenuItem();
         jMenuItemList = new javax.swing.JMenuItem();
         jMenuItemUpdate = new javax.swing.JMenuItem();
+        jMenuItemSearch = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        javax.swing.GroupLayout desktopLayout = new javax.swing.GroupLayout(desktop);
+        desktop.setLayout(desktopLayout);
+        desktopLayout.setHorizontalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 862, Short.MAX_VALUE)
         );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 443, Short.MAX_VALUE)
+        desktopLayout.setVerticalGroup(
+            desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 658, Short.MAX_VALUE)
         );
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Email");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemEmail.setText("Email");
+        jMenuItemEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemEmailActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItemEmail);
 
         jMenuItem2.setText("Exit");
         jMenu1.add(jMenuItem2);
@@ -68,6 +82,11 @@ public class ReservationOfficerDashboard extends javax.swing.JFrame {
         jMenu2.setText("Reservation");
 
         jMenuItemAdd.setText("Add Reservation");
+        jMenuItemAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAddActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItemAdd);
 
         jMenuItemList.setText("List All Reservations");
@@ -86,7 +105,25 @@ public class ReservationOfficerDashboard extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItemUpdate);
 
+        jMenuItemSearch.setText("Search for Time");
+        jMenuItemSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemSearchActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItemSearch);
+
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Invoices");
+
+        jMenuItem3.setText("Update/Delete");
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem4.setText("List Invoices");
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -94,27 +131,52 @@ public class ReservationOfficerDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addComponent(desktop)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuItemEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+        EmailFrame f = new EmailFrame();
+        desktop.add(f);
+        f.setVisible(true);       
+    }//GEN-LAST:event_jMenuItemEmailActionPerformed
 
     private void jMenuItemListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListActionPerformed
         // TODO add your handling code here:
+        ReservOff_List f = new ReservOff_List();
+        desktop.add(f);
+        f.setVisible(true);
     }//GEN-LAST:event_jMenuItemListActionPerformed
 
     private void jMenuItemUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUpdateActionPerformed
         // TODO add your handling code here:
+        ReservOff_update f = new ReservOff_update();
+        desktop.add(f);
+        f.setVisible(true);
     }//GEN-LAST:event_jMenuItemUpdateActionPerformed
+
+    private void jMenuItemAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAddActionPerformed
+        // TODO add your handling code here:
+          ReservOff_Add f = new ReservOff_Add();
+        desktop.add(f);
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAddActionPerformed
+
+    private void jMenuItemSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSearchActionPerformed
+        // TODO add your handling code here:
+        ReservOff_SearchTime f = new ReservOff_SearchTime();
+        desktop.add(f);
+        f.setVisible(true);
+    }//GEN-LAST:event_jMenuItemSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,14 +214,18 @@ public class ReservationOfficerDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItemAdd;
+    private javax.swing.JMenuItem jMenuItemEmail;
     private javax.swing.JMenuItem jMenuItemList;
+    private javax.swing.JMenuItem jMenuItemSearch;
     private javax.swing.JMenuItem jMenuItemUpdate;
     // End of variables declaration//GEN-END:variables
 }
